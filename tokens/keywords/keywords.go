@@ -31,12 +31,12 @@ fallthrough -   In Go, fallthrough is a keyword used in a switch statement to fo
 				to continue to the next case, regardless of whether that case matches the condition.
 if - conditional statements
 range - the range keyword is used in loops to iterate over elements in arrays, slices, maps, strings, and channels.
-type
-continue
-for
-import
-return
-var
+type - struct/interface/named type/type alias/function type
+continue - it's used inside loops and is pretty straightforward once you get the hang of it. or for skipping the loop
+for - looping statements/as while/infinite/Looping Over Arrays, Slices, Maps(using range)
+import - basic/multiple/alias/blankIdentifier/third-party packages
+return - back from a function - Basic Usage of return/Multiple Return Values/Named Return Values/Use with Early Exit
+var - variable intialization
 */
 func Keywords() {
 	var nums = []int{1, 2, 3, 4, 5}
