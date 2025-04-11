@@ -37,6 +37,7 @@ for - looping statements/as while/infinite/Looping Over Arrays, Slices, Maps(usi
 import - basic/multiple/alias/blankIdentifier/third-party packages
 return - back from a function - Basic Usage of return/Multiple Return Values/Named Return Values/Use with Early Exit
 var - variable intialization
+New - To create the new memory allocation.
 */
 func Keywords() {
 	var nums = []int{1, 2, 3, 4, 5}

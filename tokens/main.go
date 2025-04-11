@@ -1,7 +1,7 @@
 package main
 
 import (
-	"tokens/operatorspunctuation"
+	"tokens/operatorspunctuationdata"
 )
 
 func main() {
@@ -12,5 +12,5 @@ func main() {
 	// iotakeyword.Iotakeyword()
 	// fallthroughkeyword.Fallthroughfunc()
 	//rangekeyword.RangeKeyword()
-	operatorspunctuation.Addition_operator()
+	operatorspunctuationdata.AllOperator()
 }
