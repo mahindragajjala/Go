@@ -42,6 +42,6 @@ func Manual_Structure[a Data](a) {
 }
 
 // using package
-func Using_package[i constraints.Ordered]() {
-
+func Using_package[i constraints.Ordered](i){
+	fmt.Println(i)
 }

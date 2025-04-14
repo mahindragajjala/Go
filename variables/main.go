@@ -1,7 +1,7 @@
 package main
 
 import (
-	arraytype "datatypes/datatypes/array_type"
+	"datatypes/structures"
 )
 
 func main() {
@@ -11,5 +11,5 @@ func main() {
 	//stringtypes.Palindrome()
 	//arraytype.Declaration_array()
 	//arraytype.Accessing_Array()
-	arraytype.Swapping()
+	structures.Structures_Go()
 }
