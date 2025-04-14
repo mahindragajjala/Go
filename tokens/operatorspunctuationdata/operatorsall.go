@@ -5,28 +5,23 @@ package operatorspunctuationdata
 &= - ADDRESS
 () - parentheses
 |= - OR and =
+[] - square brackets
+* - pointer,multiplication
+^ - RAND
+* -  a = a*b
+^ -  a = a^b
+{} - curly brackets
+++ - increment
+, - Not operator its "separator"
+; - semicolon
+>>= - right shift and equal to
+-- - decrement
+... - ellipsis
+. - access operator
+: - colon
+&^ - bitclear
+&^= - AND_NOT_assignment_operator
 
-
-{
-}
-
-<<=
-++
-
-,
-;
-
-
-
->>=
---
-
-...
-.
-:
-&^
-&^=
-~
 
 
 Arithmetic - Performs basic math such as addition, subtraction, multiplication
@@ -82,11 +77,9 @@ So:
 >> -  bitwise right shift operator
 
 Special -	Covers unique tasks like size checking, pointer access, and more
-?:
-Sizeof
-,
-.
-->
+?: - ternary operator - not there in golang
+. - access operator
+<- - used in channel .
 
 */
 
@@ -101,5 +94,6 @@ func AllOperator() {
 	//ModulesOperator()
 	//Assignment_operator
 	//Logical_NOT_operator()
-	BitwiseOperator()
+	//BitwiseOperator()
+	Variadic_Function_Parameters()
 }
