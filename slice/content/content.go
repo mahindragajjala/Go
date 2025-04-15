@@ -89,12 +89,9 @@ matrix := [][]int{
     {4, 5},
     {6},
 }
-```
 Inner slices can be of different lengths. Unlike arrays of arrays, this is flexible.
 
----
-
-### 💡 **Summary**
+Summary**
 | Feature         | Slice                           | Array                           |
 |-----------------|---------------------------------|---------------------------------|
 | Size            | Dynamic (length can change)    | Fixed (set at creation)         |
@@ -102,16 +99,4 @@ Inner slices can be of different lengths. Unlike arrays of arrays, this is flexi
 | Sharing         | Multiple slices can share data | Each array is independent       |
 | Creation        | `make([]T, len, cap)` or slicing | `var arr = [n]T{}`              |
 | Multi-dimension | Slice of slices possible       | Arrays of arrays (fixed sizes)  |
-
----
-
-✅ **Conclusion:**
-- Slices = more flexible and dynamic than arrays.
-- They are essential for real-world Go programming because you rarely know your data size at compile-time.
-- They are lightweight references to arrays and can save memory when handled properly.
-
----
-
-If you want, I can give you a few real-world examples or quiz-style questions to lock this in.
-Want me to?
 */
