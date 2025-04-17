@@ -1,5 +1,7 @@
 package main
 
-func main() {
+import "interface/code"
 
+func main() {
+	code.IO_package()
 }

@@ -2,19 +2,19 @@ package code
 
 import "fmt"
 
-type Car struct {
+type Cardata struct {
 	Name  string
 	Price int
 }
 
-func (C Car) Drive() {
+func (C Cardata) Drive() {
 	fmt.Println("we are driving...")
 }
-func (C Car) Race() {
+func (C Cardata) Race() {
 	fmt.Println("we are ready to race")
 }
 func GO() {
-	data := new(Car)
+	data := new(Cardata)
 	data.Drive()
 	data.Race()
 }
