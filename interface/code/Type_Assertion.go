@@ -25,5 +25,4 @@ func Type_assertion() {
 	} else {
 		fmt.Println("Type assertion failed!")
 	}
-
 }

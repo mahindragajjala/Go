@@ -1,7 +1,10 @@
 package main
 
-import "interface/code"
+import (
+	"interface/practice"
+)
 
 func main() {
-	code.IO_READER()
+
+	practice.Main_functionality()
 }
