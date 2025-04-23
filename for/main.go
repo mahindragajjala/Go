@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	a.Factorial()
+	a.Checking_Prime_No_userinput()
 }
