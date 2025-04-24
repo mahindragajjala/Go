@@ -5,9 +5,5 @@ import (
 )
 
 func main() {
-<<<<<<< HEAD
-	a.Checking_Prime_No_userinput()
-=======
-	a.LessthanEqual()
->>>>>>> 3bb807d (for)
+	a.Second_largest_number()
 }
