@@ -5,6 +5,5 @@ import (
 )
 
 func main() {
-	//a.Using_flag_bubble_sort()
-	a.Insertion_sort()
+	a.Bubble_sort_string_array()
 }
