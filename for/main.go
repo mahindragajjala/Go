@@ -1,9 +1,9 @@
 package main
 
 import (
-	a "for_loop/questions/sorting"
+	a "for_loop/questions"
 )
 
 func main() {
-	a.Bubble_sort_string_array()
+	a.Count_the_frequency_of_element()
 }
