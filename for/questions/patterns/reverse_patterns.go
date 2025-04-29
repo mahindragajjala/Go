@@ -19,6 +19,7 @@ func Reverse_patterns() {
 		for j := 0; j < i; j++ {
 			fmt.Print("*")
 		}
+
 		fmt.Println()
 	}
 }

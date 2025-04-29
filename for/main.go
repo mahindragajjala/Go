@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	a.Count_the_frequency_of_element()
+	a.Comman_elements()
 }

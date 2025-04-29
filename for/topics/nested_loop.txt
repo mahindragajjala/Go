@@ -18,11 +18,9 @@ Decide:
 Outer loop → controls the number of rows
 Inner loop → controls what’s inside each row
 
+Absolutely! Here's a list of 10 classic and fun pattern problems you can practice using nested loops in Go (or any language). 
 
-
-Absolutely! Here's a **list of 10 classic and fun pattern problems** you can practice using **nested loops** in Go (or any language). These cover increasing, decreasing, spacing, and number-based patterns — all great for mastering **loop logic**.
-
----
+These cover increasing, decreasing, spacing, and number-based patterns — all great for mastering loop logic.
 
 Pattern Problems with Nested Loops
 
@@ -40,14 +38,12 @@ Pattern Problems with Nested Loops
 | 10| Diamond Pattern                     | `    *`<br>`   ***`<br>`  *****`<br>`   ***`<br>`    *` | Combo of ↑ & ↓ |
 
 
-    Bonus Tips
+Bonus Tips
 
 - First draw the pattern on paper.
 - Figure out how many **rows** (outer loop).
 - For each row:
   - What to **print**?
   - How many **spaces/stars/numbers**?
-
----
 
 Would you like me to show the **Go code** for each one of these? I can give them to you one-by-one, or all in one go!
