@@ -1,0 +1,62 @@
+Sure!  
+In **DSA (Data Structures and Algorithms)**, there are many sorting techniques, depending on **speed**, **space**, and **stability** requirements.
+
+Here’s a clean list of **different types of sorting techniques**:
+
+---
+
+1.Comparison-Based Sorting**
+These sort by comparing elements.
+
+| Sorting Algorithm | Time Complexity (Best/Average/Worst) | Space Complexity | Stable? |
+|:------------------|:-------------------------------------|:-----------------|:--------|
+| **Bubble Sort**    | O(n) / O(n²) / O(n²)                 | O(1)             | Yes     |
+| **Selection Sort** | O(n²) / O(n²) / O(n²)                 | O(1)             | No      |
+| **Insertion Sort** | O(n) / O(n²) / O(n²)                 | O(1)             | Yes     |
+| **Merge Sort**     | O(n log n) / O(n log n) / O(n log n) | O(n)             | Yes     |
+| **Quick Sort**     | O(n log n) / O(n log n) / O(n²)      | O(log n)         | No      |
+| **Heap Sort**      | O(n log n) / O(n log n) / O(n log n) | O(1)             | No      |
+
+---
+
+2.Non-Comparison-Based Sorting**
+These sort without directly comparing elements, usually based on digits, bits, or values.
+
+| Sorting Algorithm | Time Complexity | Space Complexity | Stable? |
+|:------------------|:----------------|:-----------------|:--------|
+| **Counting Sort**  | O(n + k)         | O(k)             | Yes     |
+| **Radix Sort**     | O(nk)            | O(n + k)         | Yes     |
+| **Bucket Sort**    | O(n + k)         | O(n)             | Yes     |
+
+- **k** = range of input elements.
+
+---
+
+3.Special Purpose or Hybrid Sorts**
+- **Tim Sort** (Hybrid of Merge Sort + Insertion Sort) — used in Python (`sorted()` function) and Java (`Arrays.sort()` for objects).
+- **Intro Sort** (Hybrid of Quick Sort + Heap Sort + Insertion Sort) — used in C++ STL `sort()` function.
+
+---
+
+### **Simple Classification**
+
+| Category               | Sorting Techniques                  |
+|:------------------------|:------------------------------------|
+| Simple Sorts            | Bubble, Selection, Insertion        |
+| Divide and Conquer Sort | Merge Sort, Quick Sort              |
+| Heap Based Sort         | Heap Sort                           |
+| Counting Sort Based     | Counting, Radix, Bucket             |
+| Hybrid Sorts            | Tim Sort, Intro Sort                |
+
+---
+
+### **Quick Example**
+- **Bubble Sort**: Repeatedly swap adjacent elements if they are in wrong order.
+- **Quick Sort**: Pick a pivot, partition the array, recursively sort partitions.
+- **Counting Sort**: Count frequency of each element, reconstruct array without comparisons.
+- **Radix Sort**: Sort based on individual digits (units, tens, hundreds, etc.)
+
+---
+
+Would you like me to also show **visual diagrams** or **real-life examples** for each sorting technique? 🚀  
+It can make your understanding even better!
