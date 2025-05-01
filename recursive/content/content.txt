@@ -39,6 +39,35 @@ Memory Stack (top is the most recent):
 ----------------------------------------
 
 
+What is Recursion?
+Base Case vs Recursive Case
+Stack memory in recursion
+How recursion works (dry run examples)
+Tail vs Head Recursion (Optional, for deeper understanding)
+
+1. Print Patterns / Numbers
+Print numbers from 1 to N
+Print numbers from N to 1
+Print even/odd numbers using recursion
+
+2. Mathematical Recursion
+Factorial of a number
+Sum of first N natural numbers
+Fibonacci number (nth term)
+Power of a number a^b
+
+3. Array and String Recursion
+Reverse an array/string using recursion
+Check if a string is a palindrome
+Find max/min in an array using recursion
+Linear search using recursion
+Binary search using recursion (a bridge to divide and conquer)
+
+4. Backtracking Basics (preview)
+Print all subsets of a string
+Generate all permutations of a string
+
+
 Example Algorithms of Recursion
 • Fibonacci Series, Factorial Finding
 • Merge Sort, Quick Sort
