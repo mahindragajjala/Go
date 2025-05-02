@@ -1,7 +1,9 @@
 package main
 
-import "recursive/code"
+import (
+	"recursive/typesOfRecursion"
+)
 
 func main() {
-	code.Test_Head_recursive()
+	typesOfRecursion.Test_Head_recursive()
 }
