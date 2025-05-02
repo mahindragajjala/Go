@@ -1,4 +1,4 @@
-package code
+package typesOfRecursion
 
 /*
 What Is Tree Recursion?

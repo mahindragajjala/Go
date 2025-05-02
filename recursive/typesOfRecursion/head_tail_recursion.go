@@ -1,4 +1,4 @@
-package code
+package typesOfRecursion
 
 //Tail vs Head Recursion (Optional, for deeper understanding)
 /*
