@@ -27,7 +27,6 @@ There are usually many ways of creating concurrent applications, and threading i
 
 Sometimes, other terms like asynchronous tasks are also used. The difference lies in the implementation and details. 
 
-
 "However, from a broader point of view, they both mean a set of instructions that can be paused and resumed"
 
 -------------------------------------------------------------------------------------------------------------

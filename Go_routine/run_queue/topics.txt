@@ -1,0 +1,91 @@
+Goroutine scheduling in Go is an advanced topic that covers how Go's runtime manages the execution of thousands or even millions of goroutines efficiently. Understanding goroutine scheduling helps in writing performant, concurrent Go programs.
+
+Topics in Goroutine Scheduling (Go Runtime Scheduler)
+
+Go uses an M:N scheduler (many goroutines mapped onto many OS threads). Here are the major topics:
+
+1. Basic Concepts
+- What is a Goroutine?
+- How goroutines are different from OS threads
+- Lightweight nature of goroutines
+
+2. Goroutine Lifecycle
+- Creation (`go` keyword)
+- Execution
+- Waiting (e.g., for IO, channel)
+- Termination
+
+3. Go Scheduler Design (M:N Scheduler)
+- M: Machine (OS thread)
+- P: Processor (a logical processor – handles scheduling)
+- G: Goroutine
+
+4. Scheduling Algorithms
+- Cooperative preemption (before Go 1.14)
+- Asynchronous preemption (introduced in Go 1.14+)
+- Work stealing
+
+5. Concurrency Primitives Impact
+- Channels
+- Mutexes
+- WaitGroups
+- Select statements
+
+### 6. **GOMAXPROCS**
+- How setting `runtime.GOMAXPROCS` controls P (processor count)
+- Relation to parallelism
+
+### 7. **Blocking and Preemption**
+- What causes goroutines to block
+- When and how preemption happens
+
+### 8. **Garbage Collection and Scheduling**
+- How GC can interact with goroutine scheduling
+
+### 9. **Deadlock and Starvation**
+- How improper scheduling or design leads to issues
+
+### 10. **Scheduler Tracing and Debugging**
+- `GODEBUG=schedtrace=...`
+- `runtime/pprof` and `runtime/trace`
+
+---
+
+## 🔸 **Coding Questions on Goroutine Scheduling (From Basic to Advanced)**
+
+### 🟢 Basic Level
+
+1. **Launch 10 goroutines and print "Hello from goroutine" from each.**
+2. **Explain the difference between `go f(x)` and `f(x)` with examples.**
+3. **Use `time.Sleep` to show how goroutines run concurrently.**
+4. **Print numbers 1-5 using goroutines. Show ordering issues.**
+5. **How to safely wait for goroutines to finish using `sync.WaitGroup`?**
+
+---
+
+### 🟡 Intermediate Level
+
+6. **Simulate a race condition using goroutines and shared variable.**
+7. **Solve the race condition using Mutex.**
+8. **Implement a worker pool using goroutines and channels.**
+9. **Write a goroutine that waits for two channels and exits on either.**
+10. **Use `GOMAXPROCS` and observe parallel vs concurrent behavior.**
+
+---
+
+### 🔴 Advanced Level
+
+11. **Implement a system with 1000 goroutines handling fake requests using channel pooling.**
+12. **Trace goroutine blocking using `runtime/trace`.**
+13. **Create goroutines that block on IO and analyze scheduler’s behavior.**
+14. **Write a program that intentionally causes deadlock. Explain why.**
+15. **Monitor the number of goroutines using `runtime.NumGoroutine()`.**
+16. **Create starvation between goroutines using infinite loop in one. Fix it.**
+17. **Measure CPU usage with vs. without `GOMAXPROCS` and multiple goroutines.**
+18. **Compare scheduling behavior with `sync.Mutex` vs `sync.RWMutex`.**
+19. **Create a goroutine that preempts another (test async preemption).**
+20. **Use `select` with default to implement non-blocking channel read/write.**
+
+---
+
+Would you like me to start generating these coding questions with sample solutions or Go templates for practice?
