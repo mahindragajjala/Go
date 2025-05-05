@@ -1,4 +1,4 @@
-package code
+package goscheduler
 
 /*
 What Are Run Queues?
@@ -200,20 +200,6 @@ Or from the global run queue (if its local one is empty).
 Or steals work from other P’s queues (if needed).
 The OS schedules M (thread) to run on a physical CPU core.
 The CPU core executes the code inside the Goroutine (G).
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 */

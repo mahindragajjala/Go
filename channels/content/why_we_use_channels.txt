@@ -1,0 +1,10 @@
+Goroutine Communication – To safely share data between goroutines.
+Synchronization – To signal between goroutines (e.g., one waits for another).
+Avoid Race Conditions – Provides a way to avoid using mutexes.
+Pipeline Implementation – For passing data through multiple stages of processing.
+Select Statement Usage – To handle multiple channel operations concurrently.
+Buffered Communication – To decouple sender and receiver timings.
+Fan-in / Fan-out Patterns – Combine or distribute work among multiple goroutines.
+Graceful Shutdown – To signal completion or termination.
+Event Notification – Trigger actions based on channel inputs.
+Resource Pooling – Manage and share limited resources safely.
