@@ -42,6 +42,8 @@ If the buffer is full or if there is nothing to receive, a buffered channel will
 func Buffered_channel() {
 	buffered_channel := make(chan int, 3)
 	buffered_channel <- 2
-	fmt.Printf("%t", buffered_channel)
+	value := <-buffered_channel
+	fmt.Println(value)
 }
-func Unbuffered_channel()
+
+func Unbuffered_channel() {}
