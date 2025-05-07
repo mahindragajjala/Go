@@ -1,0 +1,145 @@
+Here are 100 line-by-line coding questions covering all 18 function types in Go, progressing from basic to advanced:
+
+
+
+ 🔹 Section 1: Basic Declarations (1–20)
+
+1. Write a regular function to return the square of a number.
+2. Create a function that takes two strings and returns their concatenation.
+3. Implement a function that checks if a number is even.
+4. Define a variadic function that calculates the average of integers.
+5. Create a recursive function that computes Fibonacci numbers.
+6. Write a function that returns the length of a string.
+7. Implement a variadic function that returns the product of given numbers.
+8. Define a recursive function to sum digits of a number.
+9. Write a regular function to reverse a string.
+10. Implement a function to check if a number is prime.
+11. Define a function that takes a slice and returns it in reverse order.
+12. Create a function that returns both quotient and remainder.
+13. Write a variadic function that finds the minimum number.
+14. Implement a recursive function to calculate power(x^y).
+15. Write a regular function that converts Celsius to Fahrenheit.
+16. Define a function to count vowels in a string.
+17. Write a function that calculates factorial using a loop.
+18. Implement a function that checks if a string is a palindrome.
+19. Create a function that sums elements in a 2D array.
+20. Define a function to remove duplicates from a slice.
+
+
+
+ 🔹 Section 2: Anonymous, IIFE & Closures (21–40)
+
+21. Write an anonymous function to multiply two numbers.
+22. Assign an anonymous function to a variable and invoke it.
+23. Create an IIFE to find the sum of 3 and 5.
+24. Create a closure that returns a counter function.
+25. Use a closure to accumulate a running total.
+26. Use an IIFE that prints "Go is awesome".
+27. Define an anonymous function that returns true if a string has digits.
+28. Create a function that returns a closure for string concatenation.
+29. Write a closure that keeps a list of appended items.
+30. Use IIFE to calculate and print the square of 6.
+31. Write an anonymous function that prints the length of a string.
+32. Create a closure that adds N to any given number.
+33. Write an IIFE that returns the cube of a number.
+34. Implement a closure that stores the last 5 numbers entered.
+35. Write a function returning a closure that generates even numbers.
+36. Create an IIFE that initializes and returns a map.
+37. Assign a closure to a variable and use it to track login attempts.
+38. Write a closure to toggle between "on" and "off".
+39. Create an anonymous function that filters even numbers from a slice.
+40. Use IIFE to format and print a greeting message.
+
+
+
+ 🔹 Section 3: Higher-Order & Callback Functions (41–60)
+
+41. Write a function that accepts another function to square a number.
+42. Define a callback function for processing text (e.g., trimming).
+43. Pass a callback to filter odd numbers in a slice.
+44. Write a function that applies a function to each element in a slice.
+45. Return a function that multiplies values by a factor.
+46. Write a higher-order function that chains two functions.
+47. Implement a callback that formats a name before printing.
+48. Write a function that accepts an operator function (+, \*).
+49. Create a function that maps an int slice to string slice via callback.
+50. Pass a callback to remove punctuation from a sentence.
+51. Implement a decorator function that adds logging to any function.
+52. Write a function that takes a function and two arguments and returns a result.
+53. Return a function that wraps another function with timing logs.
+54. Pass a callback to uppercase all strings in a slice.
+55. Write a function that uses a callback to validate input.
+56. Create a calculator function that switches operations via callback.
+57. Use a callback function to retry an operation 3 times.
+58. Write a function that takes a condition function and filters numbers.
+59. Implement a retry-on-failure callback mechanism.
+60. Create a timer function wrapper using a higher-order function.
+
+
+
+ 🔹 Section 4: Methods & Interfaces (61–75)
+
+61. Define a `Person` struct and a method to greet with the name.
+62. Create a `Rectangle` struct with an `Area()` method.
+63. Implement a method that updates the value inside a struct (pointer receiver).
+64. Define a method that returns perimeter for a `Circle` struct.
+65. Create a method that compares two struct values.
+66. Implement an interface `Shape` with `Area()` and `Perimeter()`.
+67. Create a `Dog` struct implementing a `Speak()` method of an interface.
+68. Create a slice of `Speaker` interface values with different struct types.
+69. Define an `Employee` struct and a method that returns annual salary.
+70. Implement a method that resets a struct’s fields.
+71. Create a struct with both value and pointer receiver methods.
+72. Create a method that prints a formatted string representation of a struct.
+73. Implement multiple interfaces for a single struct.
+74. Demonstrate interface type assertion in a function.
+75. Use method promotion with embedded struct fields.
+
+
+
+ 🔹 Section 5: Special Functions – Defer, Init, Main (76–85)
+
+76. Demonstrate the use of `defer` to log exit messages.
+77. Use `defer` to close a file safely.
+78. Print multiple deferred functions and show LIFO order.
+79. Add logging with `defer` inside a recursive function.
+80. Show how `defer` captures argument values at call time.
+81. Create an `init()` function that sets configuration.
+82. Use `init()` to populate a slice before `main()`.
+83. Write a basic `main()` that prints command-line arguments.
+84. Combine `init()` and `main()` in the same package.
+85. Use multiple `init()` functions in a single Go package.
+
+
+
+ 🔹 Section 6: Goroutines & Concurrency (86–92)
+
+86. Start a goroutine that prints numbers 1–10.
+87. Create a function invoked via goroutine that simulates a delay.
+88. Launch multiple goroutines and wait using `sync.WaitGroup`.
+89. Use a channel to get results from a goroutine function.
+90. Write a goroutine function that sends data to a channel.
+91. Pass a function to goroutine using an anonymous function.
+92. Run a closure as a goroutine to process list items.
+
+
+
+ 🔹 Section 7: Method Values & Expressions (93–97)
+
+93. Assign a method to a variable (method value) and call it.
+94. Use a method expression to bind and call with a struct.
+95. Compare method values from different instances.
+96. Use a method expression as a higher-order function.
+97. Store a method expression in a map and invoke it dynamically.
+
+
+
+ 🔹 Section 8: Mixed Advanced Practice (98–100)
+
+98. Create a generic logger wrapper using closures and defer.
+99. Implement a decorator pattern using higher-order functions and methods.
+100. Combine interface, closures, and goroutines in a mini-task executor.
+
+
+
+Would you like me to generate a downloadable PDF or diagram version of this question list?
