@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	typesOfRecursion.Test_Head_recursive()
+	typesOfRecursion.Direct_recursion()
 }
