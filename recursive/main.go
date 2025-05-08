@@ -1,9 +1,7 @@
 package main
 
-import (
-	"recursive/typesOfRecursion"
-)
+import "recursive/code"
 
 func main() {
-	typesOfRecursion.Direct_recursion()
+	code.Fibonacci_main()
 }
