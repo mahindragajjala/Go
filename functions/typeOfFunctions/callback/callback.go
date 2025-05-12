@@ -2,6 +2,9 @@ package callback
 
 import "fmt"
 
+/*
+In Go (Golang), a callback function is a function that is passed as an argument to another function and is called (executed) inside that function. It allows you to customize behavior without changing the actual function logic.
+*/
 func Process(callback func(string)) {
 	callback("Processing done")
 }

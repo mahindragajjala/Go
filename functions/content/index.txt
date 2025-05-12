@@ -61,8 +61,6 @@ Here's a comprehensive list of different topics related to functions in Go (Gola
 * Function calling itself
 * Tail recursion vs regular recursion
 
-
-
  🔁 ADVANCED FUNCTION TOPICS
 
 13. Higher-Order Functions
