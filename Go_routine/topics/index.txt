@@ -67,6 +67,3 @@ Background Workers in Web Servers
 Cron Jobs using goroutines
 Implementing Retry Mechanism
 Building a simple Event-driven system
-
-Would you also like me to prepare this list in a visual roadmap diagram form for easier tracking and study planning?
- (If yes, I can create it for you!)

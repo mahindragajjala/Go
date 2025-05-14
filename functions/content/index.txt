@@ -98,8 +98,6 @@ Here's a comprehensive list of different topics related to functions in Go (Gola
 * Unit testing functions using `testing` package
 * Table-driven tests
 
-
-
  🧠 PROFESSIONAL/EXPERT FUNCTION TOPICS
 
 21. Function Wrappers (Middleware-like Patterns)

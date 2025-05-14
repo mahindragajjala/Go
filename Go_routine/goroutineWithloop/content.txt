@@ -1,0 +1,102 @@
+Using goroutines inside loops in Go is powerful but tricky. It's a common area where bugs and unexpected behavior occur, especially for beginners. Below are the common mistakes and how to fix them:
+
+ ✅ Common Mistakes When Using Goroutines Inside Loops
+
+1. Closure Over Loop Variables
+Problem: All goroutines capture the same loop variable due to closures, leading to unexpected results.
+
+for i := 0; i < 5; i++ {
+    go func() {
+        fmt.Println(i)
+    }()
+}
+
+What happens:
+* You might expect it to print 0 to 4.
+* But it often prints 5 five times (or some other repeated values), because the goroutines run after the loop ends, and `i` is 5 at that time.
+
+✅ Fix: Pass the loop variable as an argument to the goroutine.
+for i := 0; i < 5; i++ {
+    go func(n int) {
+        fmt.Println(n)
+    }(i)
+}
+
+2. Not Waiting for Goroutines to Finish
+Problem: The main function exits before goroutines complete.
+for i := 0; i < 5; i++ {
+    go fmt.Println(i)
+}
+Issue:
+* The program may exit before goroutines run, so you see no output or incomplete output.
+
+✅ Fix: Use `sync.WaitGroup` to wait for all goroutines.
+
+var wg sync.WaitGroup
+for i := 0; i < 5; i++ {
+    wg.Add(1)
+    go func(n int) {
+        defer wg.Done()
+        fmt.Println(n)
+    }(i)
+}
+wg.Wait()
+
+3. Too Many Goroutines (Memory Leak)
+
+Problem: Spawning goroutines in a large loop without control may cause memory issues or crash.
+for i := 0; i < 1e9; i++ {
+    go doSomething()
+}
+✅ Fix: Use a worker pool or limit goroutines using buffered channels/semaphores.
+
+ 4. Data Races
+Problem: Goroutines accessing and modifying shared data concurrently.
+count := 0
+for i := 0; i < 5; i++ {
+    go func() {
+        count++
+    }()
+}
+Issue:
+* This causes a race condition and undefined behavior.
+
+✅ Fix: Use mutex or atomic operations.
+
+var mu sync.Mutex
+count := 0
+for i := 0; i < 5; i++ {
+    go func() {
+        mu.Lock()
+        count++
+        mu.Unlock()
+    }()
+}
+
+ 5. Wrong Use of Loop Index in Channel Closures
+
+Problem: Sending loop variables to channels after the loop ends.
+
+ch := make(chan int)
+go func() {
+    for i := 0; i < 5; i++ {
+        ch <- i
+    }
+    close(ch)
+}()
+
+for val := range ch {
+    fmt.Println(val)
+}
+Sometimes leads to deadlocks if not handled properly.
+
+✅ Fix: Ensure correct channel usage and loop control.
+
+✅ Summary of Best Practices
+
+| Mistake                    | Fix                                      |
+| Closure over loop variable | Pass loop variable as parameter          |
+| Not waiting                | Use `sync.WaitGroup`                     |
+| Too many goroutines        | Use worker pool / control concurrency    |
+| Data races                 | Use `sync.Mutex` or `sync/atomic`        |
+| Deadlocks with channels    | Properly close and control channel usage |

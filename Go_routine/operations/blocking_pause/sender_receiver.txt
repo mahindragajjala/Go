@@ -1,0 +1,12 @@
+🔹 Channel:
+A channel in Go is a typed conduit through which you can send and receive values between goroutines.
+
+ch := make(chan string) // unbuffered channel
+
+🔹 Sender:
+The goroutine that sends data into a channel:
+ch <- "hello" // sender
+
+🔹 Receiver:
+The goroutine that receives data from a channel:
+msg := <-ch // receiver

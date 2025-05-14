@@ -1,10 +1,9 @@
 package main
 
 import (
-	"routine/passingargumentstogoroutines"
+	goroutinewithloop "routine/goroutineWithloop"
 )
 
 func main() {
-	passingargumentstogoroutines.Variable_Capture_wrong()
-	passingargumentstogoroutines.Variable_Capture_right()
+	goroutinewithloop.Capture_by_Value()
 }
