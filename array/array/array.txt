@@ -1,0 +1,12 @@
+An array is a collection of elements of the same data type, stored in contiguous memory locations. 
+It allows storing multiple values under a "single variable name", and each element is accessed using an "index".
+
+Basic Characteristics of Arrays:
+
+Fixed Size: Once declared, the size of an array cannot be changed.
+Same Data Type: All elements must be of the same type (e.g., all integers or all floats).
+Indexing: Elements are accessed using indices starting from 0 (in most programming languages).
+Contiguous Memory: Elements are stored next to each other in memory.
+
+
+
