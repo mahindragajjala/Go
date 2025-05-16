@@ -34,3 +34,29 @@ func WAITGROUP() {
 	wg.Wait()
 	fmt.Println("All workers completed")
 }
+
+/*
+A WaitGroup is used when you want to wait for a group of goroutines to finish before continuing with the rest of the program.
+| Function    | Description                                        |
+| ----------- | -------------------------------------------------- |
+| `wg.Add(n)` | Informs that there are `n` goroutines to wait for. |
+| `wg.Done()` | Signals that one goroutine is finished.            |
+| `wg.Wait()` | Blocks until the counter goes to 0.                |
+*/
+var wg sync.WaitGroup
+
+func WaitGroup_testing() {
+	wg.Add(2)
+	go Goroutine1()
+	go Goroutine2()
+	wg.Wait()
+
+}
+func Goroutine1() {
+	fmt.Println("go routine 1 is executing...")
+	wg.Done()
+}
+func Goroutine2() {
+	fmt.Println("go routine 2 is executing...")
+	wg.Done()
+}

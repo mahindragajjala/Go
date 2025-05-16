@@ -1,9 +1,9 @@
 package main
 
 import (
-	"routine/practice"
+	"routine/operations/test"
 )
 
 func main() {
-	practice.Communication()
+	test.MUTEX_TESTING()
 }
