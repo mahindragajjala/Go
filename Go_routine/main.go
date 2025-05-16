@@ -1,9 +1,9 @@
 package main
 
 import (
-	goroutinewithloop "routine/goroutineWithloop"
+	"routine/practice"
 )
 
 func main() {
-	goroutinewithloop.Capture_by_Value()
+	practice.Communication()
 }
