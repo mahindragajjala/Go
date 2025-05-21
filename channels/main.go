@@ -1,9 +1,9 @@
 package main
 
 import (
-	"channel/selectkeyword"
+	directionsofchannels "channel/directionsOfChannels"
 )
 
 func main() {
-	selectkeyword.Main_Routine()
+	directionsofchannels.Sending_direction()
 }
