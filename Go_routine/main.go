@@ -1,9 +1,12 @@
 package main
 
 import (
-	"routine/operations/test"
+	"fmt"
+	"routine/interfacesegregation"
 )
 
 func main() {
-	test.MUTEX_TESTING()
+	interfacesegregation.InterfaceSegregation()
+	fmt.Println("-----------------")
+	interfacesegregation.NormalInterface()
 }
