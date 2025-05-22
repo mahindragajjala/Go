@@ -1,12 +1,9 @@
 package main
 
 import (
-	"fmt"
-	"routine/interfacesegregation"
+	a "routine/operations/goroutineoperations/multiplegoroutinesscheduling"
 )
 
 func main() {
-	interfacesegregation.InterfaceSegregation()
-	fmt.Println("-----------------")
-	interfacesegregation.NormalInterface()
+	a.Nnumbers_Goroutine()
 }

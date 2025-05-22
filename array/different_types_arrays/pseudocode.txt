@@ -1,0 +1,127 @@
+1. Fixed Size Array
+
+Definition:
+An array where the size is defined at the time of declaration and cannot be changed during runtime.
+
+Key Features:
+
+* Size is known at compile time.
+* Stored in contiguous memory.
+* Fast access using index.
+* Cannot be resized once declared.
+
+Example (C/C++/Go):
+
+go
+var arr [5]int  // Fixed size of 5 integers
+
+
+Use Case:
+
+* Suitable for cases where the size of data is known and constant (e.g., days of the week, months of a year).
+
+
+
+2. Dynamic Sized Array
+
+Definition:
+An array that can grow or shrink at runtime as per the requirement.
+
+Key Features:
+
+* Size is not fixed.
+* Can be resized (either internally or manually using memory allocation).
+* More flexible than fixed arrays.
+
+Example (Go slice):
+
+go
+arr := []int{1, 2, 3} // Slice (dynamic)
+arr = append(arr, 4)  // Add element at runtime
+
+
+Example (Python):
+
+python
+arr = [1, 2, 3]
+arr.append(4)
+
+
+Use Case:
+
+* Useful when the amount of data isn’t known in advance (e.g., user input, data from APIs).
+
+
+
+3. 1-Dimensional Array
+
+Definition:
+An array with a single row or column — a linear sequence of elements.
+
+Key Features:
+
+* Linear structure.
+* Each element accessed via a single index.
+* Often used to store simple lists.
+
+Example (Go):
+
+go
+arr := [4]int{10, 20, 30, 40}
+fmt.Println(arr[2]) // Output: 30
+
+
+Visual:
+
+
+Index:   0   1   2   3
+Value:  10  20  30  40
+
+
+Use Case:
+
+* Simple data storage such as list of numbers, names, etc.
+
+
+
+4. Multi-Dimensional Array
+
+Definition:
+An array consisting of more than one dimension (2D, 3D, etc.), forming a matrix or grid.
+
+Key Features:
+
+* Indexed with multiple indices (e.g., `arr[i][j]`).
+* Typically used to represent tables, matrices, or grids.
+
+Example (2D Array in Go):
+
+go
+arr := [2][3]int{
+    {1, 2, 3},
+    {4, 5, 6},
+}
+fmt.Println(arr[1][2]) // Output: 6
+
+
+Visual:
+
+
+      Col0 Col1 Col2
+Row0   1    2    3
+Row1   4    5    6
+
+
+Use Case:
+
+* Games (e.g., tic-tac-toe board), spreadsheets, image processing.
+
+
+
+Summary Table:
+
+| Type                    | Resizable | Dimensions | Example Use Case                  |
+| Fixed Size Array        | ❌         | 1D or 2D   | Storing fixed-size datasets       |
+| Dynamic Sized Array     | ✅         | 1D or more | Growing/shrinking datasets        |
+| 1-Dimensional Array     | Depends   | 1D         | Linear data (e.g., names, scores) |
+| Multi-Dimensional Array | Depends   | 2D+        | Tables, matrices, game boards     |

@@ -1,0 +1,170 @@
+1. Introduction to 1D Arrays
+* What is an array?
+* Syntax for declaration and initialization
+* Accessing elements by index
+* Size vs capacity (in languages like Go or dynamic arrays in Python)
+
+2. Array Traversal
+* Iterating using for loop
+* Printing all elements
+* Input/output of array values
+
+ 3. Basic Operations
+* Insertion (at end, at specific index)
+* Deletion (by value, by index)
+* Searching (Linear search)
+
+ 4. Array Memory Concepts
+* Fixed vs dynamic size
+* Memory layout of array in RAM
+* Time complexity of basic operations
+
+
+
+ ⚙️ INTERMEDIATE LEVEL
+
+ 5. Sorting Techniques
+
+* Bubble sort
+* Selection sort
+* Insertion sort
+* Understanding Time & Space complexity
+
+ 6. Searching Techniques
+
+* Binary search (for sorted arrays)
+* Sentinel search
+* Time/space optimization using binary search variants
+
+ 7. Array Reversal and Rotation
+
+* Reverse an array
+* Left rotation (by 1, by d positions)
+* Right rotation (by 1, by d positions)
+* Using extra space vs in-place
+
+ 8. Mathematical Operations
+
+* Sum of all elements
+* Find max/min element
+* Average / mean / median
+* Prefix sums (cumulative sums)
+
+ 9. Frequency and Counting Problems
+
+* Count frequency of elements
+* Find duplicates
+* Majority element (Boyer-Moore Voting)
+* Element appearing once (XOR technique)
+
+ 10. Searching & Sliding Window
+
+* Find subarray with given sum
+* Sliding window maximum/minimum
+* Fixed window vs variable window problems
+
+
+
+ 🚀 ADVANCED LEVEL
+
+ 11. Two Pointer Technique
+
+* Find pair with given sum
+* Remove duplicates from sorted array
+* Move zeroes to the end
+* Dutch National Flag problem (3 values)
+
+ 12. Kadane's Algorithm
+
+* Maximum subarray sum (contiguous)
+* Modifications of Kadane (length, subarray count)
+
+ 13. Prefix Sum and Difference Arrays
+
+* Prefix sum array for range queries
+* Difference array for range updates
+* Applications in competitive programming
+
+ 14. Bit Manipulation with Arrays
+
+* XOR of all elements
+* Find missing number using XOR
+* Find element with odd count
+
+ 15. Hashing-Based Problems
+
+* Use of maps/dictionaries for frequency
+* Subarrays with 0 sum
+* Count distinct elements
+
+ 16. Array Partitioning Problems
+
+* Partition array into two equal sum subsets
+* Minimum swaps to sort
+* Wiggle sort
+
+ 17. Greedy with Arrays
+
+* Jump game (minimum jumps to reach end)
+* Gas station problem
+* Activity selection (for time intervals)
+
+ 18. Advanced Searching
+
+* Ternary search in unimodal array
+* Peak element in mountain array
+* Rotated sorted array search
+
+ 19. Monotonic Stack (applied to 1D)
+
+* Next greater element
+* Previous smaller element
+* Stock span problem
+* Histogram largest rectangle
+
+ 20. Advanced Problem Patterns
+
+* Sliding window median
+* K-th smallest/largest element (Heap)
+* Longest subarray with condition (sum/k/modulo)
+* Binary search on answer (min/max length)
+
+
+
+ 🧪 BONUS - Problem Solving & Optimization
+
+ 21. Pattern Problems
+
+* Palindromic arrays
+* Alternating elements
+* Rearranging arrays with signs
+
+ 22. Space Optimization Techniques
+
+* Modify input array in place
+* Constant space solutions (where possible)
+
+ 23. Dynamic Programming on 1D
+
+* DP with 1D state
+* Climbing stairs / Fibonacci
+* House robber
+
+
+
+ 🧩 Project Ideas / Real Use-Cases
+
+* Histogram analysis
+* Weather pattern trend (array of temperatures)
+* Stock price analysis
+* Load balancing in servers (array as queues)
+
+
+
+Would you like:
+
+* 50+ coding questions from these topics (categorized)?
+* Implementation in a specific language (Go, Python, etc)?
+* Visual explanations or illustrations?
+
+Let me know and I’ll prepare it.

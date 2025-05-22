@@ -1,9 +1,7 @@
 package main
 
-import (
-	directionsofchannels "channel/directionsOfChannels"
-)
+import directionsofchannels "channel/directionsOfChannels"
 
 func main() {
-	directionsofchannels.Sending_direction()
+	directionsofchannels.Receive_only_main()
 }
