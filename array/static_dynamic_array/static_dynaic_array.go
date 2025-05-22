@@ -1,10 +1,6 @@
 package staticdynamicarray
 
 /*
-Great question! Understanding static vs dynamic arrays in Go will clarify how memory management, flexibility, and performance differ when dealing with collections of data. Go does not use the terms "static array" or "dynamic array" explicitly, but it supports both concepts through arrays and slices.
-
----
-
  🧊 1. What is a Static Array in Go?
 
  ✅ Definition:

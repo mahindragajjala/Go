@@ -1,0 +1,46 @@
+🔹 Basic
+Print all subarrays of an array
+Count the number of subarrays in an array
+
+🔹 Fixed-size Subarrays
+Maximum sum of a subarray of size k
+Minimum average of all subarrays of size k
+
+Maximum product of subarray of size k
+
+🔹 Variable-size Subarrays
+Smallest subarray with sum ≥ k
+
+Longest subarray with sum ≤ k
+
+Longest subarray with sum exactly k
+
+🔹 Subarray Sum-Based
+Subarray sum equal to k (positive numbers)
+
+Count of subarrays with sum = k (using prefix sum + hashmap)
+
+Find all subarrays with sum divisible by k
+
+🔹 Two Pointer + Sliding Window
+Subarrays with product less than k
+
+Longest subarray with all distinct elements
+
+Longest subarray with at most 2 distinct elements
+
+🔹 Prefix Sum + Hash Map
+Count subarrays with equal number of 0s and 1s
+
+Count subarrays with equal number of even and odd elements
+
+Count subarrays with given XOR
+
+Longest subarray with equal positive and negative numbers
+
+🔹 Advanced
+Maximum sum circular subarray (Kadane + subarray logic)
+
+Longest subarray with sum divisible by k
+
+Number of subarrays with bitwise AND = k

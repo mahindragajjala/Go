@@ -1,9 +1,9 @@
 package main
 
 import (
-	"channel/selectkeyword"
+	"channel/done"
 )
 
 func main() {
-	selectkeyword.Main_Routine()
+	done.Done_channel()
 }

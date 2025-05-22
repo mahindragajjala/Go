@@ -1,9 +1,9 @@
 package main
 
 import (
-	"routine/operations/test"
+	"routine/pipeline"
 )
 
 func main() {
-	test.MUTEX_TESTING()
+	pipeline.GENERATOR()
 }
