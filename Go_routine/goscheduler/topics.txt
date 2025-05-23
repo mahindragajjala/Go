@@ -1,0 +1,96 @@
+Goroutine scheduling in Go covers several key topics that explain how the Go runtime manages concurrency efficiently. Here is a structured list of topics you can explore to understand goroutine scheduling in depth:
+
+
+
+ 🧵 1. Introduction to Goroutines
+
+* What is a goroutine?
+* How goroutines differ from OS threads.
+* Cost and benefits of using goroutines.
+
+
+
+ 🧠 2. The Go Scheduler Overview
+
+* What is the Go scheduler?
+* Goals of the scheduler (efficiency, fairness, scalability).
+* Cooperative vs. preemptive multitasking.
+
+
+
+ ⚙️ 3. G-P-M Model
+
+* G (Goroutine): Work unit or task.
+* P (Processor): Manages goroutines and has a local queue.
+* M (Machine): An OS thread that executes Gs.
+* How Gs are assigned to Ps and Ms.
+
+
+
+ ⏱ 4. GOMAXPROCS
+
+* What it is and how to configure it (`runtime.GOMAXPROCS`).
+* Impact on concurrency and parallelism.
+* Default behavior vs. manual settings.
+
+
+
+ 🧩 5. Goroutine Scheduling Algorithms
+
+* Round-robin scheduling.
+* Work stealing.
+* FIFO vs. LIFO queues in scheduling.
+* Local and global run queues.
+
+
+
+ 🔁 6. Goroutine Life Cycle
+
+* States: runnable, running, waiting, syscall, etc.
+* State transitions during execution.
+* Scheduling during blocking and I/O.
+
+
+
+ 🛑 7. Preemptive Scheduling (Go 1.14+)
+
+* What changed in Go 1.14.
+* Safe points for preemption.
+* Long-running goroutine detection and interruption.
+
+
+
+ 🔌 8. Blocking and Synchronization
+
+* How blocking affects scheduling.
+* Impact of channels, mutexes, and `select` on scheduling.
+* Scheduler’s handling of blocking syscalls.
+
+
+
+ 🛠 9. Runtime Internals
+
+* Scheduler queues: local, global, ready queues.
+* Role of garbage collector and how it cooperates with the scheduler.
+* Role of `runtime.schedule()` and `runtime.runqgrab()`.
+
+
+
+ 📊 10. Performance and Debugging Tools
+
+* Tools to analyze goroutine scheduling:
+
+  * `runtime.NumGoroutine()`
+  * `pprof`, `trace`, `runtime/metrics`
+* Detecting goroutine leaks and starvation.
+* Profiling concurrency behavior.
+
+
+
+ 📚 Optional Advanced Topics
+
+* `runtime.LockOSThread` and its impact on scheduling.
+* Network poller integration.
+* Scheduler's role during garbage collection (STW – stop-the-world).
+* Exploring `runtime.Gosched()` and `sync/atomic`.
+

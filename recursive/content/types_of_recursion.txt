@@ -1,0 +1,97 @@
+
+
+1. Direct Recursion
+- A function calls itself directly.
+- 🔁 Example:
+  func printNum(n int) {
+      if n == 0 {
+          return
+      }
+      fmt.Println(n)
+      printNum(n - 1)
+  }
+
+2. Indirect Recursion
+- A function calls another function, which eventually calls the first one.
+- 🔁 Example:
+  func A(n int) {
+      if n > 0 {
+          fmt.Println(n)
+          B(n - 1)
+      }
+  }
+
+  func B(n int) {
+      if n > 0 {
+          fmt.Println(n)
+          A(n / 2)
+      }
+  }
+
+3. Tail Recursion
+- The recursive call is the last operation in the function.
+- Optimized by some compilers to avoid stack overflow.
+- 🔁 Example:
+
+  func tailRec(n int) {
+      if n == 0 {
+          return
+      }
+      fmt.Println(n)
+      tailRec(n - 1)
+  }
+
+4. Head Recursion
+- The recursive call is made **before** any other operations.
+- 🔁 Example:
+  func headRec(n int) {
+      if n == 0 {
+          return
+      }
+      headRec(n - 1)
+      fmt.Println(n)
+  }
+
+
+5. Tree Recursion
+- A function makes more than one recursive call.
+- Common in problems like Fibonacci, permutations, etc.
+- 🌲 Example:
+  func fib(n int) int {
+      if n <= 1 {
+          return n
+      }
+      return fib(n-1) + fib(n-2)
+  }
+
+6. Nested Recursion
+- The recursive call is passed as a parameter to another recursive call.
+- 🔁 Example:
+  func nested(n int) int {
+      if n > 100 {
+          return n - 10
+      }
+      return nested(nested(n + 11))
+  }
+
+
+7. Mutual Recursion
+- Two or more functions call each other in a cycle.
+- Similar to indirect, but involves multiple functions.
+- 🔁 Example:
+
+  func even(n int) bool {
+      if n == 0 {
+          return true
+      }
+      return odd(n - 1)
+  }
+
+  func odd(n int) bool {
+      if n == 0 {
+          return false
+      }
+      return even(n - 1)
+  }
+
+

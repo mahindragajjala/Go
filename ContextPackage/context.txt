@@ -1,0 +1,117 @@
+The context package in Go (context from the standard library) is used to manage deadlines, timeouts, and cancellation signals across API boundaries and between goroutines. 
+
+It’s especially useful in concurrent or networked applications (e.g., servers, microservices), where you may want to control how long a request is allowed to run or ensure that child goroutines clean up properly when their parent stops.
+
+Primary Use Cases of the context Package:
+"Canceling goroutines" when work is done or no longer needed.
+Setting "timeouts or deadlines" for operations.
+Passing request-scoped data between API boundaries.
+
+The `context` package in Go (`context` from the standard library) is used to **manage deadlines, timeouts, and cancellation signals across API boundaries and between goroutines**. It’s especially useful in concurrent or networked applications (e.g., servers, microservices), where you may want to control how long a request is allowed to run or ensure that child goroutines clean up properly when their parent stops.
+
+---
+
+### ✅ **Primary Use Cases of the `context` Package:**
+
+1. **Canceling goroutines when work is done or no longer needed.**
+2. **Setting timeouts or deadlines for operations.**
+3. **Passing request-scoped data between API boundaries.**
+
+---
+
+### 🔧 Key Functions & Types
+
+| Function/Type                          | Description                                                                               |
+| -------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `context.Background()`                 | Returns an empty context. Typically used at the top level (e.g., main or root handler).   |
+| `context.TODO()`                       | Placeholder when you’re not sure which context to use yet.                                |
+| `context.WithCancel(ctx)`              | Returns a copy of the context that can be canceled. Useful to stop a group of goroutines. |
+| `context.WithTimeout(ctx, timeout)`    | Adds a timeout; the context is automatically canceled after the duration.                 |
+| `context.WithDeadline(ctx, time.Time)` | Like `WithTimeout`, but uses a fixed time instead of a duration.                          |
+| `context.WithValue(ctx, key, val)`     | Attaches key-value data to a context. Use sparingly (not for passing large/complex data). |
+
+---
+
+### 🧠 Example: Using Context with Cancellation
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "time"
+)
+
+func main() {
+    ctx, cancel := context.WithCancel(context.Background())
+
+    go func() {
+        time.Sleep(2 * time.Second)
+        cancel() // Stop the operation after 2 seconds
+    }()
+
+    doWork(ctx)
+}
+
+func doWork(ctx context.Context) {
+    for {
+        select {
+        case <-ctx.Done():
+            fmt.Println("Work canceled:", ctx.Err())
+            return
+        default:
+            fmt.Println("Working...")
+            time.Sleep(500 * time.Millisecond)
+        }
+    }
+}
+```
+
+**Output:**
+
+```
+Working...
+Working...
+Working...
+Work canceled: context canceled
+```
+
+---
+
+### 🚦 Example: Using Context with Timeout
+
+```go
+ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
+defer cancel()
+
+select {
+case <-time.After(5 * time.Second):
+    fmt.Println("Finished work")
+case <-ctx.Done():
+    fmt.Println("Timeout:", ctx.Err())
+}
+```
+
+**Output:**
+`Timeout: context deadline exceeded`
+
+---
+
+### 🧬 Context Tree (Parent/Child Relationship)
+
+* Contexts form a tree-like structure.
+* Canceling a parent context **automatically cancels** all its children.
+* Useful in web servers where one request spawns many operations.
+
+---
+
+### ⚠️ Best Practices
+
+* Don’t store context inside a struct. Pass it explicitly to functions that need it.
+* Use `context.WithValue` sparingly — prefer passing arguments directly.
+* Always call `cancel()` after `WithCancel`, `WithTimeout`, or `WithDeadline` to release resources.
+
+---
+
+Would you like examples for using context in HTTP handlers or goroutines with channels?

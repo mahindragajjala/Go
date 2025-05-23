@@ -1,0 +1,60 @@
+Here’s a list of coding questions focused on applying the Interface Segregation Principle (ISP) in Goroutines, Worker Pools, and Channel Directionality in Go — ranging from basic to advanced:
+
+
+
+ ✅ Beginner Level (Basic Channel Directionality)
+
+1. Send-only Channel: Write a function that only sends integers (1 to N) to a channel.
+2. Receive-only Channel: Write a function that receives data from a channel and prints it.
+3. Bidirectional Channel: Pass a bidirectional channel to a function and use it to both send and receive.
+4. Split Producer-Consumer: Create a simple program where one function sends data and another receives it, using directional channels.
+5. Validate Direction: Modify a function signature to make sure it only sends or receives, and try to do the opposite — what happens?
+
+
+
+ ✅ Intermediate Level (Worker Pool Design)
+
+6. Basic Worker Pool: Create a worker pool that processes a list of integers (e.g., squares each number).
+7. Enforce Roles with Direction: Implement a producer (`chan<-`), worker (`<-chan` and `chan<-`), and collector (`<-chan`) using channel directions.
+8. Limit Worker Count: Make sure only N workers are running in parallel.
+9. Use WaitGroup: Add a `sync.WaitGroup` to properly wait for all goroutines to finish.
+10. Graceful Shutdown: Close channels safely when all jobs are done and all results are collected.
+
+
+
+ ✅ Advanced Level (Complex Segregation and Use Cases)
+
+11. Multiple Producers: Add more than one job producer to the pool — handle concurrent sends.
+12. Multiple Collectors: Add multiple result collectors to a system and ensure no data is lost.
+13. Fan-Out: One job source sends tasks to multiple workers — evenly distribute load.
+14. Fan-In: Multiple workers send results into a single result channel.
+15. Pipeline Pattern: Chain multiple worker stages (e.g., read → process → filter → write) using one-way channels at each step.
+16. Throttling Jobs: Use a time.Ticker to control how frequently workers pick up new jobs.
+17. Timeout Using Context: Add `context.WithTimeout()` to cancel long-running jobs.
+18. Interface Structuring: Use Go `interface{}` to define worker types and split behavior across structs.
+19. Event-Based Pipeline: Design an event-driven system using directional channels (e.g., process order → notify user).
+20. Channel Wrappers: Wrap send-only or receive-only channels inside structs and expose only needed operations.
+
+
+
+ ✅ Real-World Inspired Tasks
+
+21. Image Processor: Simulate a job where each worker resizes an image file name and returns the resized version.
+22. File Download Manager: Use multiple workers to download files concurrently and collect status reports.
+23. Log Aggregator: Use directional channels to simulate log collection, filtering, and writing to disk.
+24. API Crawler: Create a worker pool that makes API calls in parallel and collects responses.
+25. Stock Market Listener: Use multiple goroutines to listen to different stock tickers and stream data through a collector.
+
+
+
+ 🧠 Bonus: Design & Debug Challenges
+
+26. Detect Data Race: Modify a poorly written worker pool that uses shared memory unsafely — fix it using channels and ISP.
+27. Interface Abstraction: Define `JobSender`, `JobProcessor`, and `ResultConsumer` as interfaces and implement them with goroutines.
+28. Logging Pipeline: Use a pipelined architecture to receive logs, enrich them, and output to file.
+29. Backpressure Handling: Modify a pipeline to slow down producer if consumer is slow (hint: use buffered channels).
+30. Unit Test Each Stage: Test producer, worker, and collector separately using mocks and directional channels.
+
+
+
+Would you like me to pick 10 of these and write full example code and explanations for practice?

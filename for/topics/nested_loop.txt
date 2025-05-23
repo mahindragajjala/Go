@@ -1,0 +1,49 @@
+Think like this:
+
+How many rows? → Outer loop.
+What should be printed in each row? → Inner loop.
+
+Does the number of characters per row increase or decrease?
+Increasing → j < i
+Decreasing → still j < i, but i decreases in outer loop
+
+
+Step-by-step approach:
+Always draw it on paper or visualize the pattern.
+Identify: Number of rows
+
+What changes across rows (stars, spaces, numbers)
+
+Decide:
+Outer loop → controls the number of rows
+Inner loop → controls what’s inside each row
+
+Absolutely! Here's a list of 10 classic and fun pattern problems you can practice using nested loops in Go (or any language). 
+
+These cover increasing, decreasing, spacing, and number-based patterns — all great for mastering loop logic.
+
+Pattern Problems with Nested Loops
+
+| # | Pattern Name                        | Example Output (n = 5)                 | What You Learn |
+|--:|-------------------------------------|----------------------------------------|----------------|
+| 1 | Inverted Right-Angled Triangle      | `*****`<br>`****`<br>`***`<br>`**`<br>`*` | Decreasing loop |
+| 2 | Right-Angled Triangle               | `*`<br>`**`<br>`***`<br>`****`<br>`*****` | Increasing loop |
+| 3 | Right-Aligned Triangle (stars)      | `    *`<br>`   **`<br>`  ***`<br>` ****`<br>`*****` | Loops + spaces |
+| 4 | Pyramid (centered stars)            | `    *`<br>`   ***`<br>`  *****`<br>` *******`<br>`*********` | Symmetric loop |
+| 5 | Inverted Pyramid                    | `*********`<br>` *******`<br>`  *****`<br>`   ***`<br>`    *` | Reverse logic |
+| 6 | Number Triangle (increasing)        | `1`<br>`12`<br>`123`<br>`1234`<br>`12345` | Loop with numbers |
+| 7 | Number Triangle (repeating row)     | `1`<br>`22`<br>`333`<br>`4444`<br>`55555` | Row-based logic |
+| 8 | Floyd’s Triangle                    | `1`<br>`2 3`<br>`4 5 6`<br>`7 8 9 10`<br>`11 12 13 14 15` | Counter logic |
+| 9 | Alternating Binary Triangle         | `1`<br>`01`<br>`101`<br>`0101`<br>`10101` | If-else inside loop |
+| 10| Diamond Pattern                     | `    *`<br>`   ***`<br>`  *****`<br>`   ***`<br>`    *` | Combo of ↑ & ↓ |
+
+
+Bonus Tips
+
+- First draw the pattern on paper.
+- Figure out how many **rows** (outer loop).
+- For each row:
+  - What to **print**?
+  - How many **spaces/stars/numbers**?
+
+Would you like me to show the **Go code** for each one of these? I can give them to you one-by-one, or all in one go!

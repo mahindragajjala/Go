@@ -1,0 +1,165 @@
+
+ ✅ Recursion Topics: Basic to Advanced
+
+ 🟢 Basic Level
+
+1. What is recursion (concept & base/recursive case)
+2. Direct and Indirect recursion
+3. Factorial using recursion
+4. Fibonacci numbers using recursion
+5. Sum of natural numbers
+6. Power of a number (a^b)
+7. Printing numbers (increasing, decreasing, both)
+8. Head vs Tail recursion
+9. Recursion tree explanation
+10. Recursion vs iteration
+
+ 🟡 Intermediate Level
+
+11. Backtracking vs recursion
+12. Binary search using recursion
+13. Palindrome checking
+14. GCD using recursion
+15. Tower of Hanoi
+16. Array reversal using recursion
+17. Count digits / sum of digits
+18. Permutations and combinations
+19. Subsets of a set (Power set)
+20. Nth Fibonacci using memoization (top-down)
+
+ 🟠 Advanced Level
+
+21. Recursion with memoization and tabulation
+22. All permutations of a string/array
+23. String reversal and string subsequences
+24. N-Queens problem
+25. Rat in a maze (backtracking)
+26. Sudoku Solver
+27. Knight’s Tour
+28. Word Search
+29. Expression evaluation using recursion
+30. Generate Parentheses (Balanced Brackets)
+
+ 🔴 Pro Level (Competitive/Interview Level)
+
+31. Dynamic Programming with recursion
+32. Recursive Tree and Graph traversal (DFS)
+33. M-Coloring Problem
+34. Hamiltonian Path and Cycle
+35. Unique paths in a matrix with obstacles
+36. Partition Equal Subset Sum (DP)
+37. Word Break Problem
+38. Minimum Insertions to Palindrome
+39. Wildcard Matching
+40. Regular Expression Matching
+
+ 🧠 Mastery Practice
+
+41. Recursion with caching (DP + Memoization)
+42. Recursion with state-space optimization
+43. Hard DP problems using recursion
+44. Recursive lambda functions
+45. Functional recursion in Go / Python / Java
+46. Multithreaded recursion (conceptual understanding)
+47. Tree recursion vs tail recursion (optimizations)
+48. Designing recursive algorithms (problem-solving)
+49. Debugging recursive code
+50. Recursion in low-level system design (parsers, etc.)
+
+
+
+ 🧩 50 Coding Questions on Recursion (Basic to Pro Level)
+
+ 🟢 Basic (Q1–Q10)
+
+1. Print numbers from 1 to N using recursion
+2. Print numbers from N to 1 using recursion
+3. Find factorial of a number
+4. Find nth Fibonacci number
+5. Sum of first N natural numbers
+6. Find sum of digits of a number
+7. Count digits in a number
+8. Calculate power (x^n)
+9. Check if a string is palindrome
+10. Reverse a string using recursion
+
+ 🟡 Intermediate (Q11–Q25)
+
+11. Reverse an array using recursion
+
+12. Find maximum element in an array recursively
+
+13. Binary search using recursion
+
+14. GCD (Euclidean Algorithm) recursively
+
+15. Print all subsets of a string
+
+16. Find all permutations of a string
+
+17. Print all balanced parentheses for n pairs
+
+18. Generate nth Fibonacci using memoization
+
+19. Solve Tower of Hanoi for n disks
+
+20. Print all paths from top-left to bottom-right in a matrix
+
+21. Count total number of paths in a maze with obstacles
+
+22. Check if a word exists in a 2D board (Word Search)
+
+23. Find minimum number of jumps to reach end (Recursion + DP)
+
+24. Subset sum problem using recursion
+
+25. Palindrome partitioning of a string
+
+ 🟠 Advanced (Q26–Q40)
+
+26. N-Queens problem
+
+27. Sudoku Solver
+
+28. Knight’s Tour problem
+
+29. Word Break Problem using recursion + memoization
+
+30. String to Integer conversion using recursion
+
+31. Restore IP Addresses using recursion
+
+32. Decode ways (like leetcode 91)
+
+33. Permutations of array with duplicates (Unique permutations)
+
+34. Letter combinations of a phone number
+
+35. Combination Sum problem
+
+36. Count the number of unique BSTs (Catalan number with recursion)
+
+37. Find all subsets that sum to a target
+
+38. Count ways to climb stairs with 1, 2, or 3 steps
+
+39. Evaluate a boolean expression recursively
+
+40. Check if a string is interleaved from two others
+
+ 🔴 Pro Level (Q41–Q50)
+
+41. Wildcard pattern matching using recursion
+42. Regular expression matching with `.` and `*`
+43. Minimum insertions to make a string palindrome
+44. Longest Palindromic Subsequence
+45. Partition equal subset sum using recursion
+46. Matrix Chain Multiplication (recursive DP)
+47. Palindrome Partitioning II (Min cuts)
+48. Recursive solution for LIS (Longest Increasing Subsequence)
+49. Maximize score by removing sequences recursively
+50. Boolean Parenthesization problem
+
+
+
+Would you like me to generate Go, Python, or Java solutions for these questions?

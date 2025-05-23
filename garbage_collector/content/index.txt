@@ -1,0 +1,40 @@
+1. Introduction to Go GC
+What is garbage collection?
+Why does Go need garbage collection?
+
+2. Memory Management Basics
+Stack vs Heap
+Allocation and deallocation
+
+3. Go's GC Architecture
+Mark-and-sweep algorithm
+Tricolor abstraction (white, grey, black objects)
+Non-generational vs generational GC
+
+4. GC Phases
+STW (Stop The World) mark start
+Concurrent mark
+Concurrent sweep
+Final STW cleanup
+
+5. Write Barrier Concept
+Role in concurrent GC
+How it helps avoid race conditions
+
+6. Tuning and Control
+GOGC environment variable
+Runtime functions: runtime.GC(), runtime.ReadMemStats()
+
+7. GC Performance Analysis
+GC latency
+Allocation rates
+pprof and memory profiling
+
+8. Impact on Program Design
+Object reuse
+Pooling (e.g., sync.Pool)
+Avoiding unnecessary allocations
+
+9. Go GC in Different Versions
+Evolution and improvements across Go versions (e.g., Go 1.5, Go 1.8, Go 1.18+)
+

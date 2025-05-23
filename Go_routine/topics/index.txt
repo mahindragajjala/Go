@@ -1,0 +1,69 @@
+Here's a detailed list of Golang goroutines-related topics, starting from basic to advanced, covering all related concurrency topics in Go:
+
+1. Basic Golang Goroutines Topics
+What is a goroutine?
+How to create a simple goroutine (go func() { }())
+Main goroutine vs child goroutines
+Goroutine scheduling (brief overview)
+Goroutine vs Thread (conceptual difference)
+Anonymous functions as goroutines
+Named functions as goroutines
+Goroutines inside loops (common mistakes)
+
+2. Goroutines with Channels (Medium Level)
+Introduction to channels
+Unbuffered channels
+Buffered channels
+Send and receive data from channels
+Closing a channel and its importance
+Range over a channel
+select statement with channels
+Timeouts with select and time.After
+Directional channels (Send-only and Receive-only)
+Nil channels and their behavior
+Deadlocks and how to avoid them
+
+3. Synchronization Topics (Advanced Control)
+Mutex (sync.Mutex) — protect shared resources
+Read-Write Mutex (sync.RWMutex)
+WaitGroups (sync.WaitGroup)
+Once (sync.Once) — run code exactly once
+Cond (sync.Cond) — conditional signaling between goroutines
+Atomic operations (sync/atomic package)
+Context (context package) for goroutine cancellation
+Timers (time.Timer) and Tickers (time.Ticker)
+
+4. Advanced Patterns and Architectures with Goroutines
+Fan-Out, Fan-In pattern
+Worker Pools pattern
+Pipeline pattern
+Semaphore pattern (limited concurrency control)
+Bounded concurrency with buffered channels
+Rate limiting with goroutines and channels
+ErrGroup (golang.org/x/sync/errgroup) for managing goroutines with errors
+Goroutine Leaks — causes and how to detect/prevent
+
+5. Deeper Internal Topics (Pro Level)
+How goroutines are scheduled internally (G-P-M model — Goroutine, Processor, Machine)
+Work Stealing in Go runtime
+Preemption in goroutine scheduling (Go 1.14+)
+Stack growth and shrinkage in goroutines
+Scheduler tracing and tuning (GODEBUG=schedtrace=1000)
+Goroutine dump analysis (runtime.Stack or pprof)
+Garbage Collection impact on goroutines
+OS Thread Locking (runtime.LockOSThread)
+
+6. Testing Goroutines
+Race conditions and how to detect with -race flag
+Testing concurrent code
+Using context.Context in tests
+Mocking timeouts and delays for goroutines
+Benchmarking concurrent operations
+
+7. Real-world use cases (Practical examples)
+Building a Web Scraper using goroutines
+Parallel API Calls
+Background Workers in Web Servers
+Cron Jobs using goroutines
+Implementing Retry Mechanism
+Building a simple Event-driven system

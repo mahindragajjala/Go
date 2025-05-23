@@ -1,0 +1,37 @@
+
+1. Small Initial Stack Size
+* Goroutines start with a small stack (about 2KB).
+* In contrast, OS threads often reserve 1MB or more.
+* This small initial size means you can create thousands or even millions of goroutines without exhausting memory.
+
+2. Growable Stacks
+* Goroutine stacks automatically grow and shrink as needed (up to a certain limit).
+* This avoids the need to allocate large memory blocks upfront.
+
+3. Managed by Go Runtime (Not OS)
+* Goroutines are scheduled and managed by the Go runtime, not the operating system.
+* This means context switching between goroutines is faster and cheaper than switching between OS threads.
+* Go uses an internal M\:N scheduler:
+
+  * M: Number of OS threads.
+  * N: Number of goroutines.
+  * The scheduler maps many goroutines to a smaller number of threads.
+
+4. Cheaper Context Switching
+* Switching between goroutines doesn't involve a system call or kernel-level context switch.
+* It only requires a small amount of bookkeeping in user space.
+
+5. No Need for Manual Thread Management
+
+* In traditional languages, threads are explicitly created, joined, and managed.
+* In Go, goroutines are created with a simple `go` keyword, and the Go runtime handles the rest.
+
+Summary Table
+
+| Feature              | Goroutines              | OS Threads              |
+| -------------------- | ----------------------- | ----------------------- |
+| Stack Size (Initial) | \~2KB                   | \~1MB                   |
+| Scheduler            | Go Runtime (User-space) | OS Kernel               |
+| Context Switch Cost  | Very Low                | High (syscall involved) |
+| Scalability          | Millions possible       | Thousands at most       |
+| Creation Cost        | Very Low                | High                    |

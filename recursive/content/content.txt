@@ -1,0 +1,79 @@
+Any function which calls itself is called recursive. 
+
+A recursive method solves a problem by calling a copy of itself to work on a smaller problem. 
+
+This is called the recursion step. The recursion step can result in many more such recursive calls.
+
+It is important to ensure that the recursion terminates. 
+
+Each time the function calls itself with a slightly simpler version of the original problem. 
+
+The sequence of smaller problems must eventually converge on the base case.
+
+function factorial(n):
+    if n == 0 or n == 1:        // Base case
+        return 1
+    else:                       // Recursive case
+        return n * factorial(n-1)
+
+
+Recursion is when a function calls itself to solve a smaller part of a problem, and continues doing so until it reaches a base case (a condition where it stops calling itself).
+Whenever a function is called in most programming languages (like C, Java, Python, Go, etc.), a new frame is created in memory called a stack frame. This frame stores:
+
+memory management:
+The function’s local variables
+The return address (where to return after the function ends)
+These frames are pushed onto the call stack (a stack data structure that works on LIFO: Last In, First Out).
+
+Initial Call: factorial(4)
+
+Memory Stack (top is the most recent):
+----------------------------------------
+| factorial(4) | → waits for factorial(3)
+----------------------------------------
+| factorial(3) | → waits for factorial(2)
+----------------------------------------
+| factorial(2) | → waits for factorial(1)
+----------------------------------------
+| factorial(1) | → returns 1
+----------------------------------------
+
+
+What is Recursion?
+Base Case vs Recursive Case
+Stack memory in recursion
+How recursion works (dry run examples)
+Tail vs Head Recursion (Optional, for deeper understanding)
+
+1. Print Patterns / Numbers
+Print numbers from 1 to N
+Print numbers from N to 1
+Print even/odd numbers using recursion
+
+2. Mathematical Recursion
+Factorial of a number
+Sum of first N natural numbers
+Fibonacci number (nth term)
+Power of a number a^b
+
+3. Array and String Recursion
+Reverse an array/string using recursion
+Check if a string is a palindrome
+Find max/min in an array using recursion
+Linear search using recursion
+Binary search using recursion (a bridge to divide and conquer)
+
+4. Backtracking Basics (preview)
+Print all subsets of a string
+Generate all permutations of a string
+
+
+Example Algorithms of Recursion
+• Fibonacci Series, Factorial Finding
+• Merge Sort, Quick Sort
+• Binary Search
+• Tree Traversals and many Tree Problems: InOrder, PreOrder PostOrder
+• Graph Traversals: DFS [Depth First Search] and BFS [Breadth First Search]
+• Dynamic Programming Examples
+• Divide and Conquer Algorithms
+• Towers of Hanoi
