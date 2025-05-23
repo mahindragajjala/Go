@@ -1,0 +1,50 @@
+🔹 Basic Level
+What is a select statement in Go?
+
+Basic syntax of select with multiple channels
+
+select with two receiving channels
+
+select with two sending channels
+
+select with one send and one receive operation
+
+Blocking nature of select (when none of the cases are ready)
+
+select with one ready case — choosing that one
+
+Default case in select – Non-blocking operation
+
+🔹 Intermediate Level
+Timeout using select and time.After
+
+select with nil channels
+
+Channel closure behavior inside select
+
+Detecting channel close in select using second return value
+
+Looping with select – graceful shutdown pattern
+
+Combining select with buffered/unbuffered channels
+
+Use of select in worker pool patterns
+
+Using select for message prioritization
+
+🔹 Advanced Level
+Multiple select in nested Goroutines
+
+Select with Context (context.WithCancel, context.WithTimeout)
+
+Building a timeout + retry pattern using select
+
+Preventing Goroutine leaks using select and context.Done()
+
+Fairness and pseudo-randomness in select case selection
+
+Select with tickers (time.Ticker) – throttling pattern
+
+Dynamically managing channel lists using reflection (reflect.Select)
+
+Design patterns combining select, channels, and mutexes

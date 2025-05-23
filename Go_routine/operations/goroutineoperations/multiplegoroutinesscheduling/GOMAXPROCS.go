@@ -72,14 +72,9 @@ func Using_All_CPU_Cores() {
 Write a program that prints even and odd numbers using two separate goroutines.
 Create two goroutines that print "Ping" and "Pong" alternatively using time.Sleep(). - polling
 Write a program that starts 5 goroutines, each printing a number from 1 to 5.
-
 Create a goroutine that counts up to 10 and a main routine that waits for it to finish.
-
-🧪 Intermediate Level
 Write a function that spawns 10 goroutines, each computing the square of a number.
-
 Use an anonymous goroutine to print "Hello from anonymous goroutine".
-
 Create a program where 3 goroutines update a shared variable without synchronization. Observe the issue.
 
 Fix the above problem using sync.Mutex or sync/atomic.

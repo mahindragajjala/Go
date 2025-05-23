@@ -43,3 +43,76 @@ parent_and_child go routines
 
 
 This list covers the entire scope of Go channels in depth. Would you like a study plan or links to example code for each topic?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ Basic Level
+What is a Channel in Go?
+
+Creating a Channel
+
+Sending and Receiving data using channels
+
+Blocking behavior of Channels
+
+Channel directions (send-only and receive-only)
+
+Closing a Channel and its effect
+
+Receiving from closed channels (zero value)
+
+For-Range loop with channels
+
+🔹 Intermediate Level
+Buffered Channels – Create and use
+
+Unbuffered vs Buffered Channels
+
+Deadlock with Channels (e.g., unreceived send)
+
+Select statement – Basic usage
+
+Default case in select
+
+Timeout with select and time.After
+
+nil channels and effect on select
+
+Channel of structs or custom types
+
+Goroutines + Channels for Job Queue/Worker model
+
+Channel-based pipeline pattern
+
+🔹 Advanced Level
+Channel Synchronization Patterns (e.g., Barrier, Fan-in, Fan-out)
+
+Context with Channels (cancellation propagation)
+
+Channel Leaks – How to identify and avoid
+
+Combining Mutex and Channels – When to use what
+
+Using channels with select inside for-loops
+
+Throttling and Rate Limiting using time.Ticker + channels
+
+Using Channels as Semaphores
+
+Multi-producer, Multi-consumer design with Channels
+
+Graceful Shutdown using signal + context + channels
+
+Designing robust channel communication in Microservices

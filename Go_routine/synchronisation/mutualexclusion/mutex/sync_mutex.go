@@ -1,4 +1,4 @@
-package sync
+package mutex
 
 /*
 SYNTAX:
@@ -83,4 +83,11 @@ Both share the same counter and mu.
 Main goroutine blocks here until the WaitGroup counter becomes 0.
 This ensures we wait for both goroutines to finish before moving on.
 ------------------------------------------------------------------------------------------
+*/
+
+/*
+
+🧪 go run -race detects race conditions in Go programs.
+
+
 */

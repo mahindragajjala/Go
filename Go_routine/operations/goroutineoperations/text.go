@@ -3,15 +3,10 @@ package goroutineoperations
 /*
 🔹 Basic Level
 What is a Goroutine?
-
 How to start a Goroutine using go keyword
-
 Goroutines vs Functions (normal call vs concurrent call)
-
 Anonymous functions with Goroutines
-
 Main Goroutine and Program Termination
-
 Multiple Goroutines and Scheduling (basic concept)
 
 Race Condition Introduction

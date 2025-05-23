@@ -1,9 +1,9 @@
 package main
 
 import (
-	a "routine/operations/goroutineoperations/multiplegoroutinesscheduling"
+	a "routine/synchronisation/mutualexclusion/mutex"
 )
 
 func main() {
-	a.Nnumbers_Goroutine()
+	a.Race_detector()
 }

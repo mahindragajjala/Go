@@ -1,4 +1,4 @@
-package sync
+package mutex
 
 import (
 	"fmt"
@@ -54,7 +54,7 @@ func SYNCHRONIZATION() {
 }
 
 /*
-Package sync provides basic synchronization primitives such as mutual exclusion locks.
+package mutex provides basic synchronization primitives such as mutual exclusion locks.
 
 Other than the Once and WaitGroup types, most are intended for use by low-level library routines.
 
