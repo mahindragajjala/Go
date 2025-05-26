@@ -1,7 +1,0 @@
-go-mongo-docker/
-├── Dockerfile
-├── docker-compose.yml
-├── go.mod
-├── go.sum
-├── main.go
-└── .env

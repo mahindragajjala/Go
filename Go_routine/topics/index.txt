@@ -22,6 +22,11 @@ Timeouts with select and time.After
 Directional channels (Send-only and Receive-only)
 Nil channels and their behavior
 Deadlocks and how to avoid them
+<<<<<<< HEAD
+=======
+polling
+
+>>>>>>> 27f876287c9853f9ad53bc59fe3555928d6415cb
 
 3. Synchronization Topics (Advanced Control)
 Mutex (sync.Mutex) — protect shared resources

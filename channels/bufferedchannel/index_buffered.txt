@@ -1,0 +1,89 @@
+🔹 Buffered Channel Topics in Go
+Definition & Initialization
+
+Basic Send & Receive
+
+Channel Capacity & Length
+
+Blocking Behavior
+
+Non-blocking Operations (select + default)
+
+Close & Range over Buffered Channel
+
+Deadlock Scenarios
+
+Channel Synchronization
+
+Producer-Consumer Pattern
+
+Worker Pool Pattern
+
+Fan-in & Fan-out Pattern
+
+Timeouts using select + time.After
+
+Buffer Overflow & Underflow Handling
+
+Real-world Use Case Simulation
+
+🧠 Detailed Coding Questions by Topic
+1. Definition & Initialization
+Q1: Create a buffered channel of capacity 5 and print the result of len() and cap() after sending 3 elements.
+
+2. Basic Send & Receive
+Q2: Write a program to send 4 integers to a buffered channel (cap 4) and receive them in the same goroutine. Print the order of received values.
+
+3. Channel Capacity & Length
+Q3: Implement a program where you dynamically check the len() of a buffered channel while sending data. Stop when it's full.
+
+4. Blocking Behavior
+Q4: Show how the sender blocks when trying to send data to a full buffered channel (capacity 2) without a receiver.
+
+Q5: Demonstrate how the receiver blocks when trying to receive from an empty buffered channel.
+
+5. Non-blocking Operations
+Q6: Use select and default to perform a non-blocking send to a buffered channel. Print a message if the channel is full.
+
+6. Close & Range
+Q7: Send 5 integers to a buffered channel, close it, and then use range to iterate over it and print each value.
+
+7. Deadlock Scenarios
+Q8: Write a program that demonstrates a deadlock when sending more elements than the buffer size without any receiver.
+
+8. Channel Synchronization
+Q9: Use a buffered channel to synchronize two goroutines. One goroutine waits until it receives a "done" signal from the main goroutine to proceed.
+
+9. Producer-Consumer Pattern
+Q10: Implement a producer-consumer setup using buffered channels where:
+
+Producer sends 10 integers to a buffered channel.
+
+Consumer reads and prints each value.
+
+Use sync.WaitGroup to wait for completion.
+
+10. Worker Pool Pattern
+Q11: Create a worker pool of 3 goroutines to process 9 jobs using a buffered job channel and a results channel. Each worker should print its ID and job it processed.
+
+11. Fan-in & Fan-out
+Q12 (Fan-out): Write a program where 3 producers send data to a shared buffered channel.
+
+Q13 (Fan-in): Merge data from two buffered input channels into one output channel using a goroutine and print the merged stream.
+
+12. Timeouts
+Q14: Simulate a channel receive operation that times out after 2 seconds using select and time.After.
+
+13. Buffer Overflow & Underflow
+Q15: Write a program where you:
+
+Try to receive from an empty buffered channel without blocking.
+
+Try to send to a full buffered channel without blocking.
+
+14. Real-world Simulation
+Q16: Simulate a logging system:
+
+Multiple log writers write messages to a buffered channel.
+
+One log processor goroutine reads from the channel and writes logs to a file (simulate using fmt.Println).

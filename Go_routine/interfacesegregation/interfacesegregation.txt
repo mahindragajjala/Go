@@ -1,0 +1,74 @@
+package interfacesegregation
+
+import "fmt"
+
+// Segregated interfaces
+type Driver interface {
+	Drive()
+}
+
+type Honker interface {
+	Honk()
+}
+
+type Reverser interface {
+	Reverse()
+}
+
+// Car implements all functionalities
+type CAR struct {
+	Left  int
+	Right int
+}
+
+func (c *CAR) Drive() {
+	fmt.Println("Car is driving...")
+}
+
+func (c *CAR) Honk() {
+	fmt.Println("Car is honking...")
+}
+
+func (c *CAR) Reverse() {
+	fmt.Println("Car is reversing...")
+}
+
+// Bike implements only Drive and Honk, but not Reverse
+type BIKE struct {
+	Left  int
+	Right int
+}
+
+func (b *BIKE) Drive() {
+	fmt.Println("Bike is driving...")
+}
+
+func (b *BIKE) Honk() {
+	fmt.Println("Bike is honking...")
+}
+
+// UsingInterfaceSegregation demonstrates interface segregation
+func UsingInterfaceSegregation() {
+	var d Driver
+	var h Honker
+	var r Reverser
+
+	// Car supports everything
+	car := &CAR{Left: 1, Right: 2}
+	d = car
+	h = car
+	r = car
+
+	d.Drive()
+	h.Honk()
+	r.Reverse()
+
+	// Bike supports only Drive and Honk
+	bike := &BIKE{Left: 0, Right: 1}
+	d = bike
+	h = bike
+
+	d.Drive()
+	h.Honk()
+	// bike does not reverse — ISP respected
+}

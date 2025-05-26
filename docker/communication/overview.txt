@@ -1,7 +1,0 @@
-We'll create:
-
-app1 (server): A Go server exposing an HTTP endpoint (/ping).
-
-app2 (client): A Go client that sends a request to app1 and prints the response.
-
-Both apps will be in separate containers and communicate via a user-defined Docker network.
