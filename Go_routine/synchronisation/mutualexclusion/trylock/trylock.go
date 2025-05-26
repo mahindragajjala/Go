@@ -1,4 +1,4 @@
-package mutex
+package trylock
 
 import (
 	"fmt"
@@ -29,7 +29,7 @@ func tryWorker(name string, wg *sync.WaitGroup) {
 	if muT.TryLock() {
 		fmt.Println(name, "acquired the lock")
 		time.Sleep(2 * time.Second)
-		mu.Unlock()
+		muT.Unlock()
 		fmt.Println(name, "released the lock")
 	} else {
 		fmt.Println(name, "could NOT acquire the lock, skipping")

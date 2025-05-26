@@ -1,0 +1,56 @@
+✅ 1. Normal Completion
+A goroutine exits when the function it is executing completes.
+go func() {
+    fmt.Println("Hello from goroutine")
+    // This goroutine exits after this function ends
+}()
+
+✅ 2. Return Statement
+If the function returns explicitly, the goroutine ends.
+go func() {
+    fmt.Println("Doing work")
+    return // goroutine exits here
+}()
+
+✅ 3. Fatal Error / Panic (Unrecovered)
+If a panic occurs and is not recovered, the goroutine crashes. If it happens in the main goroutine, the entire program crashes.
+go func() {
+    panic("Something went wrong") // This will kill this goroutine
+}()
+Use recover() to handle panics and avoid abrupt termination.
+
+✅ 4. Blocked Forever
+A goroutine that is blocked forever (e.g., waiting on a channel that never sends) can become a leaked goroutine, which effectively "never exits."
+go func() {
+    <-make(chan int) // blocked forever, goroutine doesn't exit
+}()
+
+✅ 5. Program Exit
+If the main function returns, the program ends and all goroutines are terminated, even if they’re still running.
+func main() {
+    go func() {
+        time.Sleep(5 * time.Second)
+        fmt.Println("This may never print if main exits early")
+    }()
+    time.Sleep(1 * time.Second) // main ends before goroutine completes
+}
+
+✅ 6. Cancellation (via context.Context)
+You can gracefully terminate a goroutine using cancellation through context.WithCancel.
+ctx, cancel := context.WithCancel(context.Background())
+
+go func(ctx context.Context) {
+    for {
+        select {
+        case <-ctx.Done():
+            fmt.Println("Goroutine canceled")
+            return
+        default:
+            fmt.Println("Working...")
+            time.Sleep(1 * time.Second)
+        }
+    }
+}(ctx)
+
+time.Sleep(3 * time.Second)
+cancel() // cancel the goroutine

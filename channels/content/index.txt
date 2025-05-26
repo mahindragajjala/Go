@@ -43,21 +43,6 @@ parent_and_child go routines
 
 
 This list covers the entire scope of Go channels in depth. Would you like a study plan or links to example code for each topic?
-<<<<<<< HEAD
-=======
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
  Basic Level
@@ -118,4 +103,3 @@ Multi-producer, Multi-consumer design with Channels
 Graceful Shutdown using signal + context + channels
 
 Designing robust channel communication in Microservices
->>>>>>> 27f876287c9853f9ad53bc59fe3555928d6415cb

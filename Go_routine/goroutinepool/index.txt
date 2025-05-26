@@ -1,0 +1,122 @@
+✅ Goroutine Pool: Topics + Coding Questions
+1. Basic Concepts
+What is a goroutine pool?
+
+Why is it needed?
+
+Difference between creating goroutines dynamically vs. using a pool.
+
+🔹 Coding Questions:
+Create a program with 5 goroutines in a fixed pool to process 10 jobs.
+
+Write a simple goroutine pool that reads integers from a slice and prints squares.
+
+2. Worker Pool Architecture
+Job queue (channel)
+
+Worker goroutines
+
+Result channel (optional)
+
+WaitGroup to synchronize
+
+🔹 Coding Questions:
+Build a worker pool that computes factorials for a list of numbers.
+
+Modify the pool to return results in a result channel and collect them.
+
+3. Fixed Pool Size vs Dynamic Pool Size
+Fixed: Limited workers (common)
+
+Dynamic: Increase/decrease based on load
+
+🔹 Coding Questions:
+Implement a fixed-size pool with 3 workers and 20 jobs.
+
+Create a dynamic pool that starts with 2 workers and grows to 5 under high load.
+
+4. Job Structs and Interfaces
+Custom job types using structs or interfaces
+
+Make the pool generic
+
+🔹 Coding Questions:
+Define a Job interface and use it with a worker pool to execute different types of tasks.
+
+Build a pool that handles different job types: sending emails, resizing images, logging.
+
+5. Graceful Shutdown of Pool
+Stop workers safely when done
+
+Close channels, use context
+
+🔹 Coding Questions:
+Modify a goroutine pool to gracefully shut down once all jobs are processed.
+
+Use context.Context to cancel all running workers after a timeout.
+
+6. Timeouts and Cancellations
+Use context.WithTimeout or context.WithCancel
+
+Cancel long-running jobs
+
+🔹 Coding Questions:
+Add a timeout to each job in the pool — skip jobs that take too long.
+
+Cancel all workers if one job fails (simulate failure with a panic or error).
+
+7. Handling Errors from Workers
+Use a separate channel to collect errors
+
+Return status of each job
+
+🔹 Coding Questions:
+Implement error handling in a worker pool and collect all errors in a list.
+
+Return a map of job ID to error (or nil) after processing.
+
+8. Result Ordering
+Preserve order of jobs in output even if processing is unordered
+
+Use job IDs or indexes
+
+🔹 Coding Questions:
+Write a pool that returns results in the same order as input.
+
+Write a version that does not preserve order but is faster.
+
+9. Throttling & Rate Limiting
+Limit how many jobs are accepted per second
+
+Use time.Ticker
+
+🔹 Coding Questions:
+Add rate limiting to a goroutine pool (e.g., max 5 jobs/second).
+
+Pause workers if queue size exceeds a threshold.
+
+10. Real-world Applications
+File processing
+
+Network requests
+
+Database operations
+
+🔹 Coding Questions:
+Write a goroutine pool that downloads content from 10 URLs concurrently.
+
+Process 100 files in parallel using a worker pool (count words in each).
+
+Bonus: Advanced Patterns
+Retry failed jobs
+
+Job priorities
+
+Back-pressure handling
+
+Metrics (jobs/sec, errors)
+
+🔹 Coding Questions:
+Retry failed jobs up to 3 times in the pool.
+
+Implement priority jobs — high-priority jobs are processed first.
