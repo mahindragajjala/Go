@@ -1,5 +1,7 @@
 package mainroutine
 
+import "fmt"
+
 /*
 When you run a Go program, it starts with the main() function. This main() function runs in a special goroutine called the main goroutine.
 
@@ -16,3 +18,18 @@ Once the main goroutine exits, all other goroutines are killed, even if they wer
 How to Wait for Other Goroutines?
 To keep the program running until other goroutines are done, use time.Sleep, sync.WaitGroup, or channels.
 */
+
+func sendValues(ch chan int) {
+	for i := 1; i <= 5; i++ {
+		ch <- i
+	}
+	close(ch)
+}
+
+func MEMORY_MANAGEMENT() {
+	ch := make(chan int)
+	go sendValues(ch)
+	for val := range ch {
+		fmt.Println("Received:", val)
+	}
+}

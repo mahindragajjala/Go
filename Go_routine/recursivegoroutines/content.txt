@@ -1,0 +1,5 @@
+In Go, goroutines are "lightweight threads managed by the Go runtime", and recursion is when a function calls itself. 
+
+When combined, a "recursive goroutine means a function launches a goroutine" and within that goroutine (or the function itself), it launches another goroutine recursively.
+
+This can be "powerful but dangerous" if not managed carefully, as it can easily lead to too many goroutines, resource exhaustion, or unexpected behavior.

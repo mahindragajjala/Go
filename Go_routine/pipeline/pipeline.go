@@ -4,6 +4,11 @@ import (
 	"fmt"
 )
 
+/*
+In Go (Golang), pipelines are used to structure concurrent programs that process data in stages.
+
+Each stage is a goroutine that performs a "specific operation, and channels" are used to "connect these stages" and "pass data between them". This pattern is inspired by UNIX pipes.
+*/
 func Pipeline() {
 	//input
 	nums := []int{2, 3, 4, 7, 1}
@@ -47,8 +52,7 @@ func Square(in <-chan int) <-chan int {
 }
 
 /*
-| Stage             | Goroutine? | Blocking Behavior                 | Sync With                         |
-| ----------------- | ---------- | --------------------------------- | --------------------------------- |
+| Stage             | Goroutine? | Blocking Behavior                  | Sync  With  |
 | SliceToChannel    | Yes        | `out <- value` blocks             | Sync with Square's input channel  |
 | Square            | Yes        | `range in`, `out <- result` block | Sync with upstream and downstream |
 | Main loop (Print) | No         | `range finalchannel` blocks       | Sync with Square output           |

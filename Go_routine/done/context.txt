@@ -1,0 +1,54 @@
+1. Understanding done Channel Basics
+done := make(chan struct{})
+Use of close(done) to broadcast cancellation.
+Why struct{} is used (zero memory overhead).
+
+2. Signaling Goroutines to Stop
+Launching a goroutine that listens for done signal.
+select with a done case inside the goroutine.
+
+3. Preventing Goroutine Leaks
+Forgetting to cancel can cause memory leaks.
+How to ensure every goroutine has a done channel check.
+
+4. Using done for Timeouts
+Combine done with time.After in a select to handle timeouts.
+
+5. Using done with context.Context (Best Practice)
+context.WithCancel, context.WithTimeout, context.WithDeadline
+Using ctx.Done() in place of custom done channels.
+
+6. Pipeline Cancellation using done
+When you build pipelines (stages of goroutines), passing a done to each stage ensures early cancellation of the entire pipeline.
+
+7. Fan-out / Fan-in with done
+Launch multiple workers (fan-out).
+Aggregate results (fan-in).
+
+Use done to cancel all workers if one fails or completes.
+
+8. Graceful Shutdown with done
+How done helps in system-wide graceful termination (e.g., on Ctrl+C).
+Capture OS signals (e.g., os.Interrupt) and close done.
+
+9. Select Statement Patterns with done
+Prioritizing done over long operations in select.
+
+Writing responsive goroutines.
+
+10. Handling Cleanup on done
+Defer cleanups after done is signaled.
+
+Avoid leaking file handles, DB connections, network sockets, etc.
+
+11. Testing Code that Uses done
+How to simulate done signals in unit tests.
+
+Ensuring goroutines respect done and terminate on cancel.
+
+12. Done Channel vs Context
+When to use done channel alone.
+
+When to use context instead.
+
+Hybrid patterns (using both for different purposes).
