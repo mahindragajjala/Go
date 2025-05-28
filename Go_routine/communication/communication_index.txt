@@ -1,0 +1,81 @@
+Unbuffered Channels — Questions
+
+Basic send and receive:
+Write a program that creates an unbuffered channel.
+Start a goroutine that sends an integer (say 42) to the channel.
+In the main goroutine, receive the value from the channel and print it.
+
+Synchronous communication:
+Demonstrate that unbuffered channels block the sender until the receiver is ready.
+Show this by sending a value in a goroutine and printing timestamps before send and after receive in main.
+
+Multiple receivers:
+Create an unbuffered channel.
+Start 3 goroutines that receive data from the channel.
+Send 3 different values and ensure each goroutine receives one.
+Ping-pong with unbuffered channels:
+Implement a ping-pong pattern between two goroutines using an unbuffered channel.
+Goroutine A sends "ping" to goroutine B, which sends back "pong" via the same channel.
+Repeat 5 times.
+
+Closing unbuffered channel:
+
+Create an unbuffered channel and a sender goroutine that sends 5 integers.
+Close the channel afterward.
+The receiver should range over the channel and print the values until closed.
+
+Buffered Channels — Questions
+Basic buffered channel:
+Create a buffered channel with capacity 3.
+Send 3 values without a goroutine.
+Receive and print all 3 values.
+
+Non-blocking send on buffered channel:
+Write a program where the main goroutine sends 3 values to a buffered channel of size 3 (non-blocking).
+Then try to send a fourth value and explain what happens.
+
+Buffered channel with multiple senders:
+Create a buffered channel of size 5.
+Launch 3 goroutines that send 2 values each into the channel.
+Main goroutine receives and prints all values.
+
+Buffered channel as a semaphore:
+Use a buffered channel of size 2 as a semaphore to limit concurrency.
+Launch 5 goroutines that try to enter a critical section.
+Each goroutine should acquire the semaphore (send to channel), print a message, sleep 1 second, then release (receive from channel).
+
+Buffered channel overflow:
+Create a buffered channel of size 2.
+Write a program that tries to send 3 values without any receiver running.
+Show how the program blocks on the third send.
+
+
+Mixed Concepts — Sending & Receiving
+
+Select with unbuffered and buffered channels:
+Create an unbuffered and a buffered channel.
+Use a select statement to receive from either channel whichever has data ready.
+Send data to both channels in separate goroutines to observe behavior.
+
+Timeout on receive:
+Create a buffered channel.
+Attempt to receive from the channel with a timeout using select.
+If no data received within 1 second, print "timeout".
+
+Fan-in pattern with buffered channels:
+
+Create 2 buffered channels.
+Launch 2 goroutines sending data to these channels.
+Create a fan-in goroutine that merges these channels into one unbuffered channel.
+Receive and print merged data.
+
+Producer-consumer with buffered channels:
+Implement a producer goroutine that produces integers (1 to 10) to a buffered channel with capacity 4.
+Implement a consumer goroutine that reads from the buffered channel and prints the values.
+Ensure that the producer blocks when the buffer is full and resumes when the consumer reads.
+
+Buffered channel with close and receive:
+Write a program where multiple values are sent to a buffered channel and then the channel is closed.
+The receiver reads from the channel until it is closed, printing each value.
+Demonstrate what happens if the receiver tries to receive after the channel is closed.
+
