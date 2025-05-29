@@ -48,6 +48,37 @@ Send 2 → channel (Buffered = [1, 2])
 Send 3 → channel (Buffered = [1, 2, 3])
 Send 4 → ❌ BLOCKS! (channel full)
 No other goroutine exists to read from the channel → so the main goroutine is permanently stuck → deadlock.
-
-
 */
+/*
+The 4th send blocks, waiting for space to be available.
+But there's no receiver running concurrently — your code runs sequentially.
+*/
+
+//Read before writing too much
+func Blocking_solution() {
+	Buffered := make(chan int, 3)
+	Buffered <- 1
+	Buffered <- 2
+	Buffered <- 3
+	fmt.Println(<-Buffered) // Read one to make space
+	Buffered <- 4           // Now this will work
+	fmt.Println(<-Buffered)
+	fmt.Println(<-Buffered)
+	fmt.Println(<-Buffered)
+}
+
+// Use a goroutine for sending or receiving
+func Blockinguse_goroutine() {
+	Buffered := make(chan int, 3)
+	go func() {
+		Buffered <- 1
+		Buffered <- 2
+		Buffered <- 3
+		Buffered <- 4 // Won’t block because receiver is active
+	}()
+
+	fmt.Println(<-Buffered)
+	fmt.Println(<-Buffered)
+	fmt.Println(<-Buffered)
+	fmt.Println(<-Buffered)
+}

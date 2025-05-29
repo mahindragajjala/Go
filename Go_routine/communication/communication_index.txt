@@ -44,6 +44,8 @@ Use a buffered channel of size 2 as a semaphore to limit concurrency.
 Launch 5 goroutines that try to enter a critical section.
 Each goroutine should acquire the semaphore (send to channel), print a message, sleep 1 second, then release (receive from channel).
 
+semaphore - binary semaphore / counting semaphore / token / 
+
 Buffered channel overflow:
 Create a buffered channel of size 2.
 Write a program that tries to send 3 values without any receiver running.

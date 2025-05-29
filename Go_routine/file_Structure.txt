@@ -1,0 +1,312 @@
+.
+├── CSP_communicating_sequential_process
+│   ├── csp_index.go
+│   ├── explanation.go
+│   └── process.go
+├── Emptystruct.go
+│   ├── Set_Implementation.go
+│   ├── single_broadcast_signal.go
+│   └── worker_pool_signal.go
+├── GoRoutineExit
+│   └── content.txt
+├── ISP
+│   ├── Interface_Segregation_for_Goroutines.go
+│   ├── coding_Quesitons.txt
+│   └── workerpool.go
+├── Synchronous-vs-asynchronous.jpg
+├── anonmymousfunc
+│   └── anonymous.go
+├── bufferedchannel
+│   ├── Producer_Consumer_Pattern.go
+│   ├── Worker_Pool.go
+│   ├── bufferedchannel.go
+│   ├── deadlock.go
+│   ├── index_buffered.txt
+│   ├── select_Statement.go
+│   └── sendingdata.go
+├── closing
+│   └── close.go
+├── code
+│   ├── Goroutine_scheduling.go
+│   ├── creating_channels.go
+│   └── main_child_goroutines.go
+├── commandPassing
+│   └── command.go
+├── communication
+│   ├── buffered
+│   │   ├── basic.go
+│   │   ├── blocking.go
+│   │   └── multiple_Senders.go
+│   ├── buffering.go
+│   ├── communication.go
+│   ├── communication_index.txt
+│   ├── readwritesimulation
+│   │   └── read_write.go
+│   ├── semaphore
+│   │   ├── Semaphore_Guarded_Pipeline.go
+│   │   ├── binary_semaphore.go
+│   │   ├── counter.go
+│   │   ├── counting_semaphore.go
+│   │   ├── printer.go
+│   │   ├── rate_limiter.go
+│   │   ├── semaphore.go
+│   │   ├── semaphore_select.go
+│   │   └── worker_pool.go
+│   ├── timeout_on_Receive.go
+│   └── unbuffered
+│       ├── basic.go
+│       ├── closing.go
+│       ├── multiple_receivers.go
+│       └── synchronous_communication.go
+├── concurrency_patterns
+├── concurrent_reader
+│   └── explaination.go
+├── content
+│   ├── Where_We_Use_Channels.txt
+│   ├── convspar.png
+│   ├── convsparllel_tasks.png
+│   ├── goroutines.txt
+│   ├── index.txt
+│   ├── memory_management_of_threads.gif
+│   ├── memory_mapping_of_threads.png
+│   ├── multiplexing.png
+│   ├── parallelVsconcurrency.png
+│   ├── process.png
+│   ├── singleVSmulti_threaded_process.png
+│   ├── threadsInOneProgram.png
+│   ├── threadsincode.png
+│   └── why_we_use_channels.txt
+├── deadlock
+│   ├── All_Goroutines_Asleep.go
+│   ├── Two_Goroutines_Waiting_on_Each_Other.go
+│   ├── Unbuffered_Channel_with_No_Receiver.go
+│   ├── Unbuffered_Channel_with_No_Sender.go
+│   ├── deadlock.go
+│   └── sync_WaitGroup_Misuse.go
+├── directions
+│   ├── Directional_Channels_as_Function_Parameters.go
+│   └── types.go
+├── directionsOfChannels
+│   ├── bidirectional.go
+│   ├── receiveing_only.go
+│   └── sending_only.go
+├── done
+│   ├── basic.go
+│   ├── context.go
+│   ├── context.txt
+│   ├── done.go
+│   ├── done_channel.go
+│   ├── done_with_select.go
+│   ├── pipelines.go
+│   └── timeout.go
+├── event_driven_models
+│   └── index.go
+├── file_strucuture
+│   └── file_structure.go
+├── fork_join_model
+│   ├── fork-join model.webp
+│   ├── fork-join_code.webp
+│   └── fork_join_model.go
+├── go.mod
+├── goroutineWithloop
+│   ├── Capture_by_Value.go
+│   ├── Not_Waiting_for_Goroutines_to_Finish.go
+│   ├── content.txt
+│   ├── correct_goroutine_with_loop.go
+│   ├── data_races.go
+│   ├── goroutineWithloop.go
+│   └── to_many_goroutines.go
+├── goroutinepool
+│   ├── index.txt
+│   ├── prerequsites.txt
+│   └── workerpool
+│       ├── code.go
+│       └── explaination.go
+├── goscheduler
+│   ├── GOMAXPROCS
+│   │   └── GOMAXPROCS.GO
+│   ├── GPM_model
+│   │   └── gpm_model.go
+│   ├── Go_scheduler.png
+│   ├── LocalQueue_and_GlobalQueue.png
+│   ├── goroutine_scheduling.png
+│   ├── run_queue
+│   │   ├── run_queque.go
+│   │   └── topics.txt
+│   └── topics.txt
+├── interfacesegregation
+│   ├── Printer_Interface_Segregation.go
+│   ├── WhereWillUse.PNG
+│   ├── interface.txt
+│   ├── interfacesegregation.txt
+│   ├── interfacevsSegregationinterface.PNG
+│   └── normalinterface.go
+├── lifecyclegoroutine
+│   ├── Spawn_or_creation.go
+│   ├── memory_management.go
+│   ├── run_or_execution.go
+│   └── terminate.go
+├── loopOnChannels
+│   ├── Loop_with_Fan_Out_Pattern.go
+│   ├── bufferedchannel.go
+│   ├── done.go
+│   ├── fan_in.go
+│   ├── inifinite_loop.go
+│   ├── loopOnchannels.go
+│   ├── pool_pattern.go
+│   ├── select.go
+│   ├── timeout.go
+│   └── using_range.go
+├── main.go
+├── mainroutine
+│   └── main_routine.go
+├── operations
+│   ├── blocking_pause
+│   │   ├── close.go
+│   │   ├── receiverwaits.go
+│   │   ├── sender_receiver.txt
+│   │   └── senderwaits.go
+│   ├── goroutine_operations
+│   │   └── text.go
+│   ├── goroutineoperations
+│   │   ├── concurrency_parallel
+│   │   │   ├── concurrency.go
+│   │   │   └── parallel.go
+│   │   ├── multiplegoroutinesscheduling
+│   │   │   ├── Even_Odd.go
+│   │   │   ├── GOMAXPROCS.go
+│   │   │   ├── Nnumbers_goroutines.go
+│   │   │   ├── counting.go
+│   │   │   ├── ping_pong.go
+│   │   │   └── spawnsroutines.go
+│   │   └── text.go
+│   ├── selectwait
+│   │   ├── example.go
+│   │   └── select.go
+│   ├── start.go
+│   ├── stop_exit.go
+│   ├── sync
+│   │   ├── Producer_Consumer.go
+│   │   ├── RWMutex.go
+│   │   ├── channels.go
+│   │   ├── condition.go
+│   │   ├── once.go
+│   │   ├── sync_mutex.go
+│   │   ├── synchronization.go
+│   │   └── waitgroup.go
+│   ├── test
+│   │   ├── RWMutex.go
+│   │   ├── memory_management.go
+│   │   ├── mutex.go
+│   │   └── waitgroup.go
+│   └── waiting
+│       ├── after.go
+│       └── sleep.go
+├── parentchild
+│   ├── Basic_Spawning.go
+│   ├── Error_Propagation.go
+│   ├── cancellation.go
+│   ├── parentGoroutine.go
+│   ├── parent_child_goroutine.go
+│   ├── timeout.go
+│   └── typeofparent_child.go
+├── passingargumentstogoroutines
+│   ├── byreference.go
+│   ├── passByValue.go
+│   └── variablecapture.go
+├── patterns
+│   ├── fire_and_forget.go
+│   ├── ping_pong.go
+│   └── sender_receiver.go
+├── pipeline
+│   ├── Moderate multi-threaded pipeline.webp
+│   ├── content.go
+│   ├── icpu.webp
+│   ├── patterns
+│   │   └── numberdoubler.go
+│   ├── pipeline.webp
+│   ├── pipeline_index.txt
+│   └── thats why go keyword is not used.PNG
+├── polling
+│   ├── index_polling_index.txt
+│   └── polling.go
+├── practice
+│   ├── one_by_one.go
+│   └── two_goroutines_communicating.go
+├── rangeoverchannel
+│   └── rangeoverchannel.go
+├── recursivegoroutines
+│   ├── basic.go
+│   └── content.txt
+├── selectkeyword
+│   ├── Combining_Send_and_Receive_in_One_select.go
+│   ├── Sending_to_Multiple_Channels.go
+│   ├── context.go
+│   ├── default.go
+│   ├── goutine_leaks.go
+│   ├── index_selectkeyword.txt
+│   ├── polling_channels.go
+│   ├── receiving_from_multiple_channels.go
+│   ├── selectWithTime.go
+│   ├── time.go
+│   └── topics.txt
+├── synchronisation
+│   ├── atomicoperations
+│   ├── goroutinecoordination
+│   ├── index_synchronisation.txt
+│   ├── mutualexclusion
+│   │   ├── mutex
+│   │   │   ├── Asynchronous_with_mutex.go
+│   │   │   ├── Embedding.go
+│   │   │   ├── Synchronous_with_mutex.go
+│   │   │   ├── atomic_operations.go
+│   │   │   ├── coding_questions
+│   │   │   │   ├── bank_account_simulation.go
+│   │   │   │   ├── counter.go
+│   │   │   │   ├── mutex_with_struct.go
+│   │   │   │   ├── questions.txt
+│   │   │   │   └── race_condition.go
+│   │   │   ├── cost_of_lock_unlock.go
+│   │   │   ├── deadlock_mutex.go
+│   │   │   ├── defer_keyword_mutex.go
+│   │   │   ├── index_mutex.txt
+│   │   │   ├── race_detector.go
+│   │   │   ├── reentrant.go
+│   │   │   ├── sync_mutex.go
+│   │   │   └── using_channel.go
+│   │   ├── mutex_old
+│   │   │   ├── Producer_Consumer.go
+│   │   │   ├── channels.go
+│   │   │   ├── condition.go
+│   │   │   ├── once.go
+│   │   │   ├── synchronization.go
+│   │   │   └── waitgroup.go
+│   │   ├── rwmutex
+│   │   │   ├── RWMutex.go
+│   │   │   └── coding
+│   │   │       └── question.txt
+│   │   ├── semaphore
+│   │   │   ├── coding_questions.txt
+│   │   │   ├── difference_between_mutex_semaphore
+│   │   │   │   ├── difference.txt
+│   │   │   │   ├── mutex.go
+│   │   │   │   └── semaphore.go
+│   │   │   ├── practice.go
+│   │   │   └── semaphore.go
+│   │   └── trylock
+│   │       ├── coding
+│   │       │   └── question.txt
+│   │       └── trylock.go
+│   ├── thread_safe_containers
+│   ├── usingchannel
+│   ├── usingcontext
+│   └── usingtime
+├── threadvsgoroutine
+│   └── threadvsgoutine.go
+├── topics
+│   ├── Goroutines Differ from OS Threads.PNG
+│   ├── index.txt
+│   └── lightweight_nature_of_goroutines.txt
+└── unbufferedchannel
+    ├── structure.go
+    └── unbufferedchannel.go

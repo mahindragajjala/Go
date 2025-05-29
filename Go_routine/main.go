@@ -1,7 +1,7 @@
 package main
 
 import (
-	codingquestions "routine/communication/buffered"
+	codingquestions "routine/file_strucuture"
 	//C:\Users\mahindra.gajjala\Desktop\GO\Go_routine\practice
 	// C:\Users\mahindra.gajjala\Desktop\GO\Go_routine\recursivegoroutines\basic.go
 	// C:\Users\mahindra.gajjala\Desktop\GO\Go_routine\done\basic.go
@@ -11,6 +11,8 @@ import (
 	//C:\Users\mahindra.gajjala\Desktop\GO\Go_routine\CSP_communicating_sequential_process\communication\unbuffered\basic.go
 )
 
+// C:\Users\mahindra.gajjala\Desktop\GO\Go_routine\file_strucuture
+// C:\Users\mahindra.gajjala\Desktop\GO\Go_routine\communication\readwritesimulation
 func main() {
-	codingquestions.Blocking()
+	codingquestions.File_structure()
 }
