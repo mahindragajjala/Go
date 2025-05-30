@@ -21,17 +21,12 @@ package cspcommunicatingsequentialprocess
 						Checking closed channels: v, ok := <-ch
 
 🧰 4. Channel Types and Directions
-Unbuffered vs Buffered channels
-
-make(chan int) vs make(chan int, 10)
-
-Receive-only and Send-only channels
-
-chan<- int (send-only)
-
-<-chan int (receive-only)
-
-Nil channels and blocking behavior
+						Unbuffered vs Buffered channels
+						make(chan int) vs make(chan int, 10)
+						Receive-only and Send-only channels
+						chan<- int (send-only)
+						<-chan int (receive-only)
+						Nil channels and blocking behavior
 
 🔄 5. Select Statement (Non-deterministic Communication)
 Using select with multiple channels
