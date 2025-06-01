@@ -16,6 +16,12 @@ func Unbuffered_channel() {
 	// WaitGroup
 	var wg sync.WaitGroup
 
+	// Start a goroutine to receive and print data
+	go func() {
+		for val := range unbufferedChan {
+			fmt.Println("channel data:", val)
+		}
+	}()
 	// Launch goroutines
 	for i := 0; i < 20; i++ {
 		wg.Add(1)
@@ -39,6 +45,12 @@ func Unbuffered_channel() {
 			// Close the channel after all goroutines are done
 			close(unbufferedChan)
 	*/
+
+	// Wait for all goroutines to finish
+	wg.Wait()
+
+	// Close the channel after all goroutines are done
+	close(unbufferedChan)
 }
 
 // Goroutine
