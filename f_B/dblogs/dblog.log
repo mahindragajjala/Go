@@ -1,0 +1,1 @@
+E|11-17-2023 08:01:07|error in select-paging-sql IMSIRange_GetByPaging  SELECT imsirangeid, imsibegin, imsiend, subk, opc, mcc, mnc, plmn, isactive, createduserid FROM imsirange  where isactive=$1 ORDER BY imsirangeid OFFSET 0 LIMIT 10 pq: column "createduserid" does not exist+ imsirange.go,242

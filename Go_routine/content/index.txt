@@ -1,0 +1,105 @@
+Here is a complete list of topics to study for mastering Go channels from basic to advanced:
+
+🧠 Basics
+
+1. Introduction to channels
+2. Creating channels
+3. Sending and receiving values
+4. Buffered vs unbuffered channels
+5. Closing channels
+6. Receiving from closed channels
+7. `range` over channels
+8. Channel direction (send-only, receive-only)
+9. Channel capacity (`cap`) and length (`len`)
+
+⚙️ Intermediate
+
+10. Blocking behavior of channels
+11. Select statement
+12. Default case in `select`
+13. Timeouts using `time.After` and `select`
+14. Synchronization using channels
+15. Avoiding race conditions with channels
+16. Deadlocks: causes and prevention
+17. Channel leaks and memory issues
+parent_and_child go routines
+
+🚀 Advanced
+
+18. Fan-in pattern
+19. Fan-out pattern
+20. Pipeline pattern
+21. Tee pattern (duplicating data to multiple channels)
+22. Worker pool using channels
+23. Multiplexing and demultiplexing channels
+24. Rate limiting using `time.Tick` and channels
+25. Context cancellation with channels
+26. Graceful shutdown using channels
+27. Combining channels with mutexes and wait groups
+28. Select loop + channel as signal/event system
+29. Error handling with channels
+30. Alternatives to channels (when not to use them)
+
+
+
+This list covers the entire scope of Go channels in depth. Would you like a study plan or links to example code for each topic?
+
+
+ Basic Level
+What is a Channel in Go?
+
+Creating a Channel
+
+Sending and Receiving data using channels
+
+Blocking behavior of Channels
+
+Channel directions (send-only and receive-only)
+
+Closing a Channel and its effect
+
+Receiving from closed channels (zero value)
+
+For-Range loop with channels
+
+🔹 Intermediate Level
+Buffered Channels – Create and use
+
+Unbuffered vs Buffered Channels
+
+Deadlock with Channels (e.g., unreceived send)
+
+Select statement – Basic usage
+
+Default case in select
+
+Timeout with select and time.After
+
+nil channels and effect on select
+
+Channel of structs or custom types
+
+Goroutines + Channels for Job Queue/Worker model
+
+Channel-based pipeline pattern
+
+🔹 Advanced Level
+Channel Synchronization Patterns (e.g., Barrier, Fan-in, Fan-out)
+
+Context with Channels (cancellation propagation)
+
+Channel Leaks – How to identify and avoid
+
+Combining Mutex and Channels – When to use what
+
+Using channels with select inside for-loops
+
+Throttling and Rate Limiting using time.Ticker + channels
+
+Using Channels as Semaphores
+
+Multi-producer, Multi-consumer design with Channels
+
+Graceful Shutdown using signal + context + channels
+
+Designing robust channel communication in Microservices

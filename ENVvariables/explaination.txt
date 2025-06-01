@@ -1,0 +1,120 @@
+Environment variables are key-value pairs used by the operating system to pass configuration information to applications.   
+They allow you to set global variables that your programs or scripts can access without hardcoding them.
+
+Why Use Environment Variables?
+
+To separate code from configuration.
+To easily switch between development, testing, and production environments.
+To keep sensitive data (like passwords, API keys) out of the source code.
+
+✅ Examples of Environment Variables:
+
+| Variable Name | Purpose                      | Example Value               |
+| ------------- | ---------------------------- | --------------------------- |
+| `PATH`        | System path for executables  | `/usr/bin:/usr/local/bin`   |
+| `HOME`        | User's home directory        | `/home/mahindra`            |
+| `PORT`        | Port on which app should run | `8080`                      |
+| `DB_HOST`     | Database host                | `localhost` or `db-service` |
+
+
+
+🧠 How to Learn Environment Variables (Step-by-Step):
+
+1. Basic OS Usage
+
+* Linux/macOS:
+
+  echo $HOME       # Print value
+  export MYVAR=123 # Set a variable
+
+* Windows(CMD):
+
+  set MYVAR=123
+  echo %MYVAR%
+
+2. Use in Scripts
+
+* Shell script:
+
+  export NAME="Mahindra"
+  echo "Hello, $NAME"
+
+* Batch file (Windows):
+
+  set NAME=Mahindra
+  echo Hello, %NAME%
+
+3. Use in Programming (e.g., Go):
+
+import "os"
+
+func main() {
+    port := os.Getenv("PORT") // Read from env
+    if port == "" {
+        port = "8080" // Default if not set
+    }
+    fmt.Println("Running on port:", port)
+}
+
+4. .env Files (With tools like `dotenv`)
+
+* `.env` file:
+  DB_USER=admin
+  DB_PASS=secret
+* Load in app using a Go library like `godotenv` or in Node.js with `dotenv`.
+
+5. In Docker
+
+* Set env in `Dockerfile` or `docker-compose.yml`:
+
+yaml
+  environment:
+    - DB_HOST=db
+    - DB_PORT=5432
+
+🔧 Tools/Libraries (For Practice)
+
+* `dotenv` for Go: [`github.com/joho/godotenv`](https://github.com/joho/godotenv)
+* Practice using `.env` files in small projects
+* Build a mini app that loads DB credentials from environment variables
+
+
+where environment variables are stored in the operating system
+
+Environment variables are not stored in a single file permanently. 
+Instead, they are stored in memory for the duration of a process or session (like a terminal window or system boot). 
+However, you can define them permanently by modifying certain files depending on the OS.
+
+1. Temporary Environment Variables (In Memory)
+
+export MYVAR=value
+
+It sets the variable only for the current shell session. 
+Once you close the terminal, 
+it's gone.
+
+2. Permanent Environment Variables (By Editing Files)
+ Linux/macOS
+| File               | Scope       | Description                                   |
+| ------------------ | ----------- | --------------------------------------------- |
+| `~/.bashrc`        | User-only   | Loaded when user opens a shell                |
+| `~/.bash_profile`  | User-only   | Loaded at login (macOS prefers this)          |
+| `~/.profile`       | User-only   | Generic profile script                        |
+| `/etc/environment` | System-wide | Used to set system-wide environment variables |
+| `/etc/profile`     | System-wide | For login shells for all users                |
+
+Add to ~/.bashrc:
+export DB_USER=admin
+export DB_PASS=secret
+Then run:
+source ~/.bashrc
+
+Windows
+Temporary (in current CMD session):
+
+set MYVAR=value
+Permanent:
+
+Go to System Properties → Advanced → Environment Variables
+
+You can set user-level or system-level variables there.

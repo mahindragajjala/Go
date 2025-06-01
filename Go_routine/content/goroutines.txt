@@ -1,0 +1,106 @@
+Introduction to Goroutines
+Creating and Running Goroutines
+Synchronization with WaitGroups
+Introduction to Channels
+Unbuffered Channels vs Buffered Channels
+Channel Operations: Sending and Receiving Data
+Select Statement
+Closing Channels
+Use Cases for Goroutines and Channels
+
+
+
+To understand the difference between parallelism and concurrency, let’s begin with a definition of concurrent tasks. 
+According to the Oxford Dictionary, "concurrency" means "two or more things happening at the same time". However, this definition isn’t very helpful because parallel execution would also mean something similar. Let’s take a closer look at "multitasking" definition first. 
+
+A Central Processing Unit (CPU, or simply a processor) can work on only one task at a time. 
+
+If multiple tasks are given to it, e.g., playing a song and writing code, it simply switches between these tasks. 
+
+This switching is so fast and seamless that, for a user, it feels like multitasking.
+
+This capability of modern CPUs to pause and resume tasks so fast gives an illusion as if more than one task is running in parallel. However, this is not parallel. This is "concurrent".
+
+"Concurrency can be broadly understood as multi-threading."
+
+There are usually many ways of creating concurrent applications, and threading is just one of them. 
+
+Sometimes, other terms like asynchronous tasks are also used. The difference lies in the implementation and details. 
+
+"However, from a broader point of view, they both mean a set of instructions that can be paused and resumed"
+
+-------------------------------------------------------------------------------------------------------------
+In programming, asynchronous refers to a way of executing tasks without waiting for them to finish before moving on to the next one. Instead of blocking the program flow until a task completes (like reading a file or making a network request), asynchronous code allows the program to continue doing other things and be notified when the task is complete.
+Type         | Behavior
+Synchronous  | Waits for each task to finish before moving on
+Asynchronous | Starts a task and continues to the next; handles result later
+
+-------------------------------------------------------------------------------------------------------------
+There is a programming paradigm called Concurrent Computing. This involves writing code so that it seems like "more than one process is being performed simultaneously", while they never actually execute at the same time. 
+This is known as "concurrent programming". 
+
+-------------------------------------------------------------------------------------------------------------
+What is a thread?
+
+Process
+Whenever any program is running on our computer, it can have one or multiple processes associated with it.
+
+Thread
+Thread can be thought of as the basic unit of execution of any process. Thus one process can consist of one or many threads.
+Threads within the same Process run within a shared memory space while different Processes are allocated separate memory spaces.
+
+In broad terms, a thread is the smallest set of tasks that can be handled and managed by the operating system without any dependencies on each other. 
+
+The actual implementation differs in various operating systems. The way of programmatically creating threads also differs in various programming languages.
+
+https://dev.to/suvhotta/processes-and-threads-part-1-pm2
+
+-------------------------------------------------------------------------------------------------------------
+Python provides a powerful threading module for creating and managing threads. 
+
+"Introduction to Goroutines"
+Goroutines are lightweight concurrent units in Go Lang. 
+They allow you to perform concurrent operations "without creating heavyweight threads". 
+Goroutines make it easy to design concurrent programs by enabling the execution of functions concurrently, often resulting in improved performance and scalability.
+
+"Goroutines are not the same as threads" — they are "lightweight functions" managed by the "Go runtime", not the OS.
+
+"The "Go scheduler maps" many "goroutines onto a smaller number of OS threads"."
+Multiple goroutines can run in parallel if multiple CPU cores are available (using Go's GOMAXPROCS setting).
+
+Otherwise, they run concurrently — i.e., interleaved on the same thread, giving the illusion of parallelism.
+
+------------------------------------------------------------------------------------------------------------
+
+Goroutines are lightweight threads used for concurrency in Go. When multiple goroutines access shared resources (like variables, files, maps, etc.), synchronization is essential to prevent:
+
+Race conditions
+
+Data corruption
+
+Unpredictable behavior
+
+Synchronization ensures that only one goroutine can access the critical section (shared resource) at a time, or coordinates when one should wait for another to complete.
+
+        | Tool                          | Description |
+        |------                         |-------------|
+        | `sync.Mutex`                  | Allows one goroutine at a time to access a critical section. |
+        | `sync.RWMutex`                | Allows multiple readers or one writer (read-write lock). |
+        | `sync.WaitGroup`              | Waits for a group of goroutines to finish. |
+        | `sync.Once`                   | Ensures a function runs only once (e.g., init setup). |
+        | `sync.Cond`                   | Allows goroutines to wait and signal (like condition variables). |
+        | Channels                      | Built-in synchronization for communication between goroutines. |
+        | `context` package             | Allows goroutines to be cancelled or have timeouts. |
+
+-------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+

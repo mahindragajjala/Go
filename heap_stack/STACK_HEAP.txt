@@ -1,0 +1,120 @@
+🧠 Stack Memory
+📌 Characteristics:
+Used for: "Function-local variables (temporary)".
+LIFO (Last In First Out) structure.
+Fast allocation & deallocation.
+Automatically freed when a function returns.
+Smaller in size compared to the heap.
+
+func example() {
+    x := 10  // stored on the stack
+}
+Variable x is allocated on the stack, and memory is freed automatically when example() ends.
+
+
+🧠 Heap Memory
+📌 Characteristics:
+Used for: Dynamically allocated variables that may outlive the function scope.
+Slower allocation & deallocation.
+Requires garbage collection to reclaim memory.
+Larger in size than stack
+
+func example() *int {
+    x := 10
+    return &x // x is moved to heap because its address escapes the function
+}
+
+
+
++-------------------------+
+|       Go Program        |
++-------------------------+
+
+       |  Function Call
+       v
+
++-------------------------+
+|        Stack            |  <- Fast, local memory
+|-------------------------|
+| Function A's variables  |
+|-------------------------|
+| Function B's variables  |
+|-------------------------|
+| Function C's variables  |
++-------------------------+
+        ↑
+   Auto-freed when
+   function returns
+
+       |
+       |  Variable escapes function (e.g., via pointer or goroutine)
+       v
+
++-------------------------+
+|         Heap            |  <- Slower, long-lived memory
+|-------------------------|
+| Allocated Object 1      |
+| Allocated Object 2      |
+| Allocated Object 3      |
++-------------------------+
+        ↑
+  Cleaned by Go's
+  Garbage Collector
+
+
+
+VARIABLES ESCAPES FUNCTION - In Go, when we say that a "variable escapes a function", we mean that the variable is being used outside of the function's scope. 
+
+This is a key concept in escape analysis, where the Go compiler decides whether a variable should be allocated on the stack or heap based on whether it "escapes" the function.
+
+By default, Go tries to allocate variables on the stack, which is fast and automatically cleaned up when the function returns. 
+
+However, if a variable escapes the function—meaning it is used outside of the function’s scope—Go will allocate it on the heap to ensure its lifetime is managed properly.
+
+When Does a Variable Escape?
+
+A variable can escape a function in several ways:
+
+Returning a pointer to a local variable.
+Passing a reference (e.g., via a pointer) to the variable to another goroutine, which can execute concurrently and outlive the function.
+Storing a reference to the variable in a global or static variable, making it accessible after the function ends.
+
+----------------"Escape via Returning a Pointer" to a Local Variable--------------------------
+// createUser returns a pointer to a User instance, causing 'user' to escape
+func createUser(name string) *User {
+    user := User{Name: name}  // 'user' is created on the stack
+    return &user              // Pointer to 'user' is returned, causing it to escape to the heap
+}
+
+func main() {
+    userPtr := createUser("John Doe")
+    fmt.Println(userPtr.Name)  // Output: John Doe
+}
+---------------Escape via "Passing a Reference" to a Goroutine------------------------------
+// """"""launchGoroutine passes a reference to a variable to a goroutine, causing it to escape""""""
+func launchGoroutine() {
+    message := "Hello from Goroutine!"
+    go func() {
+        fmt.Println(message)  // Accessing 'message' inside the goroutine
+    }()
+}
+
+func main() {
+    launchGoroutine()
+}
+--------------Escape via Storing in a "Global Variable"------------------------------------
+// Global variable
+var globalMessage *string
+
+// storeInGlobal stores a reference to a local variable in a global variable, causing it to escape
+func storeInGlobal() {
+    message := "Stored in Global"
+    globalMessage = &message  // 'message' escapes to global memory
+}
+
+func main() {
+    storeInGlobal()
+    fmt.Println(*globalMessage)  // Output: Stored in Global
+}
+---------------How to Check Escape Analysis in Go----------------------------------------
+go build -gcflags="-m" your_file.go

@@ -1,0 +1,95 @@
+Here’s a curated list of coding questions to practice pipelines in Go, progressing from basic to advanced. These problems help you build intuition around pipelines, channels, concurrency, fan-out/fan-in, cancellation, and error handling.
+
+
+
+ 🟢 Beginner Level: Basic Pipeline Concepts
+
+1. Number Doubler
+   ➤ Read a list of integers and double each value using a pipeline.
+   ➤ Stages: Generator → Doubler → Printer
+
+2. Sentence Word Splitter
+   ➤ Given a list of sentences, split each into words.
+   ➤ Stages: Generator → Splitter → Printer
+
+3. Even Number Filter
+   ➤ Filter even numbers from a list.
+   ➤ Stages: Generator → Filter → Printer
+
+4. Uppercase Transformer
+   ➤ Convert lowercase words to uppercase.
+   ➤ Stages: Generator → ToUpper → Printer
+
+5. String Reverser
+   ➤ Reverse each string in a pipeline.
+   ➤ Stages: Generator → Reverser → Printer
+
+
+
+ 🟡 Intermediate Level: Pipeline Composition and Optimization
+
+6. Multi-stage Arithmetic
+   ➤ For a list of numbers, apply: square → add 10 → halve
+   ➤ Stages: Generator → Square → Add10 → Halve → Printer
+
+7. Word Length Filter
+   ➤ From sentences, extract words > 5 letters.
+   ➤ Stages: Generator → Split → Filter → Printer
+
+8. Buffered Pipeline Performance
+   ➤ Implement a pipeline using buffered channels to measure performance difference.
+
+9. Worker Pool for Heavy Computation
+   ➤ Use a pool of goroutines to compute factorials for a list of numbers.
+   ➤ Stages: Generator → Worker Pool → Printer
+
+10. Pipeline Timer
+    ➤ Measure how long each stage takes in a pipeline.
+
+
+
+ 🔴 Advanced Level: Fan-Out, Fan-In, Context Cancellation, Errors
+
+11. Fan-Out Fan-In Prime Filter
+    ➤ Generate numbers, filter primes using multiple workers, and merge results.
+
+12. Concurrent File Processor
+    ➤ Given a list of filenames, read file content concurrently, clean text, and count word frequency.
+
+13. Context Cancellation in Pipeline
+    ➤ Cancel the pipeline if a word “STOP” is encountered.
+
+14. Pipeline with Error Handling
+    ➤ Simulate errors in one stage (e.g., division by zero), propagate and stop pipeline safely.
+
+15. Rate-Limited Pipeline
+    ➤ Limit the rate of data processing using time.Ticker or time.Sleep.
+
+16. Streaming Log Processor
+    ➤ Process a real-time stream of logs, filter by log level, and write to output concurrently.
+
+17. Chained Transformations on Images (mock)
+    ➤ Simulate stages like resize → grayscale → watermark → save using image filenames.
+
+18. CSV Processing Pipeline
+    ➤ Load CSV rows, filter rows, map fields, and write to output.
+
+19. Real-time Alert System
+    ➤ Simulate real-time sensor data and use pipeline stages to detect anomalies.
+
+20. Deadlock Debugger
+    ➤ Create a pipeline with an intentional deadlock and then fix it.
+
+
+
+ 🧠 Tip:
+
+For each problem:
+
+* Start with sequential stages.
+* Gradually introduce goroutines, channels, context, sync.WaitGroup, etc.
+* Add logging to see concurrency in action.
+
+
+
+Would you like detailed code templates or solutions for a few of these? I can help you implement any of them step-by-step.

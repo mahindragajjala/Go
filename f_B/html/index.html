@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en-in" dir="ltr" >
+	<head>
+		<title>
+			XIUS 5G Core
+		</title>
+		<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+        <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+   <style>
+        .hidden {
+            display: none;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            width: 28%;
+            padding: 10px;
+            border-radius:5px;
+            background-color:#0096D0;
+            color: black;
+            border: none;
+            cursor: pointer;
+            
+        }
+        header {
+            padding: 1px;
+            text-align: center;
+            font-size: 15px;
+            color: white;
+            border: 1px solid black;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            width: 100%;
+        }
+        img {
+            width :10%;
+            height: 80px;
+        }
+        a {
+            text-decoration: none;
+            font-size: 25px;
+            padding: 20px;
+            padding-top: 10px;
+            color: red;
+            font-family:system-ui;
+        }
+
+        iframe {
+            padding-top: 0%;
+            width: 100%;
+            min-height: 100vh;
+            }
+        article {
+            width: 100%;
+            min-height: 100vh; 
+            padding: 0px;
+            float: left; 
+            background-color:white;
+            }
+			
+		.grid-item {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+            background-image: url("assets/bg.gif");
+		}
+        /* .container {
+            display: flex;
+            align-items: center;
+            padding-top: 15px;
+        } */
+        h1 {
+            color: #0096D0;
+            margin: 0;
+        }
+        /* .logo {
+            margin-right: 425px;
+        } */
+        .subtitle {
+            color: #808080;
+            margin-left: 10px;
+        }
+        .red-line {
+            width: 100%; /* Full width */
+            border: none;
+            border-top: 10px solid red; /* Red line */
+            margin-top: 10px; /* Space between the header and the line */
+        }
+
+        .social-media {
+            float: right;
+            margin: 5px;
+            font-size: 0; /* Remove the font size of the parent to remove space between inline-block elements */
+        }
+
+        .social-media img {
+            width: 25px; /* Adjust the width as needed */
+            height: 30px;
+            margin: 0; /* Remove any margin */
+            padding: 0; /* Remove any padding */
+            display: inline-block; /* Ensure images are inline */
+            font-size: initial; /* Reset font size for the img elements */
+        }
+
+         body{
+                font-family: 'Times New Roman',Cambria, Cochin, Georgia, Times , serif;
+             }
+
+
+                    
+        .logo-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 10px; /* Adjust this value for spacing */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 15px;
+            margin-top: 20px; 
+            width: calc(100% - 143px); /* Ensure container takes full width */
+            margin-left: 143px;
+        }
+
+        .logo {
+            margin-right: 10px; /* Adjust this value if needed */
+            height: 83px;
+            width: 133px;
+        }
+
+        .subtitle-container {
+            display: flex;
+            flex-direction: row; /* Make the text elements appear side by side */
+            margin-right: 150px;
+        }
+
+        .subtitle {
+            color: #808080;
+            font-size: 32px;
+            font-family: 'Times New Roman', Cambria, Cochin, Georgia, Times, serif;
+            margin: 0; /* Remove default margins */
+            padding-left: 10px;
+        }
+
+        .subtitle2 {
+            color: #0096D0;
+            font-size: 32px;
+            font-family: 'Times New Roman', Cambria, Cochin, Georgia, Times, serif;
+            margin: 0; /* Remove default margins */
+        }
+     
+    </style>		
+    <script>
+		
+		localStorage.clear();
+		 
+        function validateForm() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+			
+			if( username.trim() == '')
+			{
+				alert('Please Enter User Name');
+				document.getElementById("username").foucs();
+				return false;
+			}
+
+			if( password.trim() == '')
+			{
+				alert('Please Enter Password');
+				document.getElementById("password").foucs();
+				return false;
+			}
+
+			return true;
+        }
+    </script>
+	</head> 
+	<body style="margin:0px;">
+        <div class="logo-container">
+            <img src="assets/logo.gif" alt="XIUS Logo" class="logo" >
+        </div>
+        <div class="container">
+            <div class="subtitle-container">
+                <h1 class="subtitle2"><b>XIUS</b></h1>
+                <h1 class="subtitle"><b>5G-CORE</b></h1>
+            </div>
+        </div><br>
+  <div>
+	<hr class="red-line">
+  </div>
+	<div class="grid-item" style="display:grid;padding:0px; border:0px solid #000000;min-height:350px">
+		<div style="border:1px solid #999999;width:300px;height:350px;position:relative;padding:25px;border-radius: 10px;">
+			<div style="font-family: Roboto, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size: 1.8em;color: #808080;">
+				Login
+			</div>
+			<br />
+			<br />
+			<form id="loginForm" action="/login" method="post" onsubmit="return validateForm()">
+				<input type="text" name="username" id="username" placeholder="Username" required>
+				<input type="password" name="password" id="password" placeholder="Password" required>
+				<div style="padding: 20px;">
+					<button type="submit" style="margin: 0px;width:120px;">Login</button>
+					<button type="reset" style="margin: 0px;width:120px;">Cancel</button>
+				</div>
+			</form>
+			<p id="error" style="color: red;"></p>
+		</div>
+    </div>
+
+	<script>
+		var str = '';
+		
+		if( document.location.toString().indexOf('?') > 0)
+		{
+			str = document.location.toString().substr( document.location.toString().indexOf('?'));
+			//window.alert( str.split('=')[1]);
+		
+			document.getElementById('error').innerHTML = str.split('=')[1];
+		}
+		
+	</script>
+
+<tr width="100%">
+	<td width="75%" align="left" style="padding-left: 10px;">
+	    <table border="0" width="100%" cellpadding="0" cellspacing="0"><tbody><tr>
+	<td>
+	    <b>
+            
+        <font face="Arial" color="#7F0000" style="font-size: 9pt;padding-left: 20px;">Sections</font></b></td>
+	<td width="25%" align="right" style="padding-right: 60px;"><b>
+	    <font face="Arial" color="#7F0000" style="font-size: 9pt">Socialize With Us</font></b>
+	</td>
+</tr>
+	<tr>
+        <br>
+	        <td  width="75%" align="left">
+	             <a href="#" style="color:#333333"><font face="Arial" style="font-size: 9.5pt" color="#333333">Terms &amp; Conditions</font></a>
+	                &nbsp;&nbsp;&nbsp;
+
+	             <a href="#" style="color:#333333"><font face="Arial" style="font-size: 9.5pt" color="#333333">Privacy Policy</font></a>
+	                &nbsp;&nbsp;&nbsp;
+
+	             <a href="#" style="color:#333333"><font face="Arial" style="font-size: 9.5pt" color="#333333">Contact Us</font></a>
+    
+	        </td>
+    <td  width="25%" align="right">
+        <!-- <tr>
+             <td> -->
+                <div class="social-media">
+                    <a href="https://x.com/XIUS_Corp" target="_blank"><img border="0" src="assets/twit.jpg" alt="Twitter"></a>
+                    <a href="https://www.instagram.com/xius.corp/" target="_blank"><img border="0" src="assets/you.jpg" alt="Instagram"></a>
+                    <a href="https://www.facebook.com/xiuscorp/" target="_blank"><img border="0" src="assets/face.jpg" alt="Facebook"></a>
+                </div>
+                
+            <!-- </td>
+                
+        </tr> -->
+    
+    </td>
+    
+	</tr>
+	</tbody></table>
+	</tr> 		
+	</body>
+</html>

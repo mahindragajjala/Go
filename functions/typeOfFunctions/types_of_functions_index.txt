@@ -1,0 +1,184 @@
+ 1. Regular Functions
+Basic named functions defined using the `func` keyword.
+func Add(a int, b int) int {
+    return a + b
+}
+
+2. Anonymous Functions
+Functions without a name; can be assigned to variables or called immediately.
+sum := func(a int, b int) int {
+    return a + b
+}
+fmt.Println(sum(2, 3))
+
+3. Immediately Invoked Function Expressions (IIFE)
+Anonymous functions that are called immediately.
+result := func(a int, b int) int {
+    return a + b
+}(4, 5)
+fmt.Println(result)
+
+4. Variadic Functions
+Functions that accept a variable number of arguments.
+func Sum(nums ...int) int {
+    total := 0
+    for _, num := range nums {
+        total += num
+    }
+    return total
+}
+
+5. Recursive Functions
+Functions that call themselves.
+func Factorial(n int) int {
+    if n == 0 {
+        return 1
+    }
+    return n * Factorial(n-1)
+}
+
+6. Methods (Function with Receiver)
+Functions connected with a type (struct or alias), declared with a receiver.
+type Circle struct {
+    Radius float64
+}
+func (c Circle) Area() float64 {
+    return 3.14 * c.Radius * c.Radius
+}
+
+7. Higher-Order Functions
+Functions that accept other functions as arguments or return them.
+func Operate(a, b int, op func(int, int) int) int {
+    return op(a, b)
+}
+func Add(a, b int) int {
+    return a + b
+}
+
+ 8. Closures
+Functions that capture and use variables from their outer scope.
+func Counter() func() int {
+    count := 0
+    return func() int {
+        count++
+        return count
+    }
+}
+
+ 9. Defer Functions
+
+Functions executed just before the surrounding function returns.
+func Example() {
+    defer fmt.Println("This runs last")
+    fmt.Println("This runs first")
+}
+
+10. Init Function
+Special function automatically executed before `main` in a package.
+func init() {
+    fmt.Println("Init function called")
+}
+
+ 11. Main Function
+
+The entry point of a Go program in the `main` package.
+
+func main() {
+    fmt.Println("Hello, World!")
+}
+
+
+Yes, in addition to the common types of functions I listed earlier, Go supports a few more advanced or specialized function types and function-related behaviors. These aren’t always considered “types” in the strictest sense, but they influence how functions behave or are used. Here's an expanded list:
+
+✅ 12. Function Literals (Anonymous Inline)
+Similar to anonymous functions, but often used inline.
+result := func(x int) int {
+    return x * x
+}(4)
+
+✅ 13. Functions as Return Values
+Functions can return other functions (important for closures and decorators).
+func Multiplier(x int) func(int) int {
+    return func(y int) int {
+        return x * y
+    }
+}
+
+✅ 14. Function Pointers (Functions as First-Class Citizens)
+
+You can assign a function to a variable or pass it as a parameter.
+func greet(name string) {
+    fmt.Println("Hello", name)
+}
+var sayHello func(string) = greet
+sayHello("Mahi")
+
+✅ 15. Interface-Based Functions
+
+Interfaces in Go can define a method set, and types implement functions to satisfy them.
+type Speaker interface {
+    Speak() string
+}
+
+type Dog struct{}
+
+func (d Dog) Speak() string {
+    return "Woof"
+}
+
+✅ 16. Callback Functions
+Used when you pass a function as a parameter to be executed later.
+func process(callback func(string)) {
+    callback("Processing done")
+}
+
+✅ 17. Goroutine-Invoked Functions (Concurrency)
+Functions run asynchronously using goroutines.
+
+go func() {
+    fmt.Println("Running in a goroutine")
+}()
+
+ ✅ 18. Method Expressions & Method Values
+Accessing methods as function values.
+
+Method Value:
+c := Circle{Radius: 5}
+areaFunc := c.Area
+fmt.Println(areaFunc()) // method bound to 'c'
+
+Method Expression:
+areaFunc := Circle.Area
+fmt.Println(areaFunc(c)) // method takes 'c' as argument
+
+So, altogether, you can think of Go function types in three broad groups:
+
+1. Basic Declarations: named, anonymous, variadic, recursive
+2. Functional Features: closures, higher-order, return functions, callbacks
+3. Advanced Usage: methods, goroutines, init/main, interface-based, method expressions
+
+
+
+Would you like a visual diagram or table to help remember all these types?
+
+
+|   #   |   Function Type                       |   Description                                               |   Example Use                                   |
+| ----: | ------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------- |
+|     1 | Regular Functions                     | Named functions using `func`                                | `func Add(a, b int) int`                        |
+|     2 | Anonymous Functions                   | Functions without a name, assigned to variables             | `sum := func(a, b int) int { return a + b }`    |
+|     3 | IIFE (Immediately Invoked)            | Anonymous function executed right away                      | `result := func(a, b int) int { ... }(2, 3)`    |
+|     4 | Variadic Functions                    | Accept variable number of arguments                         | `func Sum(nums ...int) int`                     |
+|     5 | Recursive Functions                   | Call themselves to solve subproblems                        | `func Factorial(n int) int`                     |
+|     6 | Methods (with Receiver)               | Functions tied to a type                                    | `func (c Circle) Area() float64`                |
+|     7 | Higher-Order Functions                | Take or return functions                                    | `func Operate(a, b int, op func(int, int) int)` |
+|     8 | Closures                              | Capture and retain outer scope variables                    | `func Counter() func() int`                     |
+|     9 | Defer Functions                       | Execute at the end of the containing function               | `defer fmt.Println("last")`                     |
+|    10 | `init` Function                       | Special auto-run function before `main()`                   | `func init() { ... }`                           |
+|    11 | `main` Function                       | Entry point of Go program in `main` package                 | `func main() { ... }`                           |
+|    12 | Function Literals (Inline)            | Anonymous functions used inline (same as IIFE)              | `result := func(x int) int { ... }(4)`          |
+|    13 | Functions as Return Values            | Return functions from other functions                       | `func Multiplier(x int) func(int) int`          |
+|    14 | Function Pointers / First-Class Funcs | Assign functions to variables or pass around                | `var sayHello func(string) = greet`             |
+|    15 | Interface-Based Functions             | Functions implemented to satisfy interface requirements     | `type Speaker interface { Speak() string }`     |
+|    16 | Callback Functions                    | Functions passed as parameters to be called later           | `func process(cb func(string))`                 |
+|    17 | Goroutine-Invoked Functions           | Run concurrently using `go` keyword                         | `go func() { ... }()`                           |
+|    18 | Method Values & Expressions           | Treat methods like function values, bind or call explicitly | `areaFunc := c.Area` or `Circle.Area(c)`        |

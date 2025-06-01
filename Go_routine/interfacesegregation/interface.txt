@@ -1,0 +1,30 @@
+package interfacesegregation
+
+import "fmt"
+
+type Interface interface {
+	Drive()
+}
+type CAR struct {
+	Left  int
+	Right int
+}
+
+func (d *CAR) Drive() {
+	fmt.Println("DRIVING..")
+
+}
+
+type BIKE struct {
+	Left  int
+	Right int
+}
+
+func (d *BIKE) Drive() {
+	fmt.Println("DRIVING..")
+}
+
+func Usinginterface() {
+	a := CAR{Left: 0, Right: 1}
+	a.Drive()
+}

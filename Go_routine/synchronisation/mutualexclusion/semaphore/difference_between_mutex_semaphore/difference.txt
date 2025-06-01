@@ -1,0 +1,12 @@
+| Feature           | Semaphore                                                  | Mutex                                                   |
+| ------------------| ---------------------------------------------------------- | ----------------------------------------------------------- |
+| Definition        | A counter to control access to a shared resource           | A locking mechanism that allows exclusive access        |
+| Concurrency Level | Allows multiple goroutines to access (if count > 1)        | Allows only one goroutine at a time                     |
+| Use Case          | Limit access to a pool of resources (e.g., DB connections) | Protect a single critical section or data               |
+| Count/State       | Has a count (e.g., 2, 3, etc.)                             | No count, only locked or unlocked                           |
+| Blocking Behavior | Blocks when count is 0 (no permits)                        | Blocks if already locked                                    |
+| Unlock by         | Can be released by any goroutine                           | Must be unlocked by the same goroutine that locked it   |
+| Types             | Binary Semaphore (1), Counting Semaphore (>1)              | Only one type                                               |
+| Go Implementation | Using buffered channels                                    | Using `sync.Mutex`                                          |
+| Suitability       | Managing resource pools or limiting concurrency            | Ensuring exclusive access to shared data                |
+| Example in Go     | `make(chan struct{}, N)`                                   | `var mu sync.Mutex` followed by `mu.Lock()` / `mu.Unlock()` |

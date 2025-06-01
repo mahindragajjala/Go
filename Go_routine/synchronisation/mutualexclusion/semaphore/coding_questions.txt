@@ -1,0 +1,80 @@
+Here is a comprehensive list of coding questions on semaphores, categorized from basic to advanced, with a focus on understanding synchronization, mutual exclusion, and coordination using semaphores, especially helpful if you're using languages like Go, C/C++, Java, or Python.
+
+
+
+🧠 Basic Level (Understanding Semaphores)
+
+1. Implement a binary semaphore.
+2. Create a counting semaphore using a mutex and condition variable.
+3. Use a semaphore to print “Hello” from two threads alternately.
+4. Limit access to a critical section using a semaphore (max 3 threads).
+5. Simple producer-consumer using a counting semaphore.
+6. Write a program to simulate red/green traffic light using semaphores.
+7. Use a semaphore to protect access to a shared integer variable.
+8. Simulate a car wash station with 2 slots using semaphores.
+9. Use a binary semaphore for mutual exclusion in a file-writing operation.
+10. Demonstrate the difference between binary and counting semaphore.
+
+
+
+⚙️ Intermediate Level (Synchronization Problems)
+
+11. Classic producer-consumer problem using semaphores.
+12. Bounded buffer problem using semaphores.
+13. Implement Reader-Writer problem using semaphores.
+14. Implement a simple barrier using semaphores.
+15. Use semaphores to coordinate two threads to alternately print odd/even numbers.
+16. Simulate a restaurant with a limited number of tables using semaphores.
+17. Use semaphore to limit maximum concurrent API requests.
+18. Print “ABCABC...” using 3 threads and semaphores.
+19. Use semaphores to implement a task queue with a worker pool.
+20. Synchronize a parent and child process using semaphores.
+
+
+
+🚦 Advanced Level (Coordination & Real-Time Scenarios)
+
+21. Dining Philosophers problem using semaphores.
+22. Implement a fair semaphore (FIFO based).
+23. Solve the Sleeping Barber problem using semaphores.
+24. Bridge crossing problem: max N cars on the bridge using semaphores.
+25. Implement a real-time elevator system with semaphores.
+26. Thread-safe rate limiter using semaphore.
+27. N-thread rendezvous using semaphores.
+28. Print matrix in wave pattern using M threads (controlled by semaphores).
+29. Multi-producer multi-consumer problem using semaphores.
+30. Implement a reusable barrier using semaphores.
+
+
+
+👨‍💻 Go-Specific (Semaphore-like Patterns)
+
+31. Use a buffered channel in Go to simulate counting semaphore.
+32. Limit goroutine concurrency using semaphore pattern.
+33. Create your own semaphore struct in Go using channels.
+34. Build a thread pool with max 5 goroutines using semaphore.
+35. Implement token bucket rate limiter using semaphores (channels).
+36. Use semaphores to limit database connections in Go.
+37. Use semaphore to serialize log writes from multiple goroutines.
+38. Semaphore implementation to manage access to shared map in Go.
+39. Use `sync.WaitGroup` with a semaphore to control goroutine exit.
+40. Compare semaphore via channels vs `x/sync/semaphore` package.
+
+
+
+📚 Bonus Conceptual/Coding Exercises
+
+41. Explain when to prefer mutex vs semaphore with examples.
+42. Design a file uploader where only 3 files can upload in parallel.
+43. Simulate a parking lot with limited spaces using semaphores.
+44. Thread-safe bank account debits using semaphore.
+45. Semaphore problem with priority: High priority threads wait less.
+46. Show deadlock with semaphores and how to avoid it.
+47. Implement a crosswalk system with car and pedestrian semaphore control.
+48. Semaphore puzzle: 3 threads print in cyclic order using semaphores.
+49. Real-world modeling: Airport runway system using semaphores.
+50. Build your own semaphore in Go using `sync.Cond` and counter.
+
+
+
+Would you like the Go (Golang) implementations of any specific problems from the list above?

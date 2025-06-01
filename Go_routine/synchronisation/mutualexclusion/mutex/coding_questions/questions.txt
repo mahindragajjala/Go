@@ -1,0 +1,52 @@
+
+
+Coding Questions on Mutex (Programming & Interview Level)
+
+ Basic Level
+
+1. Protect a counter
+   Implement a safe counter that multiple goroutines can increment concurrently using Mutex.
+
+2. Bank account simulation
+   Create a bank account struct with deposit and withdraw methods protected by a Mutex.
+
+3. Race condition demonstration
+   Write a program without Mutex causing a race, then fix it with Mutex.
+
+4. Mutex in struct
+   Create a struct with a Mutex embedded and demonstrate locking/unlocking.
+
+ Intermediate Level
+
+5. Read-Write locking
+   Implement a cache with multiple readers and single writer using RWMutex.
+
+6. TryLock usage
+   Implement a scenario where you try to acquire a lock without blocking using `TryLock`.
+
+7. Deadlock scenario
+   Write code that causes a deadlock with Mutex and explain how to fix it.
+
+8. Concurrent map with Mutex
+   Implement a thread-safe map using a Mutex.
+
+9. Defer unlock performance
+   Compare unlocking a Mutex directly vs using `defer` inside a loop.
+
+ Advanced Level
+
+10. Mutex with condition variables
+    Use `sync.Cond` with a Mutex to implement a producer-consumer problem.
+
+11. Implement your own mutex
+    Using atomic operations, implement a simplified mutex-like mechanism.
+
+12. Timeout on locking
+    Implement a function that tries to acquire a lock but times out after some duration if not acquired.
+
+13. Mutex and Goroutine leak detection
+    Write a program that uses Mutex and identify potential goroutine leaks if the Mutex is not unlocked properly.
+
+14. Read-write mutex performance test
+    Benchmark `sync.Mutex` vs `sync.RWMutex` for read-heavy workloads.
+

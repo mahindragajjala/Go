@@ -1,0 +1,10 @@
+Worker Pool Patterns
+Producer-Consumer Patterns
+Concurrent Web Crawlers
+Task Queues and Job Scheduling
+Timer and Ticker Implementations
+Parallel Data Processing Pipelines
+Concurrent Server Handling
+CLI Tools with Concurrent I/O
+Asynchronous Event Handling
+Microservices Handling Concurrent Requests
