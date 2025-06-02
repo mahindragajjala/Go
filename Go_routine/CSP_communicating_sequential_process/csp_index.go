@@ -29,28 +29,19 @@ package cspcommunicatingsequentialprocess
 						Nil channels and blocking behavior
 
 🔄 5. Select Statement (Non-deterministic Communication)
-Using select with multiple channels
-
-default case to avoid blocking
-
-select with timeout using time.After
-
-Avoiding deadlocks and starvation
+						Using select with multiple channels
+						default case to avoid blocking
+						select with timeout using time.After
+						Avoiding deadlocks and starvation
 
 🔁 6. CSP Communication Patterns
-One-to-one communication
-
-One-to-many (fan-out)
-
-Many-to-one (fan-in)
-
-Pipelines (chaining goroutines)
-
-Multiplexing input from multiple channels
-
-Worker pools
-
-Tee pattern (splitting one channel into many)
+						One-to-one communication
+						One-to-many (fan-out)
+						Many-to-one (fan-in)
+						Pipelines (chaining goroutines)
+						Multiplexing input from multiple channels
+						Worker pools
+						Tee pattern (splitting one channel into many)
 
 🧱 7. Synchronization with Channels
 Using channels instead of sync.Mutex
