@@ -44,24 +44,16 @@ package cspcommunicatingsequentialprocess
 						Tee pattern (splitting one channel into many)
 
 🧱 7. Synchronization with Channels
-Using channels instead of sync.Mutex
-
-Using empty struct channels: chan struct{}
-
-Signaling between goroutines
-
-Waiting for completion with channels
-
+						Using channels instead of sync.Mutex
+						Using empty struct channels: chan struct{}
+						Signaling between goroutines
+						Waiting for completion with channels
 🧪 8. Advanced CSP Topics
-Channel direction in function parameters
-
-Buffered channel capacity and deadlock issues
-
-Backpressure in pipelines
-
-Leak prevention (avoiding goroutines stuck on send/receive)
-
-Using context.Context for goroutine cancellation
+						Channel direction in function parameters
+						Buffered channel capacity and deadlock issues
+						Backpressure in pipelines
+						Leak prevention (avoiding goroutines stuck on send/receive)
+						Using context.Context for goroutine cancellation
 
 🚨 9. Common Pitfalls in Go CSP
 Goroutine leaks
