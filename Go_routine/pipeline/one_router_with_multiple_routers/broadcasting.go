@@ -58,26 +58,64 @@ func Broadcasting() {
 
 	wg.Wait()
 }
-func Slice_with_channels() {
-	NoOfChannels := 5
-	channelsda := make([]chan int, NoOfChannels)
 
-	// ✅ Properly initialize each channel
-	for i := 0; i < NoOfChannels; i++ {
-		channelsda[i] = make(chan int)
+// ABOVE CODE IS WRONG:)
+//ONE SENDER - ONLY ONE RECEIVER CAN RECEIVE
+//SO WE HAVE TO USE SLICE OF CHANNELS AND SEND THE DATA TO INDIVIDUAL GO ROUTINES
+
+func Sender(senderchannel chan int, wg *sync.WaitGroup, channels []chan int) {
+	defer wg.Done()
+
+	// Send 5 integers
+	for i := 0; i < 5; i++ {
+		senderchannel <- i
+		time.Sleep(time.Second)
 	}
 
-	// Launch goroutines
-	for i := 0; i < NoOfChannels; i++ {
-		go Routine(i, channelsda[i])
-	}
+	close(senderchannel) // Done sending
+}
 
-	// Receive from each channel
-	for i := 0; i < NoOfChannels; i++ {
-		fmt.Println(<-channelsda[i])
+func Receiver(ch chan int, id int, wg *sync.WaitGroup) {
+	defer wg.Done()
+	for data := range ch {
+		fmt.Printf("Receiver %d got data: %d\n", id, data)
 	}
 }
 
-func Routine(i int, ch chan int) {
-	ch <- i
+func Challelization() {
+	var wg sync.WaitGroup
+
+	// Create 5 receiver channels
+	receivechannels := make([]chan int, 5)
+	for i := 0; i < 5; i++ {
+		receivechannels[i] = make(chan int)
+	}
+
+	// Shared sender channel
+	senderchannel := make(chan int)
+
+	wg.Add(1)
+	go Sender(senderchannel, &wg, receivechannels)
+
+	// Launch receivers
+	for i := 0; i < 5; i++ {
+		wg.Add(1)
+		go Receiver(receivechannels[i], i, &wg)
+	}
+
+	// Read from senderchannel and forward to all receiver channels
+	go func() {
+		for data := range senderchannel {
+			for i := 0; i < len(receivechannels); i++ {
+				receivechannels[i] <- data
+			}
+		}
+
+		// Close all receive channels
+		for i := 0; i < len(receivechannels); i++ {
+			close(receivechannels[i])
+		}
+	}()
+
+	wg.Wait()
 }

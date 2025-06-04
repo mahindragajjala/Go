@@ -1,6 +1,10 @@
 package patterns
 
-import "fmt"
+import (
+	"fmt"
+	"sync"
+	"time"
+)
 
 /*
 Number Doubler
@@ -9,32 +13,41 @@ Number Doubler
 */
 
 func Number_Doubler() {
-	number := Generator()
-	double := Doubler(number)
-	Printer(double)
+	var wg sync.WaitGroup
+	NormalNumber := make(chan int)
+	DoublerNumber := make(chan int)
+	Generator(&wg, NormalNumber)
+	Doubler(&wg, NormalNumber, DoublerNumber)
+	Printer(DoublerNumber)
+	wg.Wait()
 }
+func Generator(wg *sync.WaitGroup, NormalNumber chan int) {
+	wg.Add(1)
+	go func() {
+		for i := 0; i < 50; i++ {
+			NormalNumber <- i
+			time.Sleep(time.Second)
+		}
+		close(NormalNumber)
+		defer wg.Done()
+	}()
 
-func Generator() chan int {
-	Number := make(chan int)
-	for i := 0; i < 5; i++ {
-		Number <- i
-	}
-	return Number
 }
+func Doubler(wg *sync.WaitGroup, number chan int, Double chan int) {
+	wg.Add(1)
+	go func() {
+		defer wg.Done()
+		for data := range number {
+			data = data * data
+			Double <- data
+			time.Sleep(time.Second)
+		}
+		close(Double)
+	}()
 
-/*
-Generator
-❌ This is writing to the channel (Number <- i) without a concurrent reader, so this causes a deadlock.
-
-✅ Fix: Run a goroutine to write values and close the channel when done.
-*/
-func Doubler(num chan int) chan int {
-	ch := make(chan int)
-	digit := <-num
-	digit = digit * digit
-	ch <- digit
-	return ch
 }
 func Printer(double chan int) {
-	fmt.Println(<-double)
+	for data := range double {
+		fmt.Println(data)
+	}
 }
