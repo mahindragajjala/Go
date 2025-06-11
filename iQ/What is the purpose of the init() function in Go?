@@ -3,6 +3,10 @@ What is the purpose of the init() function in Go?
 The init() function in Go is used to initialize variables or state before the program starts executing the main() function. 
 It is automatically invoked by the "Go runtime" during "package initialization" and cannot be called manually.
 
+The init() function in Go is a special, predefined function that is automatically executed by the Go runtime to perform package-level 
+initialization before the main() function is called. It is primarily used to set up the initial state of variables, load configurations, 
+or run setup code when a package is imported.
+
 Purpose of init() Function:
                           Initialize global variables
                           Set up any data before use, especially complex or computed values.
