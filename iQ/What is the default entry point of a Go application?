@@ -1,0 +1,80 @@
+What is the default entry point of a Go application?
+
+In a Go (Golang) application, the default entry point is the func main() inside the main package.
+
+🧩 Default Entry Point: func main()
+📌 Summary:
+Every Go executable program must have a package main.
+Inside package main, the entry point is the main() function.
+When you run go run or build a Go binary, execution starts from main().
+
+✅ Example:
+package main
+import "fmt"
+func main() {
+    fmt.Println("Hello, World!")
+}
+
+✅ Example with both init() and main():
+
+package main
+
+import "fmt"
+
+func init() {
+    fmt.Println("Init function: Setting things up")
+}
+
+func main() {
+    fmt.Println("Main function: Starting the application")
+}
+🧾 Output:
+Init function: Setting things up
+Main function: Starting the application
+
+| Feature          | `func init()`                                        | `func main()`                                                   |
+| ---------------- | ---------------------------------------------------- | --------------------------------------------------------------- |
+| Purpose          | Runs before main(), for setup/initialization         | The entry point of the program                              |
+| Automatic Call   | Yes, called automatically                            | Yes, but only once, by Go runtime                           |
+| Arguments        | Takes no arguments, returns nothing                  | Takes no arguments, returns nothing                     |
+| Order            | Called before main, after global variable setup      | Called after all `init()` functions                         |
+| Multiple Allowed | Yes, can be defined in multiple files/packages       | Only one main() in main package                             |
+| Usage            | - Initialize DBs<br>- Load configs<br>- Setup env    | - App logic<br>- Start HTTP server<br>- Call business functions |
+
+🧠 Order of Execution
+Global variable initializations
+init() functions (in dependency order)
+main() function
+
+🔍 Multiple init() Functions?
+Yes! You can have:
+
+Multiple init() functions in a single file.
+init() in multiple files across multiple packages.
+All will be called before main().
+Example:
+
+func init() {
+    fmt.Println("Init 1")
+}
+
+func init() {
+    fmt.Println("Init 2")
+}
+Output:
+nginx
+Init 1
+Init 2
+
+
+🛑 Important Notes:
+init() cannot be called manually.
+Meant for setup, not for business logic or user interaction.
+Avoid putting heavy logic or HTTP servers in init().
+
+🎯 Summary
+Keyword	Role
+main()	Entry point, runs application logic
+init()	Prepares the environment, runs before main()
+
+
