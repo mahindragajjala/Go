@@ -1,0 +1,107 @@
+What is the purpose of the init() function in Go?
+
+The init() function in Go is used to initialize variables or state before the program starts executing the main() function. 
+It is automatically invoked by the "Go runtime" during "package initialization" and cannot be called manually.
+
+Purpose of init() Function:
+                          Initialize global variables
+                          Set up any data before use, especially complex or computed values.
+                          Configure package state
+                          Useful for setting up configuration settings, loading files, etc.
+                          Register things (plugins, drivers, handlers)
+                          Common in libraries where registration is needed at startup.
+                          Establish connections
+                          For example, database or network connections before use in the main logic.
+package main
+
+import "fmt"
+
+var message string
+
+func init() {
+    message = "Hello from init"
+    fmt.Println("init() called")
+}
+
+func main() {
+    fmt.Println("main() called")
+    fmt.Println(message)
+}
+
+Key Points to Remember:
+                      You can have multiple init() functions in the same package (even in different files).
+                      They run in the order they appear in the file, before main().
+                      No parameters or return values are allowed.
+                      Called once per package, even if imported multiple times.
+
+Package Initialization Order:
+                      Imports are initialized first (recursively).
+                      Then init() of each package is called in import order.
+                      Finally, the main() function is called.
+
+
+                                                        +---------------------+
+                                                        |  Program Starts     |
+                                                        +---------------------+
+                                                                  |
+                                                                  v
+                                                        +---------------------+
+                                                        |  Import Packages    |
+                                                        +---------------------+
+                                                                  |
+                                                                  v
+                                                  +--------------------------------------+
+                                                  | For each imported package:           |
+                                                  | 1. Initialize global variables        |
+                                                  | 2. Call init()                        |
+                                                  +--------------------------------------+
+                                                                  |
+                                                                  v
+                                                 +-------------------------------------------+
+                                                 | Initialize current package:               |
+                                                 | 1. Import other packages first            |
+                                                 | 2. Then initialize its own global vars    |
+                                                 | 3. Then call its own init()               |
+                                                 +-------------------------------------------+
+                                                                  |
+                                                                  v
+                                                        +---------------------+
+                                                        |   Call main()       |
+                                                        +---------------------+
+
+
+When a single package has multiple init() functions, Go calls all of them automatically — but in a well-defined order.
+
+🧠 How Go Handles Multiple init() Functions in a Package
+✅ Go will:
+            Initialize global/package-level variables first
+            Then run all init() functions
+            Finally, call main() (only in the main package)
+
+Order of Multiple init() Calls:
+            🔹 Rule 1: Across files
+                                      Go runs init() functions in the lexical file name order (e.g., a.go, b.go, z.go)
+                                      When Go compiles a package, and that package has multiple .go files, it runs the init() functions in the order of their 
+                                      file names (alphabetical) — not based on when they were created or edited.
+                                      
+                                      So:
+                                      a.go → b.go → c.go
+                                      not:
+                                      z.go → a.go
+                                      /myapp/
+                                      │
+                                      ├── main.go          --> Package main
+                                      │
+                                      └── /mypkg/          --> Custom package
+                                          ├── a.go         --> init() A
+                                          ├── b.go         --> init() B
+                                          └── c.go         --> init() C
+            
+            🔹 Rule 2: Within the same file
+            If a file has multiple init() functions, they run in top-to-bottom order as they appear.
+
+
+
+
+
+
