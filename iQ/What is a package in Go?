@@ -1,0 +1,148 @@
+What is a package in Go?
+
+
+A package in Go (Golang) is a way to organize code into reusable units. 
+
+Each Go source file belongs to a package, and all identifiers (functions, variables, constants, types, etc.) declared in a file are 
+scoped to the package it belongs to.
+
+Think of a package as a folder containing one or more .go files working together to provide specific functionality.
+
+
+
+Structure of a Go Package
+                          Every Go file begins with a package declaration:
+                          
+                          package main
+                          This tells the Go compiler that the file belongs to the main package.
+
+ Type                          Description                                                                                           
+ Main Package                  Special package that defines a standalone executable application. Must contain a `main()` function. 
+ Custom/Library Package        Regular packages meant to be imported and reused. They don't contain `main()`.                      
+
+
+Example:
+                                  package main → used for running an app.
+                                  package mathutils → used for utility functions like Add, Subtract
+
+Importing Packages
+                  To reuse code, you import a package:
+                  import "fmt"
+
+                  You can also import your own packages:
+                  import "myproject/mathutils"
+Standard Library Packages
+                  Go comes with a large set of built-in packages:
+                  | Package    | Description              |
+                  | ---------- | ------------------------ |
+                  | `fmt`      | Formatted I/O (printing) |
+                  | `os`       | OS-level functionality   |
+                  | `math`     | Basic math operations    |
+                  | `net/http` | HTTP servers and clients |
+                  | `io`       | Input/Output primitives  |
+
+
+Visibility & Exporting Rules
+          Identifiers that start with a capital letter are exported (public).
+          Identifiers that start with a lowercase letter are unexported (private to the package).
+
+          package mathutils
+          var Count int          // exported
+          var internalCount int  // not exported
+
+init() Function in Packages
+          Each Go file can have an init() function. 
+          It runs before main() or before other functions in that package are used.
+
+
+                                                Package Lifecycle Flow
+                                                +----------------------+
+                                                | Source Code (.go)    |
+                                                | -> With package stmt |
+                                                +----------------------+
+                                                            ↓
+                                                +----------------------+
+                                                | go build / go run    |
+                                                +----------------------+
+                                                            ↓
+                                                +----------------------+
+                                                | Compiler identifies  |
+                                                | and compiles packages|
+                                                +----------------------+
+                                                            ↓
+                                                +----------------------+
+                                                | init() executed      |
+                                                | main() starts        |
+                                                +----------------------+
+
+
+Go Project Structure with Packages – ASCII Diagram
+📁 /home/mahindra/go_projects/myapp/
+│
+├── 📄 main.go                ← belongs to `package main`
+│
+├── 📁 mathutils/             ← folder (package name: mathutils)
+│   ├── 📄 add.go             ← belongs to `package mathutils`
+│   └── 📄 subtract.go        ← belongs to `package mathutils`
+│
+├── 📁 stringutils/          ← another custom package
+│   └── 📄 reverse.go         ← belongs to `package stringutils`
+│
+├── 📁 vendor/               ← external dependencies (if used)
+│
+└── 📁 go.mod & go.sum       ← module definition & dependencies
+
+
+                                                      +------------------------------+
+                                                      | Go compiler (`go build`)     |
+                                                      +------------------------------+
+                                                                  │
+                                                                  ▼
+                                                      +---------------------------------------+
+                                                      | Step 1: Parses `main.go`              |
+                                                      |         → Detects `import mathutils`  |
+                                                      +---------------------------------------+
+                                                                  │
+                                                                  ▼
+                                                      +----------------------------------------+
+                                                      | Step 2: Loads `mathutils` package      |
+                                                      |         from ./mathutils/             |
+                                                      |         Compiles `add.go`, `subtract.go`|
+                                                      +----------------------------------------+
+                                                                  │
+                                                                  ▼
+                                                      +-----------------------------------------+
+                                                      | Step 3: Loads `stringutils` package     |
+                                                      |         Compiles `reverse.go`           |
+                                                      +-----------------------------------------+
+                                                                  │
+                                                                  ▼
+                                                      +------------------------------------+
+                                                      | Step 4: Executes all init()        |
+                                                      |         functions (if any)         |
+                                                      +------------------------------------+
+                                                                  │
+                                                                  ▼
+                                                      +----------------------+
+                                                      | Runs main.main()     |
+                                                      +----------------------+
+                                                      
+                                                      
+                                                      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
