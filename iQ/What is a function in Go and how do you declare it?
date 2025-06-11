@@ -41,10 +41,6 @@ Or using short form if both have same type:
                             }
 
 🔹 Function with Return Value
-  
-  You can give names to return values and use a bare return.
-
-
                           func multiply(x, y int) int {
                               return x * y
                           }
@@ -73,11 +69,6 @@ Or using short form if both have same type:
                     func main() {
                         fmt.Println("Program starts here.")
                     }
-
-
-
-
-
 
 
 
