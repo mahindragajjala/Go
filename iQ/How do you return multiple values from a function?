@@ -1,0 +1,98 @@
+How do you return multiple values from a function?
+
+
+In Go, you can return multiple values from a function by specifying multiple return types in the function 
+signature and then using a comma-separated list of return values in the return statement.
+
+Returning Values with Error
+                          Common in Go to return a value and an error.
+                          func divide(a, b int) (int, error) {
+                              if b == 0 {
+                                  return 0, fmt.Errorf("division by zero")
+                              }
+                              return a / b, nil
+                          }
+
+Named Return Values
+                    You can give names to return values and use a bare return.
+                    func rectangleInfo(length, width int) (area int, perimeter int) {
+                        area = length * width
+                        perimeter = 2 * (length + width)
+                        returns area, perimeter
+                    }
+
+Return Multiple Slices or Maps
+                                func splitData() ([]int, []string) {
+                                    return []int{1, 2, 3}, []string{"a", "b", "c"}
+                                }
+
+Return Struct Instead of Multiple Values
+                                        Sometimes it’s cleaner to define a struct instead of multiple return values.
+                                        type Result struct {
+                                            Min int
+                                            Max int
+                                            Avg float64
+                                        }
+                                        
+                                        func calculate(nums []int) Result {
+                                            min, max, sum := nums[0], nums[0], 0
+                                            for _, v := range nums {
+                                                if v < min {
+                                                    min = v
+                                                }
+                                                if v > max {
+                                                    max = v
+                                                }
+                                                sum += v
+                                            }
+                                            return Result{Min: min, Max: max, Avg: float64(sum) / float64(len(nums))}
+                                        }
+Anonymous Struct Return
+                        If you don’t need to reuse the struct type elsewhere:
+                                    func getData() struct {
+                                        Name string
+                                        Age  int
+                                    } {
+                                        return struct {
+                                            Name string
+                                            Age  int
+                                        }{"John", 30}
+                                    }
+
+Returning Interface and Concrete Type
+                                    Used when abstracting implementation:
+                                    func getShape() (string, interface{}) {
+                                        return "circle", 3.14 // name and area
+                                    }
+Variadic Return (Not Supported)
+                              Go doesn’t support func() ...int as return, but you can return a slice:
+                              func returnMany() []int {
+                                  return []int{1, 2, 3, 4}
+                              }
+
+
+Rules:
+      You must return the exact number of values declared in the return signature.
+      Use _ to ignore values if you don’t need them.
+      Use return alone only if using named return values.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
