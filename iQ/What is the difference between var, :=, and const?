@@ -1,0 +1,41 @@
+What is the difference between var, :=, and const?
+In Go (Golang), var, :=, and const are all used for defining variables or constants, but they have different purposes, 
+usage rules, and behavior.
+
+🔹 1. var: Explicit Variable Declaration
+Used to declare a variable with an optional type and optional initial value.
+
+Syntax:
+var x int       // Declares x with type int, zero value is 0
+var y = 10      // Declares y, type is inferred as int
+var z string = "GoLang" // Declares z with type string and value
+
+Features:
+Can be used at package-level and function-level.
+Allows you to specify a type.
+If no initial value is given, variable is assigned a zero value (e.g., 0 for int, "" for string, nil for pointers).
+
+🔹 2. := : Short Variable Declaration
+Used for declaring and initializing a variable inside a function (not allowed at package level).
+Syntax:
+x := 10          // x is declared as int with value 10
+name := "GoLang" // name is string
+Features:
+Only used inside functions.
+Go infers the type from the right-hand side value.
+Can only be used for new variables in that scope.
+Cannot be used for reassignment alone; at least one new variable must be introduced:
+x := 5
+x, y := 6, 7 // x is updated, y is new
+
+🔹 3. const: Constant Declaration
+Used to declare a constant (a value that cannot change).
+Syntax:
+const pi = 3.14
+const appName string = "MyApp"
+Features:
+Cannot be changed once assigned.
+
+Must be assigned a compile-time constant (not calculated at runtime).
+Cannot use functions or variables on the right-hand side.
+Used at both package-level and function-level.
