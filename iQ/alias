@@ -1,0 +1,29 @@
+What is type aliasing in Go?
+In Go, a type alias allows you to give an existing type another name, without creating a new type.
+
+type AliasName = OriginalType
+
+Key Concept:
+Type alias = same type with a new label.
+
+Used to rename existing types for clarity, readability, or compatibility.
+
+| Feature                | Alias (`=`)      | Custom Type (`type`) |
+| ---------------------- | ---------------- | -------------------- |
+| Definition             | `type A = B`     | `type A B`           |
+| Treated as new type?   | ❌ No             | ✅ Yes                |
+| Type conversion needed | ❌ No             | ✅ Yes                |
+| Example                | `type Age = int` | `type Age int`       |
+
+
+type MyAlias = string
+type MyType string
+
+func main() {
+    var a MyAlias = "hello"
+    var b MyType = "world"
+
+    a = "new"        // ✅ OK
+    b = MyType("hi") // ✅ Need explicit conversion
+    // a = b          // ❌ Invalid: MyType is not the same as string
+}
