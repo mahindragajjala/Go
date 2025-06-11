@@ -1,0 +1,68 @@
+🧠 1. Basic Data Types
+                        | Category         | Type                                                     | Description                        | Example                     |
+                        | ---------------- | -------------------------------------------------------- | ---------------------------------- | --------------------------- |
+                        | Integer (signed) | `int`, `int8`, `int16`, `int32`, `int64`                 | Signed integers                    | `var x int = 10`            |
+                        | Unsigned int     | `uint`, `uint8`, `uint16`, `uint32`, `uint64`, `uintptr` | Non-negative ints                  | `var u uint = 20`           |
+                        | Floating-point   | `float32`, `float64`                                     | Decimal numbers                    | `var pi float64 = 3.14`     |
+                        | Complex numbers  | `complex64`, `complex128`                                | Complex numbers (real + imaginary) | `var c complex128 = 2 + 3i` |
+
+🔤 2. String Type
+                  Type	Description	Example
+                  string	Immutable sequence of bytes	var name string = "GoLang"
+
+🔘 3. Boolean Type
+                  Type	Description	Example
+                  bool	Only true or false	var flag bool = true
+
+📦 4. Derived Data Types
+
+                      ⛓️ Array
+                              Fixed-size collection of elements of the same type.
+                              var arr [3]int = [3]int{1, 2, 3}
+
+                      📋 Slice
+                              Dynamically sized, more flexible than arrays.
+                              var s []int = []int{1, 2, 3}
+
+                      🗺️ Map
+                            Key-value pair collection.
+                            var m map[string]int = map[string]int{"one": 1, "two": 2}
+
+                      📌 Struct
+                                Collection of fields (like a record).
+                                type Person struct {
+                                    Name string
+                                    Age  int
+                                }
+
+                      🔗 Pointer
+                                    Holds the address of another variable.
+                                    var p *int
+
+🧰 5. Function Type
+                    Functions are also types and can be assigned to variables.
+                    var f func(int, int) int
+
+🧱 6. Interface Type
+                    Describes behavior. Used for polymorphism.
+                    type Reader interface {
+                        Read(p []byte) (n int, err error)
+                    }
+
+🕳️ 7. Channel Type
+                    For communication between goroutines.
+                    var ch chan int
+
+🌀 8. Special Types
+                    Type	Description
+                    byte	Alias for uint8 (used for characters)
+                    rune	Alias for int32 (used for Unicode code points)
+                    uintptr	Unsigned int used for storing pointer addresses
+
+🔮 9. Empty Interface
+                    Can hold values of any type (used for generics before Go 1.18).
+                    var x interface{} = "hello"
+
+🔁 10. Custom Types and Type Aliases
+                    type MyInt int         // Custom type
+                    type AliasInt = int    // Type alias
