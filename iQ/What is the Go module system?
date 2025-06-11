@@ -1,0 +1,71 @@
+What is the Go module system?
+Definition in go :
+1. Go module system is the mechanism Go uses to manage dependencies, version control, and project 
+structure through go.mod and go.sum files, enabling reliable and repeatable builds.
+
+2. The Go module system helps you manage your project and the extra code (called dependencies) it needs. 
+It keeps track of which packages your program uses, what versions they are, and makes sure everything 
+works the same way every time you build or run your code. 
+
+It uses two files:
+go.mod to list the packages your project needs
+go.sum to make sure those packages haven't been changed or tampered with.
+
+What Is a Go Module?
+A Go module is a collection of Go packages stored in a directory with a go.mod file at its root.
+
+| Feature       | Description                                                                   |
+| ------------- | ----------------------------------------------------------------------------- |
+| `go.mod`      | Declares the module path and dependencies.                                    |
+| `go.sum`      | Records cryptographic checksums of dependencies for verification.             |
+| Module path   | A unique identifier, usually a repository URL (e.g., `github.com/user/repo`). |
+| Versioning    | Uses semantic versioning (`v1.2.3`) to manage dependency versions.        |
+| Proxy support | Can download modules from a proxy server like `proxy.golang.org`.             |
+| Vendoring     | Copies dependencies into the `vendor/` directory using `go mod vendor`.       |
+
+
+
+Common Go Module Commands
+Command	                           Purpose
+go mod init <module-name>	         Initializes a new module and creates go.mod.
+go get <pkg>@<version>	           Adds or upgrades a dependency.
+go build / go run	                 Automatically resolves and downloads needed modules.
+go mod tidy	                       Cleans up unused dependencies and adds missing ones.
+go mod download	                   Downloads all modules to local cache.
+go list -m all	                   Lists all modules required by the current module.
+
+
+go.mod Example
+module github.com/myuser/myproject
+
+go 1.20
+
+require (
+    github.com/gin-gonic/gin v1.8.1
+    golang.org/x/net v0.8.0
+)
+
+
+
+How It Works (Flow)
+
+Project Folder/
+│
+├── go.mod        <-- Declares module & dependencies
+├── go.sum        <-- Verifies integrity of dependencies
+├── main.go       <-- Your Go code
+└── ...           <-- Other packages
+
+
+
+
+
+
+
+
+
+
+
+
+
+
