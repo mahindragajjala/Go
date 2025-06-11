@@ -1,0 +1,244 @@
+Dynamic vs Static Typing – In-Depth Explanation with Real-Time Examples
+
+
+
+✅ 1. What is Typing in Programming?
+
+"Typing" refers to how a programming language handles data types — such as integers, strings, booleans, floats, etc.
+
+The difference between dynamic typing and static typing lies in when the type of a variable is determined and how strictly it is enforced.
+
+
+
+🔵 2. Static Typing
+
+In statically typed languages, the type of a variable is known at compile time. You must declare the type before using it, and it doesn’t change later.
+
+🧠 Key Features:
+
+* Type checking happens at compile time
+* Variables are bound to a type
+* Fewer runtime errors
+* IDEs can give better autocompletion and error detection
+
+🧾 Examples of Statically Typed Languages:
+
+* C
+* C++
+* Java
+* Go (Golang)
+* Rust
+
+📌 Real-Time Example – Golang
+
+
+package main
+
+import "fmt"
+
+func main() {
+    var age int = 30         // Type is explicitly defined
+    var name string = "John" // String type
+
+    fmt.Println(age, name)
+
+    // age = "thirty" // ❌ Compilation error: cannot assign string to int
+}
+
+
+⛔ Error is caught before the program runs.
+
+
+
+🟠 3. Dynamic Typing
+
+In dynamically typed languages, the type of a variable is determined at runtime. You don’t have to declare the type.
+
+🧠 Key Features:
+
+* Type checking happens at runtime
+* Variables are bound to values, not types
+* More flexibility, but more prone to runtime errors
+
+🧾 Examples of Dynamically Typed Languages:
+
+* Python
+* JavaScript
+* Ruby
+* PHP
+
+📌 Real-Time Example – Python
+
+
+age = 30            Integer
+name = "John"       String
+
+print(age, name)
+
+age = "thirty"      ✔️ Allowed — type changed from int to str
+print(age)
+
+
+🚨 If you later try to do `age + 1`, Python will throw a runtime error, because `"thirty" + 1` is invalid.
+
+
+
+🔁 4. Real-Life Scenario Comparison
+
+✅ Static Typing (e.g., Java, Go):
+
+ATM Machine Software
+
+* You want strict rules.
+* You can’t risk a variable meant to store money (float) becoming a string.
+* You catch bugs at compile time.
+
+✅ Dynamic Typing (e.g., Python):
+
+Scripting for Data Analysis
+
+* You want quick, flexible code.
+* You don't want to define every data type.
+* Suitable when exploring data or writing throwaway scripts.
+
+
+
+⚖️ 5. Pros and Cons
+
+| Feature         | Static Typing                        | Dynamic Typing 
+
+| Speed           | Faster execution (compiled)          | Slower (type-checked at runtime) |
+| Error Detection | Errors caught early (compile time)   | Errors can appear at runtime     |
+| Flexibility     | Less flexible                        | More flexible (types can change) |
+| IDE Support     | Excellent (code completion, linting) | Weaker (unless using type hints) |
+| Code Safety     | Strong type safety                   | Prone to type-related bugs       |
+| Code Verbosity  | More verbose                         | Less code, faster prototyping    |
+
+
+
+🧪 6. Hybrid Typing (Extra Insight)
+
+Some modern languages offer type inference or a mix of both:
+
+* TypeScript (JavaScript with optional static typing)
+* Python 3.5+ (optional static typing with `mypy`)
+* Kotlin (static typing with type inference)
+
+
+
+🧵 Summary
+
+| Feature           | Static Typing             | Dynamic Typing           |
+
+| When checked?     | Compile-time              | Runtime                  |
+| Type declaration? | Required                  | Not required             |
+| Error detection?  | Early                     | Late                     |
+| Use cases         | Critical systems, backend | Prototyping, scripting   |
+| Examples          | Java, Go, C++             | Python, JavaScript, Ruby |
+
+
+
+
+Compile Time and Run Time
+
+ ✅ What is Compile Time and Run Time?
+
+Compile Time -The period when source code is translated into machine code (before execution).
+Run Time - The period when the program is running or executing on your computer. 
+
+ 🔵 1. Compile Time (Before Running)
+
+ 🧠 Meaning:
+
+* When you write code and the compiler checks it for syntax errors, translates it into machine code (binary).
+* Happens before the program starts running.
+
+ 🛠️ What Happens:
+
+* Syntax checking (e.g., missing semicolon, type mismatch)
+* Type checking (e.g., `int` cannot be assigned a `string`)
+* Code is turned into an executable (.exe or binary file)
+
+ ✅ Example in Go:
+
+
+var age int = "twenty" // ❌ Compile-time error: type mismatch
+
+
+You can't even run the program until you fix the error.
+
+ 🎯 Real-Life Analogy:
+
+> Like checking for spelling mistakes in an essay before printing it.
+> If there's a mistake, you can't print (run) it.
+
+
+
+ 🟠 2. Run Time (During Execution)
+
+ 🧠 Meaning:
+
+* This is when the program actually runs on your computer.
+* All logic is executed step-by-step.
+* Errors here are called runtime errors (e.g., divide by zero, file not found, null pointer).
+
+ ✅ Example in Go:
+
+
+var nums = []int{1, 2, 3}
+
+
+It compiles fine, but crashes while running because index 5 doesn't exist.
+
+ 🎯 Real-Life Analogy:
+
+> Like trying to play a video file. The file is fine, but if your computer runs out of memory or power during playback, that's a runtime error.
+
+
+package main
+
+import "fmt"
+
+func main() {
+    var name int = "John" // ❌ Compile-time error
+    fmt.Println(10 / 0)   // ❌ Runtime error (if compile passed)
+}
+
+
+* 🔴 Line 1: Compile-time error — program won’t run.
+* 🔴 Line 2: If line 1 is fixed, this causes a runtime error (division by zero).
+
+                ┌──────────────────────────────┐
+                │        Write Source Code     │
+                └────────────┬─────────────────┘
+                             │
+                             ▼
+                ┌──────────────────────────────┐
+                │      Compile the Code        │◄─────┐
+                └────────────┬─────────────────┘      │
+                             │                        │
+                   Syntax / Type Checking             │
+                   Translate to Machine Code          │
+                             │                        │
+        ┌───────── Compile-Time Error? ─────────────┐ │
+        │                  Yes                      │ │
+        ▼                                           ▼ ▼
+   Fix the Code                              ┌────────────────────┐
+        ▲                                    │  Program Executable │
+        └───────────────────────────────────►└─────────┬──────────┘
+                                                        │
+                                                        ▼
+                                              ┌────────────────────┐
+                                              │     Run the Code    │
+                                              └─────────┬──────────┘
+                                                        │
+                                        Input, Loops, Logic, Function Calls
+                                                        │
+                                ┌───── Runtime Error? ─────┐
+                                │           Yes            │
+                                ▼                         ▼
+                         Crash or Unexpected         ┌───────────────┐
+                         Output (e.g., panic)        │ Program Output│
+                                ▲                    └───────────────┘
+                                └───── Fix Logic and Re-run ────────►
+
