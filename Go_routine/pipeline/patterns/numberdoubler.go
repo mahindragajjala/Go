@@ -18,13 +18,13 @@ func Number_Doubler() {
 	DoublerNumber := make(chan int)
 	Generator(&wg, NormalNumber)
 	Doubler(&wg, NormalNumber, DoublerNumber)
-	Printer(DoublerNumber)
+	Printer(&wg, DoublerNumber)
 	wg.Wait()
 }
 func Generator(wg *sync.WaitGroup, NormalNumber chan int) {
 	wg.Add(1)
 	go func() {
-		for i := 0; i < 50; i++ {
+		for i := 0; i < 5; i++ {
 			NormalNumber <- i
 			time.Sleep(time.Second)
 		}
@@ -46,8 +46,13 @@ func Doubler(wg *sync.WaitGroup, number chan int, Double chan int) {
 	}()
 
 }
-func Printer(double chan int) {
-	for data := range double {
-		fmt.Println(data)
-	}
+func Printer(wg *sync.WaitGroup, double chan int) {
+	wg.Add(1)
+	go func() {
+		defer wg.Done()
+		for data := range double {
+			fmt.Println(data)
+		}
+	}()
+
 }

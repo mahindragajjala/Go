@@ -28,6 +28,11 @@ Here’s a curated list of coding questions to practice pipelines in Go, progres
 
  🟡 Intermediate Level: Pipeline Composition and Optimization
 
+ 
+input -> [Stage1] -> [Stage2] -> [Stage3] -> output
+          |           |           |
+        chan1       chan2       chan3
+
 6. Multi-stage Arithmetic
     For a list of numbers, apply: square → add 10 → halve
     Stages: Generator → Square → Add10 → Halve → Printer
@@ -52,7 +57,7 @@ Here’s a curated list of coding questions to practice pipelines in Go, progres
 
 11. Fan-Out Fan-In Prime Filter
      Generate numbers, filter primes using multiple workers, and merge results.
-
+       
 12. Concurrent File Processor
      Given a list of filenames, read file content concurrently, clean text, and count word frequency.
 
