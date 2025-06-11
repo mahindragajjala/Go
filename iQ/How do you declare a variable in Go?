@@ -1,0 +1,70 @@
+In Go (Golang), variables can be declared in several ways depending on the context, 
+scope, and the level of shorthand or type inference you want to use.
+
+🔰 1. Using the `var` keyword with type
+This is the standard way to declare a variable with an explicit type.
+var age int
+You can also assign a value at the same time:
+var name string = "Mahindra"
+
+🔰 2. Using `var` with type inference
+Go can infer the type based on the assigned value.
+var city = "Hyderabad"  // Go infers this is a string
+
+🔰 3. Short variable declaration (`:=`)
+This is the most concise form, used only inside functions (not at the package level).
+message := "Hello, Go!"  // Go infers it's a string
+count := 10              // Go infers it's an int
+
+🔰 4. Multiple variable declarations
+You can declare multiple variables at once.
+var x, y, z int
+With values:
+var a, b, c = 1, 2, 3
+Or using shorthand:
+name, age := "Gopal", 30
+
+🔰 5. Grouped variable declarations
+Useful for organizing multiple declarations together.
+
+var (
+    id       int
+    username string
+    salary   float64
+)
+
+With initialization:
+var (
+    id       = 101
+    username = "gajjalam"
+    salary   = 50000.0
+)
+
+🔰 6. Constant declaration (not variable but similar)
+For fixed values that don’t change.
+const pi = 3.14
+const version string = "1.0.0"
+
+🔰 7. Zero values (default initialization)
+When a variable is declared without initialization, it gets a default value:
+| Type      | Default Value |
+| --------- | ------------- |
+| `int`     | `0`           |
+| `string`  | `""` (empty)  |
+| `bool`    | `false`       |
+| `float`   | `0.0`         |
+| `pointer` | `nil`         |
+
+var number int     // 0
+var isActive bool  // false
+
+
+✅ Summary Table
+| Declaration Style    | Scope          | Example                       |
+| -------------------- | -------------- | ----------------------------- |
+| `var name type`      | global/local   | `var age int`                 |
+| `var name = value`   | global/local   | `var name = "Go"`             |
+| `name := value`      | function-local | `count := 10`                 |
+| `var ( ... )` block  | global/local   | `var (\n x int\n y string\n)` |
+| Multiple in one line | global/local   | `var x, y = 10, 20`           |
+
