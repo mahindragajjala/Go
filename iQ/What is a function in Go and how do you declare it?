@@ -1,0 +1,171 @@
+What is a function in Go and how do you declare it?
+
+                                In Go (Golang), a function is a block of code that performs a specific task. 
+                                It can take input parameters, return values, or both. 
+                                Functions help you reorganize and reuse code efficiently.
+
+
+
+
+🔹 Basic Function Syntax in Go
+
+                              func functionName(parameterList) returnType {
+                                  // function body
+                              }
+
+
+🔹 Example: Function with No Parameters and No Return
+
+                              package main
+                              
+                              import "fmt"
+                              
+                              func greet() {
+                                  fmt.Println("Hello, Gopher!")
+                              }
+                              
+                              func main() {
+                                  greet() // Function call
+                              }
+
+🔹 Function with Parameters
+
+                            func add(a int, b int) {
+                                fmt.Println("Sum:", a + b)
+                            }
+
+
+Or using short form if both have same type:
+                            func add(a, b int) {
+                                fmt.Println("Sum:", a + b)
+                            }
+
+
+🔹 Function with Return Value
+
+                          func multiply(x, y int) int {
+                              return x * y
+                          }
+
+
+
+🔹 Function with Multiple Return Values
+                        func divide(a, b int) (int, int) {
+                            return a / b, a % b
+                        }
+
+🔹 Named Return Values
+                      func rectangleStats(length, width int) (area int, perimeter int) {
+                          area = length * width
+                          perimeter = 2 * (length + width)
+                          return
+                      }
+
+
+🔹 Main Function (Entry Point)
+                    Every Go program starts executing from the main function:
+                    func main() {
+                        fmt.Println("Program starts here.")
+                    }
+
+
+
+
+
+
+
+
+Memory Management of Functions in Go (Golang)
+                                            Go uses automatic memory management through garbage collection.
+                                            When it comes to functions, memory is handled differently for:
+                                            Parameters
+                                            Local variables
+                                            Return values
+                                            Closures (functions that reference variables from outside their body)
+                                                                                        
+                                            Let's break down how Go handles memory for functions
+
+
+1. Function Call Stack (Stack Memory)
+                                      When a function is called:
+                                      Parameters and local variables are stored in the stack frame of that function.
+                                      Each function call creates a new frame on the call stack.
+                                      When the function returns, that stack frame is discarded, and memory is reclaimed immediately.
+                                      
+                                      
+                                      func add(a int, b int) int {
+                                          sum := a + b  // Local variable in stack
+                                          return sum
+                                      }
+                                      func main() {
+                                          result := add(10, 20) // 'result' is in main's stack frame
+                                      }
+                                
+                                      
+                                      
+                                      Stack:
+                                      +-------------------+   <- main()
+                                      | result: 30        |
+                                      +-------------------+
+                                      | a:10, b:20, sum:30|   <- add() frame (temporary)
+                                      +-------------------+
+                                      
+                                      🧹 When add() finishes, its frame is popped off the stack, and memory is reclaimed.
+
+2.Heap Allocation (Escaping Variables)
+                                      If a local variable’s lifetime needs to extend beyond the function (e.g., returned or referenced 
+                                      by a closure), 
+                                      it is allocated on the heap, not the stack.
+                                      
+                                      func createPointer() *int {
+                                          x := 100     // Escapes to heap because returned
+                                          return &x
+                                      }
+                                      📌 Here, x lives on the heap because it's returned and used after the function ends.
+                                      
+                                      
+                                      Escape Analysis
+                                      Go compiler performs escape analysis to decide if variables should be stored in the stack or heap.
+                                      
+                                      ✅ Stack: Fast, temporary
+                                      🧠 Heap: Slower, long-lived, managed by Garbage Collector
+
+  3. Garbage Collector (GC)
+                            If a function allocates memory on the heap, Go’s garbage collector will clean it up automatically 
+                            when it's no longer referenced.
+                            
+                            
+                            func makeData() *[]int {
+                                data := []int{1, 2, 3} // May go to heap
+                                return &data
+                            }
+                            GC tracks data and removes it from heap only when no references exist.
+
+4. Closures and Captured Variables
+                                  Closures (functions inside functions) can capture variables from the outer scope, 
+                                  which means those variables might need to live on the heap.
+                                                                    
+                                  func counter() func() int {
+                                      x := 0
+                                      return func() int {
+                                          x++
+                                          return x
+                                      }
+                                  }
+                                  x needs to live as long as the returned function, so it goes to the heap.
+
+
+
+                  
+                  | Component         | Memory Location | Managed By        | Lifetime                    |
+                  | ----------------- | --------------- | ----------------- | --------------------------- |
+                  | Parameters        | Stack           | Automatically     | Until function returns      |
+                  | Local variables   | Stack           | Automatically     | Until function returns      |
+                  | Escaped variables | Heap            | Garbage Collector | Until no reference remains  |
+                  | Return values     | Stack/Heap      | Depends on usage  | Heap if escapes function    |
+                  | Closures          | Heap (captured) | Garbage Collector | As long as closure is alive |
+                  
+
+
+
+
