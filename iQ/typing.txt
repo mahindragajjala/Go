@@ -1,0 +1,36 @@
+ Feature              Description 
+
+ Compiled             Converts code into a single binary executable.                       
+ Statically Typed     Type checking is done at compile time.                               
+ Garbage Collected    Automatically manages memory.                                        
+ Concurrency Support  Built-in concurrency model using goroutines and channels.            
+ Fast Compilation     Very fast build times compared to other compiled languages.          
+ Cross-Platform       Can build binaries for Windows, Linux, macOS, etc.                   
+ Simple Syntax        Clean and minimalistic, inspired by C, but easier to read and write. 
+
+Go (also known as Golang) is an "open-source", "statically typed", "compiled programming language" designed for "simplicity", 
+"high performance", and ease of use, especially for "system-level" and "server-side development".
+
+Who Created Go?
+Go was created at Google in 2007 by:
+Robert Griesemer
+Rob Pike
+Ken Thompson (one of the original creators of Unix)
+It was publicly announced in November 2009 as an open-source project.
+
+Why Go Was Created
+The creators were frustrated with:
+"Long build times" in large C++ projects.
+Complexity of modern C++.
+Lack of good "concurrency support".
+Go was designed to:
+Improve "developer productivity".
+Make concurrent programming easier.
+Be efficient for "cloud infrastructure" and "networking tools".
+
+Where is Go Used?
+Cloud-native development (e.g., Docker, Kubernetes are written in Go)
+Web backends and APIs (via frameworks like Gin, Echo)
+Networking tools
+CLI tools
+Distributed systems
