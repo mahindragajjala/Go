@@ -1,0 +1,59 @@
+In Go (Golang), multiple variable declarations are handled in a clean and structured way. You can declare multiple variables in a 
+single line or in a block, using either the var keyword or the short declaration (:=).
+
+🔹 1. Using var with multiple variables
+✅ Single line
+                var a, b, c int
+                Here, a, b, and c are all of type int.
+                You can also assign values:
+                var x, y, z = 1, 2, 3
+                Here, Go infers(అంచనా వేస్తుంది) the types from the values (type inference).
+
+✅ Multi-line block form
+                        var (
+                            name   string
+                            age    int
+                            salary float64
+                        )
+                        This is commonly used for grouped, clean declarations.
+
+🔹 2. Using short declaration (:=)
+                        You can use := inside functions to declare and initialize multiple variables at once:
+                        a, b, c := 1, "hello", true
+                        Go infers types here:
+                        a is int
+                        b is string
+                        c is bool
+                      🟡 This form cannot be used outside functions (i.e., not at the package level).
+
+🔹 3. Mixing types and values
+                      You don’t need all variables to be of the same type:
+                      var (
+                          a = 42
+                          b = "GoLang"
+                          c = true
+                      )
+                      Go figures out the types automatically.
+
+🔹 4. Redeclaring with some existing variables
+                      You can partially redeclare using := if at least one variable is new:
+                      x := 5
+                      x, y := 10, 20  // x is reassigned, y is newly declared
+🔹 Best Practices
+                      Use block form (var (...)) for better readability when declaring many variables.
+                      Use := for concise declaration within functions.
+                      Avoid repeating types when they are the same — group them.
+
+📌 Example Program
+
+                  package main
+                  
+                  import "fmt"
+                  
+                  func main() {
+                      var x, y, z int = 1, 2, 3
+                      name, age, isMember := "Alice", 30, true
+                  
+                      fmt.Println(x, y, z)
+                      fmt.Println(name, age, isMember)
+                  }
