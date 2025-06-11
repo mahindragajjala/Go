@@ -40,8 +40,10 @@ Or using short form if both have same type:
                                 fmt.Println("Sum:", a + b)
                             }
 
-
 🔹 Function with Return Value
+  
+  You can give names to return values and use a bare return.
+
 
                           func multiply(x, y int) int {
                               return x * y
@@ -50,12 +52,16 @@ Or using short form if both have same type:
 
 
 🔹 Function with Multiple Return Values
+      Return fixed number of values directly.
+
                         func divide(a, b int) (int, int) {
                             return a / b, a % b
                         }
 
 🔹 Named Return Values
-                      func rectangleStats(length, width int) (area int, perimeter int) {
+      You can give names to return values and use a bare return.
+
+                    func rectangleStats(length, width int) (area int, perimeter int) {
                           area = length * width
                           perimeter = 2 * (length + width)
                           return
