@@ -1,0 +1,36 @@
+//How do you comment in Go?
+
+
+In Go (Golang), you can write comments to describe your code for better readability and maintainability. Comments are ignored by the compiler and do not affect program execution.
+
+✅ 1. Types of Comments in Go
+🔹 A. Singleline Comment
+						Starts with //
+									Used for short explanations or notes
+									// This is a singleline comment
+									fmt.Println("Hello, Go!")
+🔹 B. Multiline Comment (Block Comment)
+						Starts with /* and ends with */
+						Can span multiple lines
+
+						/*
+						This is a multiline comment.
+						It can be used to explain complex logic
+						or temporarily disable blocks of code.
+						*/
+						fmt.Println("Welcome!")
+
+🟩 Documentation Comments (Recommended for Exported Code)
+						Begin with the name of the identifier (function, type, etc.)
+						Used by Go tools like godoc
+						// Add adds two integers and returns the result.
+						func Add(a int, b int) int {
+							return a + b
+						}
+🔸 Good practice: Always use complete sentences for documentation of exported functions/types
+
+ Type           Syntax             Use For                                  
+      
+ Singleline    `//`               Short notes, inline explanations         
+ Multiline     `/* */`            Long comments, block disable, notes      
+ Documentation  `// FunctionName`  Doc for exported items (used by `godoc`) 
