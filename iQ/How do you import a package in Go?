@@ -1,0 +1,92 @@
+How do you import a package in Go?
+
+In Go (Golang), importing packages is essential for accessing functions, types,
+variables, and constants defined in external or standard libraries. 
+
+Let’s break this down step by step:
+
+✅ 1. What is a Package in Go?
+                              A package is a collection of Go source files in the 
+                              same directory that are compiled together. Each Go file starts with:
+
+                              package packagename
+                              To use functionality from another package, you import it using the import keyword.
+
+✅ 2. Basic Syntax of import  
+                          🔹 Single Import
+                                          import "fmt"
+                                          Imports the standard package fmt to use functions like fmt.Println.
+                          🔹 Multiple Imports (Grouped)
+                          
+                                                          import (
+                                                              "fmt"
+                                                              "math"
+                                                              "strings"
+                                                          )
+                                                          A clean way to import multiple packages.
+
+✅ 3. Types of Imports in Go
+                            🔸 A. Standard Import            
+                                                import "fmt"
+                                                Used for standard Go packages like fmt, math, time, etc.
+
+                            🔸 B. Third-party Import
+                                                    import "github.com/gin-gonic/gin"
+                                                    Used for packages outside the standard library.
+                                                    You must first run:
+                                                    go get github.com/gin-gonic/gin
+                            🔸 C. Local/Custom Import
+                                                    Suppose you have the following structure:
+                                                    project/
+                                                    ├── main.go
+                                                    └── utils/
+                                                        └── helper.go   // package utils
+                                                    In main.go:
+                                                                        import "project/utils"
+                                                    Then you can use:
+                                                                      utils.SomeFunction()
+                                                                      Ensure go.mod is initialized with go mod init project.
+
+✅ 4. Special Import Types
+                          🔹 A. Alias Import
+                                            Rename the imported package:
+                                                                        import f "fmt"
+                                                                        func main() {
+                                                                            f.Println("Hello")
+                                                                        }
+
+                          🔹 B. Dot Import (.)
+                                            Import all exported identifiers into the current namespace:
+                                                                                                        import . "fmt" 
+                                                                                                        func main() {
+                                                                                                            Println("Hello")  // No fmt.Println needed
+                                                                                                        }
+                                            ⚠️ Not recommended – can lead to name conflicts and poor readability.
+                          
+                          🔹 C. Blank Identifier Import (_)
+                                                            Used to import a package only for its side-effects (like init() function):
+                                                                  import _ "github.com/lib/pq"
+
+                                                            Commonly used in database drivers, metrics exporters, etc.
+                                                            You do not use the package directly.
+
+✅ 5. Example: Mixing All Types
+                                        package main
+                                        
+                                        import (
+                                            "fmt"                   // standard
+                                            u "myproject/utils"     // alias
+                                            . "strings"             // dot import
+                                            _ "github.com/lib/pq"   // blank import
+                                        )
+                                        
+                                        func main() {
+                                            fmt.Println("Using alias:", u.HelperFunc())
+                                            fmt.Println("Using dot import:", ToUpper("hello"))
+                                        }
+✅ 6. Best Practices for Importing
+                                    Practice	                    Reason
+                                    Use grouped import ()	        Improves readability
+                                    Avoid dot imports (.)	        Can cause confusion and conflicts
+                                    Use alias for long or conflicting package names	Improves clarity
+                                    Blank imports (_) only when needed	Useful for plugins or DB drivers
