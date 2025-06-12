@@ -1,0 +1,74 @@
+How does Go handle errors?
+
+In Go (Golang), error handling is explicit and based on returning error values. 
+Unlike some languages that use exceptions or try-catch blocks, Go’s approach promotes clarity, simplicity, and control over the error handling flow.
+
+
+ What Is an Error in Go?
+In Go, an error is just a value that implements the built-in error interface:
+                      type error interface {
+                          Error() string
+                      }
+Standard error usage
+                  func divide(a, b int) (int, error) {
+                      if b == 0 {
+                          return 0, fmt.Errorf("cannot divide by zero")
+                      }
+                      return a / b, nil
+                  }
+Calling the function:
+                    result, err := divide(10, 0)
+                    if err != nil {
+                        fmt.Println("Error:", err)
+                        return
+                    }
+                    fmt.Println("Result:", result)
+
+🔁 Error Handling Flow in Go
+                            Function returns error value as the last return value
+                            Caller checks if the error is nil
+                            If not nil, handle or propagate the error
+                            No exceptions or stack unwinding
+How Go Handles Errors Internally
+                                Errors are values: Stored on the stack like any other return value.
+                                Interface type: Since error is an interface, it can wrap any struct implementing Error() string.
+                                Performance: This avoids exception overhead (stack unwinding, etc.)
+
+
+Creating Custom Errors
+                      You can define custom error types by implementing the error interface:
+                      type MyError struct {
+                          Code int
+                          Msg  string
+                      }
+                      func (e MyError) Error() string {
+                          return fmt.Sprintf("Code %d: %s", e.Code, e.Msg)
+                      }
+Usage:
+      func somethingWrong() error {
+          return MyError{Code: 404, Msg: "Not Found"}
+      }
+
+Propagating Errors
+                  You can pass errors up the call stack:
+                                                        func process() error {
+                                                            data, err := readFile()
+                                                            if err != nil {
+                                                                return fmt.Errorf("process failed: %w", err)
+                                                            }
+                                                            // use data...
+                                                            return nil
+                                                        }
+                  %w is used for error wrapping (Go 1.13+), which allows unwrapping errors later.
+
+
+Error Unwrapping and Checking
+                              errors.Is() – Check if an error is a specific error:   
+                              if errors.Is(err, fs.ErrNotExist) {
+                                  // file does not exist
+                              }
+errors.As() – Check and cast to a specific error type:
+                          var myErr *MyError
+                          if errors.As(err, &myErr) {
+                              fmt.Println("Custom error code:", myErr.Code)
+                          }
