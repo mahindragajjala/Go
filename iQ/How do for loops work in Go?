@@ -1,0 +1,53 @@
+How do for loops work in Go?
+In Go, for loops are the only looping construct and are extremely versatile. Here's a detailed explanation of how they work:
+
+🔁 Basic Syntax
+              for initialization; condition; post {
+                  // code block
+              }
+🔍 Parts Explained
+                  initialization: runs once before the loop starts (e.g., i := 0)
+                  condition: evaluated before each iteration; loop continues while this is true
+                  post: executed after each iteration (e.g., i++)
+
+Types of for Loops in Go
+1. Standard loop with all 3 parts
+                                for i := 0; i < 10; i++ {
+                                    fmt.Println(i)
+                                }
+2. Like a while loop (no init or post)
+                                i := 0
+                                for i < 10 {
+                                    fmt.Println(i)
+                                    i++
+                                }
+3. Infinite loop
+                                for {
+                                    fmt.Println("This will run forever")
+                                }
+Use break to stop it and continue to skip to the next iteration.
+
+🧱 Control Statements
+                      break: exits the loop
+                                          for i := 0; i < 10; i++ {
+                                              if i == 5 {
+                                                  break
+                                              }
+                                              fmt.Println(i)
+                                          }
+continue: skips to next iteration
+                                  for i := 0; i < 5; i++ {
+                                      if i == 2 {
+                                          continue
+                                      }
+                                      fmt.Println(i)
+                                  }
+🔄 Range-based loop (for slices, arrays, maps, strings, etc.)
+                              nums := []int{10, 20, 30}
+                              for index, value := range nums {
+                                  fmt.Println(index, value)
+                              }
+You can ignore the index or value using _:
+                              for _, value := range nums {
+                                  fmt.Println(value)
+                              }
