@@ -1,0 +1,53 @@
+What is the difference between exported and unexported identifiers?
+
+
+In Go (Golang), the difference between exported and unexported identifiers 
+is based on their "capitalization".
+
+✅ 1. What is an Identifier?
+							An identifier is the name used for:
+																Variables
+																Constants
+																Functions
+																Types
+																Struct fields
+																Interfaces
+																Packages
+
+✅ 2. Exported vs Unexported: Core Rule
+				Type	    First Letter	Accessibility
+				Exported	Uppercase	    Visible outside the package
+				Unexported	Lowercase	    Private to the current package
+
+								🔹 Example:
+											package mypkg
+											var ExportedVar = "I can be accessed outside"
+											var unexportedVar = "I cannot be accessed outside"
+											func ExportedFunc() {
+												// accessible outside
+											}
+											func unexportedFunc() {
+												// only within this package
+											}
+✅ 3. Usage in Another Package
+									package main
+
+									import (
+										"fmt"
+										"mypkg"
+									)
+
+									func main() {
+										fmt.Println(mypkg.ExportedVar)      // ✅ OK
+										// fmt.Println(mypkg.unexportedVar) // ❌ Compile error
+
+										mypkg.ExportedFunc()                // ✅ OK
+										// mypkg.unexportedFunc()           // ❌ Compile error
+									}
+✅ 4. Exporting Struct Fields
+							Struct fields follow the same rule:
+							type Person struct {
+								Name string  // Exported
+								age  int     // Unexported
+							}
+							Only Name can be accessed from other packages, age is private.
