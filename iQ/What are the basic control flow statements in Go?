@@ -1,0 +1,7 @@
+What are the basic control flow statements in Go?
+| Category       | Statement                                            | Purpose                            |
+| -------------- | ---------------------------------------------------- | ---------------------------------- |
+| Conditional    | `if`, `else if`, `else`                              | Make decisions based on conditions |
+| Looping        | `for`, `range`                                       | Repeat execution                   |
+| Jump/Branching | `break`, `continue`, `goto`, `fallthrough`, `return` | Control loop or function behavior  |
+| Switch-case    | `switch`, `case`, `default`                          | Multiple conditional branches      |
