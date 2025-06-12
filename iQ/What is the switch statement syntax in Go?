@@ -1,0 +1,11 @@
+What is the switch statement syntax in Go?
+
+In Go, the switch statement is a powerful and cleaner alternative to multiple if-else conditions.
+switch expression {
+case value1:
+    // code block
+case value2:
+    // code block
+default:
+    // default code block
+}
