@@ -1,0 +1,33 @@
+How do you implement an infinite loop in Go?
+
+In Go, you can create an infinite loop using the for keyword without any condition. 
+This is the most idiomatic way to implement an infinite loop in Go.
+for {
+    // loop body
+}
+🛑 Exiting an Infinite Loop (using break)
+                                          package main
+                                          
+                                          import "fmt"
+                                          
+                                          func main() {
+                                              i := 0
+                                              for {
+                                                  fmt.Println(i)
+                                                  i++
+                                                  if i >= 5 {
+                                                      break // Exit the loop after 5 iterations
+                                                  }
+                                              }
+                                          }
+🔃 Skipping Iterations with continue
+                                    for {
+                                        i++
+                                        if i%2 == 0 {
+                                            continue // skip even numbers
+                                        }
+                                        fmt.Println(i)
+                                        if i >= 9 {
+                                            break
+                                        }
+                                    }
