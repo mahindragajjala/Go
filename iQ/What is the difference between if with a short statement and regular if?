@@ -1,0 +1,67 @@
+What is the difference between if with a short statement and regular if?
+
+Go allows an optional short statement before the condition in an if statement. 
+This gives you a compact way to both declare a variable and immediately test it — useful for limited-scope conditions.
+
+Regular if Statement
+                    x := 5
+                    if x > 3 {
+                        fmt.Println("x is greater than 3")
+                    }
+                    Variable x is declared before the if
+                    x remains accessible after the if block
+
+if with a Short Statement
+                        A short statement is a quick way to:
+                        declare and initialize a variable
+                        then immediately use it in the if condition
+                        It keeps your code compact and limits the variable’s scope.
+
+if shortStatement; condition {
+    // code block
+}
+                          if x := 5; x > 3 {
+                              fmt.Println("x is greater than 3")
+                          }
+                          Variable x is declared inside the if
+                          x is scoped only within the if or else blocks
+                          Useful when you only need the variable temporarily
+
+ Example Use Case: Checking an error
+
+if err := someFunction(); err != nil {
+    fmt.Println("Error:", err)
+}
+                                      err is declared just for the condition
+                                      Keeps your variable scope clean and limited
+
+
+                                                  package main
+                                                  
+                                                  import "fmt"
+                                                  
+                                                  func main() {
+                                                      if num := 10; num > 5 {
+                                                          fmt.Println("Number is greater than 5")
+                                                      }
+                                                  }
+Step-by-step Explanation
+                        num := 10 — short statement; creates a variable num only inside the if block.
+                        num > 5 — condition is checked.
+                        If true, the block runs and prints the message.
+                        After the block, num is no longer accessible.
+
+
+⛔ Not Allowed: Using num after the if
+                                      fmt.Println(num) // ❌ This will cause an error: "undefined"
+                                      Because num was defined only within the if.
+
+Real-World Example: Error Checking
+                                  if err := doSomething(); err != nil {
+                                      fmt.Println("Error occurred:", err)
+                                  }
+                                  doSomething() returns an error.
+                                  We use a short statement to define err and check it in the same line.
+                                  Clean and idiomatic Go style.
+
+
