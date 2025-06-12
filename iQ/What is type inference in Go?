@@ -1,0 +1,23 @@
+What is type inference in Go?
+
+Type inference in Go means the Go compiler automatically determines the type of a 
+variable based on the value you assign to it — without you explicitly specifying the type.
+
+Example of Type Inference
+name := "Mahindra"  // inferred as string
+age := 30           // inferred as int
+price := 99.99      // inferred as float64
+flag := true        // inferred as bool
+Here, := is the short variable declaration operator. 
+Go infers the type based on the assigned value.
+
+ Concept                        Description                                           
+ ✅ Automatically typed          Compiler assigns the correct type from the value      
+ 🛠️ Requires initialization      You must assign a value when using type inference 
+ ❌ Only works inside functions  Outside functions (e.g., global scope), use `var`     
+
+🧠 Behind the Scenes
+When you write:
+            count := 10
+The Go compiler internally treats it as:
+          var count int = 10
