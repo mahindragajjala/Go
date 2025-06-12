@@ -1,0 +1,49 @@
+What are blank identifiers in Go?
+
+In Go (Golang), a blank identifier is represented by the underscore: _
+
+✅ Definition: What is a Blank Identifier?
+        
+                    The blank identifier _ is a special name that can be assigned a value but never read. 
+                    It is used to ignore values that you don't want or need.
+
+✅ Purpose of Blank Identifier
+Blank identifiers are used when:
+                                You want to ignore unused variables or return values
+                                You need to satisfy interfaces or syntactic requirements
+                                You want to import a package only for its side effects
+
+              ✅ 1. Ignoring Return Values from a Function
+                                                        Some functions return multiple values. If you don’t need one of them:
+                                                        value, _ := someFunction()
+                                                        Example:
+                                                                result, _ := strconv.Atoi("42") // ignore the error
+              ✅ 2. Ignoring Loop Index or Value
+                                                If you only need one part of a range loop:
+                                                for _, v := range []int{1, 2, 3} {
+                                                    fmt.Println(v)
+                                                }
+                                                Or if you need only the index:
+
+                                                for i, _ := range []string{"a", "b"} {
+                                                    fmt.Println(i)
+                                                }
+              ✅ 3. Importing a Package for Side Effects
+                                            When you want to run a package’s init() function but don’t use it directly:
+                                            import _ "github.com/lib/pq"
+                                            Use case: database drivers or plugin systems.
+
+              ✅ 4. Satisfying Interface Requirements
+                        You can use _ when you need to define a variable or implement a method just to meet interface 
+                        requirements but don’t want to use it.
+                        
+                        Example: unused parameters
+                        func handler(_ http.ResponseWriter, r *http.Request) {
+                            fmt.Println("Only using request:", r.URL.Path)
+                        }
+✅ ASCII Visual Summary
+
+                      value, _ := function()   // ignore second return
+                      _, err := function()     // ignore first return
+                      import _ "mypkg/init"    // run init() only
+                      for _, val := range xs   // ignore index
