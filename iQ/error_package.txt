@@ -1,0 +1,99 @@
+error package in the golang
+ 1. func New(text string) error
+          Creates a new error with a static message.
+          
+          🧠 Use:
+          Used when you want to define a custom constant/sentinel error.
+          
+          📌 Example:
+          var ErrUnauthorized = errors.New("unauthorized access")
+          
+          func login(user string) error {
+          	if user != "admin" {
+          		return ErrUnauthorized
+          	}
+          	return nil
+          }
+2. func Is(err, target error) bool
+
+    Is reports whether any error in err's tree matches target.
+    
+    The tree consists of err itself, followed by the errors obtained by repeatedly calling its Unwrap() 
+    error or Unwrap() []error method. When err wraps multiple errors, Is examines err followed by a 
+    depth-first traversal of its children.
+    
+    An error is considered to match a target if it is equal to that target or if it implements 
+    a method Is(error) bool such that Is(target) returns true.
+    
+    An error type might provide an Is method so it can be treated as equivalent to an existing error. 
+    For example, if MyError defines
+
+          Checks if err is equal to target error or wraps it.
+          
+          🧠 Use:
+          Use this to check for specific error types, even if wrapped.
+          
+          📌 Example:
+                  var ErrNotFound = errors.New("not found")
+                  
+                  func getItem() error {
+                  	return fmt.Errorf("get failed: %w", ErrNotFound)
+                  }
+                  
+                  func main() {
+                  	err := getItem()
+                  	if errors.Is(err, ErrNotFound) {
+                  		fmt.Println("Item not found!")
+                  	}
+                  }
+
+3. func As(err error, target any) bool
+    Checks if err is or wraps a type matching target. Allows type assertion.
+    
+    🧠 Use:
+    Use this when you want to extract your custom error type from an error chain.
+
+📌 Example:
+
+                  type MyError struct {
+                  	Msg string
+                  }
+                  
+                  func (e MyError) Error() string {
+                  	return e.Msg
+                  }
+                  
+                  func throwError() error {
+                  	return MyError{"custom error happened"}
+                  }
+                  
+                  func main() {
+                  	err := throwError()
+                  	var myErr MyError
+                  	if errors.As(err, &myErr) {
+                  		fmt.Println("Caught MyError:", myErr.Msg)
+                  	}
+                  }
+4. func Unwrap(err error) error
+                  Returns the next error in the chain (if any).
+                  
+                  🧠 Use:
+                  Use this to go one level deeper into a wrapped error.
+                  
+                  📌 Example:
+                  wrappedErr := fmt.Errorf("outer: %w", errors.New("inner error"))
+                  
+                  inner := errors.Unwrap(wrappedErr)
+                  fmt.Println(inner) // Output: inner error
+5. func Join(errs ...error) error
+    Combines multiple errors into a single error.
+    
+    🧠 Use:
+    Great when multiple errors need to be returned or logged together.
+
+📌 Example:
+            err1 := errors.New("disk full")
+            err2 := errors.New("network down")
+            
+            combined := errors.Join(err1, err2)
+            fmt.Println(combined) // Output: disk full\nnetwork down
