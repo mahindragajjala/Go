@@ -1,20 +1,16 @@
 
 How Do You Copy One Slice to Another in Go
 
-In Go, to copy one slice to another, you use the built-in `copy()` function.
+In Go, to copy one slice to another, you use the builtin `copy()` function.
 
----
-
-1. **Syntax**
+1. Syntax
 
 copy(destination, source)
 
-- It copies elements from the `source` slice into the `destination` slice.
-- Returns the number of elements copied (the minimum of the lengths of both slices).
+ It copies elements from the `source` slice into the `destination` slice.
+ Returns the number of elements copied (the minimum of the lengths of both slices).
 
----
-
-2. **Example**
+2. Example
 
 source := []int{1, 2, 3}
 destination := make([]int, len(source))
@@ -22,9 +18,7 @@ n := copy(destination, source)
 fmt.Println(destination) // [1 2 3]
 fmt.Println(n)           // 3
 
----
-
-3. **Partial Copying**
+3. Partial Copying
 
 If the destination slice is smaller, only part of the source is copied:
 
@@ -33,9 +27,7 @@ destination := make([]int, 2)
 copy(destination, source)
 fmt.Println(destination) // [1 2]
 
----
-
-4. **Copying to a Larger Slice**
+4. Copying to a Larger Slice
 
 If the destination is larger, only up to the length of the source is copied:
 
@@ -44,9 +36,7 @@ destination := make([]int, 5)
 copy(destination, source)
 fmt.Println(destination) // [1 2 3 0 0]
 
----
-
-5. **Copying Slices of Other Types**
+5. Copying Slices of Other Types
 
 You can use `copy()` with slices of strings, bytes, or any other type:
 
@@ -55,9 +45,7 @@ wordsCopy := make([]string, len(words))
 copy(wordsCopy, words)
 fmt.Println(wordsCopy) // ["Go", "is", "fun"]
 
----
-
-6. **Why Use copy() Instead of = ?**
+6. Why Use copy() Instead of = ?
 
 Assignment (`=`) of slices does not create a new copy — it shares the same backing array:
 
@@ -65,11 +53,8 @@ a := []int{1, 2}
 b := a
 b[0] = 9
 fmt.Println(a) // [9 2] — modifies original
-
 Use `copy()` to make an independent copy.
 
----
-
-**Conclusion**
+Conclusion
 
 Use the `copy()` function in Go to safely duplicate data from one slice to another. It ensures a new backing array and avoids unintended data sharing.
