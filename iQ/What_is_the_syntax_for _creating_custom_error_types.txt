@@ -1,0 +1,75 @@
+What is the syntax for creating custom error types
+
+In Go, custom error types are created by defining a new struct type and implementing the Error() method from the error interface. Here's the syntax and a step-by-step explanation:
+
+✅ Syntax for Custom Error Type
+                              type MyError struct {
+                                  Code    int
+                                  Message string
+                              }
+                              
+                              func (e *MyError) Error() string {
+                                  return fmt.Sprintf("Error %d: %s", e.Code, e.Message)
+                              }
+✅ Step-by-Step Breakdown
+Define a Struct
+This struct holds custom fields for your error (e.g., error code, message, etc.).
+type MyError struct {
+    Code    int
+    Message string
+}
+Implement the Error() Method
+The struct must implement the Error() method to satisfy the error interface.
+func (e *MyError) Error() string {
+    return fmt.Sprintf("Error %d: %s", e.Code, e.Message)
+}
+Create and Return the Custom Error
+func doSomething(fail bool) error {
+    if fail {
+        return &MyError{
+            Code:    404,
+            Message: "Item not found",
+        }
+    }
+    return nil
+}
+Use the Custom Error
+func main() {
+    err := doSomething(true)
+    if err != nil {
+        fmt.Println("Got error:", err)
+        // Type assertion
+        if myErr, ok := err.(*MyError); ok {
+            fmt.Println("Custom error code:", myErr.Code)
+        }
+    }
+}
+✅ Real-Time Example
+package main
+
+import (
+    "fmt"
+)
+
+type ValidationError struct {
+    Field   string
+    Problem string
+}
+
+func (e *ValidationError) Error() string {
+    return fmt.Sprintf("Validation failed on field '%s': %s", e.Field, e.Problem)
+}
+
+func validateAge(age int) error {
+    if age < 18 {
+        return &ValidationError{"age", "must be at least 18"}
+    }
+    return nil
+}
+
+func main() {
+    err := validateAge(16)
+    if err != nil {
+        fmt.Println(err)
+    }
+}
