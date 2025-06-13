@@ -1,0 +1,56 @@
+How do you use the panic and recover mechanisms?
+In Go, panic and recover are built-in functions used for handling unexpected run-time 
+conditions like unrecoverable errors. They’re part of Go's error-handling mechanism, 
+though they're not used for regular error handling — that's what error values are for. 
+Instead, panic and recover are used when the program cannot continue to run safely.
+
+🔥 panic
+Stops the normal execution of a function.
+Begins to unwind the stack — defers are executed.
+If not recovered, the program crashes and prints the panic message with a stack trace.
+                            panic("Something went wrong!")
+
+🧯 recover
+Only works inside a deferred function.
+Used to regain control of a panicking goroutine.
+Prevents the program from crashing.
+
+func handlePanic() {
+	if r := recover(); r != nil {
+		fmt.Println("Recovered from panic:", r)
+	}
+}
+                                            package main
+                                            
+                                            import "fmt"
+                                            
+                                            func safeDivide(a, b int) {
+                                            	defer func() {
+                                            		if r := recover(); r != nil {
+                                            			fmt.Println("Recovered in safeDivide:", r)
+                                            		}
+                                            	}()
+                                            	fmt.Println("Result:", a/b) // Will panic if b == 0
+                                            }
+                                            
+                                            func main() {
+                                            	safeDivide(10, 2)  // Output: Result: 5
+                                            	safeDivide(10, 0)  // Output: Recovered in safeDivide: runtime error: integer divide by zero
+                                            	fmt.Println("Program continues...")
+                                            }
+
+🧠 Call Flow
+            main() calls safeDivide().
+            safeDivide() defers a function to handle panic.
+            If b == 0, Go panics (panic: divide by zero).
+            Deferred function catches it via recover().
+            Program continues normally.
+
+❗ When to Use
+          To catch unexpected fatal conditions (e.g., nil dereference, divide by zero).
+          Writing robust libraries that should not crash clients.
+          Handling failures in goroutines, etc.
+
+🚫 When Not to Use
+          Do not use panic for ordinary errors — use error instead.
+          Avoid recover unless you're specifically handling known failure zones.
