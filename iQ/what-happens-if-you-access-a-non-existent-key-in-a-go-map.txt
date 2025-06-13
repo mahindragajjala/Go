@@ -1,0 +1,41 @@
+📄 What Happens If You Access a Non-Existent Key in a Go Map?
+
+
+In Go, accessing a non-existent key in a map does not cause a 
+runtime error or panic. 
+Instead, Go returns the zero value of the map’s value type.
+
+How It Works
+When you do:
+
+value := myMap["someKey"]
+If "someKey" is not present in myMap, then:
+value will be set to the zero value of the value type.
+
+No error or panic occurs.
+
+                        package main
+                        
+                        import "fmt"
+                        
+                        func main() {
+                            myMap := map[string]int{
+                                "apple": 5,
+                                "banana": 3,
+                            }
+                        
+                            // Accessing an existing key
+                            fmt.Println("Apple:", myMap["apple"])  // Output: Apple: 5
+                        
+                            // Accessing a non-existent key
+                            fmt.Println("Mango:", myMap["mango"])  // Output: Mango: 0 (zero value of int)
+                        }
+❓How to Check If a Key Exists
+You can use the comma-ok idiom:
+
+value, ok := myMap["mango"]
+if ok {
+    fmt.Println("Key exists, value:", value)
+} else {
+    fmt.Println("Key does not exist")
+}
