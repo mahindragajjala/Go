@@ -1,0 +1,247 @@
+Custom Error Type
+
+
+In Go, errors are values. 
+
+While you often use the built-in errors.New or fmt.Errorf, 
+sometimes you want more structured error information — like 
+error codes, 
+custom messages, 
+or 
+even metadata.
+
+To do that, you can define your own error type by creating a struct and making it implement the error interface.
+
+1.🔶 What Is a Custom Error in Go?
+                                  Go allows you to create custom error types by implementing the error interface.
+                                  The built-in error interface is defined as:
+
+                                                    type error interface {
+                                                        Error() string
+                                                    }
+
+So, any type that implements this Error() string method can be used as an error.
+
+                                                    package main
+                                                    
+                                                    import (
+                                                    	"fmt"
+                                                    )
+                                                    
+                                                    // Step 1: Define the custom error type
+  type MyError struct {
+ 	Code    int
+ 	Message string
+  }
+                                                    
+                                                    // Step 2: Implement the error interface
+                                                    func (e *MyError) Error() string {
+                                                    	return fmt.Sprintf("Error %d: %s", e.Code, e.Message)
+                                                    }
+                                                    
+                                                    // Step 3: Simulate a function that returns custom error
+                                                    func Withdraw(balance, amount int) error {
+                                                    	if amount > balance {
+                                                    		// returning custom error
+                                                    		return &MyError{
+                                                    			Code:    101,
+                                                    			Message: fmt.Sprintf("Insufficient funds. Tried to withdraw ₹%d with balance ₹%d", amount, balance),
+                                                    		}
+                                                    	}
+                                                    	fmt.Println("Withdrawal successful!")
+                                                    	return nil
+                                                    }
+                                                    
+                                                    func main() {
+                                                    	balance := 1000
+                                                    	withdrawAmount := 1500
+                                                    
+                                                    	err := Withdraw(balance, withdrawAmount)
+                                                    	if err != nil {
+                                                    		// Step 4: Type assertion to extract info from custom error
+                                                    		if myErr, ok := err.(*MyError); ok {
+                                                    			fmt.Println("Custom Error Caught!")
+                                                    			fmt.Println("Code:", myErr.Code)
+                                                    			fmt.Println("Message:", myErr.Message)
+                                                    		} else {
+                                                    			fmt.Println("Generic error:", err)
+                                                    		}
+                                                    	}
+                                                    }
+
+2.🔶 A sentinel error (ErrUnauthorized)
+A sentinel error is a predefined, named error variable that you compare directly using ==.
+
+📌 It’s used to:
+Represent a specific error condition (e.g., ErrUnauthorized, ErrNotFound).
+
+Allow simple and fast comparisons like:
+
+ERRORS.NEW()
+New returns an error that formats as the given text. Each call to New returns a distinct error value even if the text is identical.
+        func main() {
+        	err := errors.New("emit macho dwarf: elf header corrupted")
+        	if err != nil {
+        		fmt.Print(err)
+        	}
+        }
+                                                    package main
+                                                    
+                                                    import (
+                                                    	"errors"
+                                                    	"fmt"
+                                                    )
+                                                    
+                                                    // Sentinel error
+      var ErrUnauthorized = errors.New("unauthorized access")
+                                                    
+                                                    // Auth simulation
+                                                    func accessResource(userRole string) error {
+                                                    	if userRole != "admin" {
+                                                    		// return sentinel error
+                                                    		return ErrUnauthorized
+                                                    	}
+                                                    	fmt.Println("Access granted!")
+                                                    	return nil
+                                                    }
+                                                    
+                                                    func main() {
+                                                    	err := accessResource("guest")
+                                                    
+                                                    	if err != nil {
+                                                    		// Compare directly with sentinel error
+                                                    		if err == ErrUnauthorized {
+                                                    			fmt.Println("Access denied: user is not authorized.")
+                                                    		} else {
+                                                    			fmt.Println("Some other error:", err)
+                                                    		}
+                                                    	}
+                                                    }
+
+  3.🔶 Error Wrapping in Go                                                   
+ Error wrapping means you add context to an existing error without losing the original error, so you can still check what caused it.
+Go introduced error wrapping in Go 1.13 using %w in fmt.Errorf. 
+                                                    
+Key Concept
+            err := fmt.Errorf("something went wrong: %w", originalErr)
+            %w tells Go to wrap originalErr inside the new error.            
+            You can later use errors.Is() to check if the original error is still present
+
+                                                  package main
+                                                  
+                                                  import (
+                                                  	"errors"
+                                                  	"fmt"
+                                                  )
+                                                  
+                                                  // Sentinel error
+                                                  var ErrUnauthorized = errors.New("unauthorized access")
+                                                  
+                                                  // Simulate function that wraps the error
+                                                  func accessResource(userRole string) error {
+                                                  	if userRole != "admin" {
+                                                  		// Wrap the sentinel error with context
+   return fmt.Errorf("failed to access resource for role %q: %w", userRole, ErrUnauthorized)
+                                                  	}
+                                                  	return nil
+                                                  }
+                                                  
+                                                  func main() {
+                                                  	err := accessResource("guest")
+                                                  
+                                                  	if err != nil {
+                                                  		// Print full error with context
+                                                  		fmt.Println("Error:", err)
+                                                  
+                                                  		// Check if the error is (or wraps) ErrUnauthorized
+                                                  		if errors.Is(err, ErrUnauthorized) {
+                                                  			fmt.Println("Handling unauthorized access specifically.")
+                                                  		} else {
+                                                  			fmt.Println("Handling a different error.")
+                                                  		}
+                                                  	}
+                                                  }
+
+  4.🔶 Error inspection using errors.Is and errors.As
+  Why Do We Need Error Inspection?
+  In real-world applications, errors can be:
+  Wrapped with more context (via %w),
+  Custom types with extra data,
+  Or a sentinel error like ErrUnauthorized.
+  To analyze and handle them properly, we use:
+  
+  Function	Use case
+                    errors.Is	Check if an error (or wrapped error) matches a specific error value.
+                    errors.As	Check if an error (or wrapped error) is of a specific type and extract it.
+🔹 1. errors.Is(err, target)
+✅ Purpose:
+Check if err is or wraps a known sentinel error.
+
+                                                        package main
+                                                        
+                                                        import (
+                                                        	"errors"
+                                                        	"fmt"
+                                                        )
+                                                        
+  var ErrUnauthorized = errors.New("unauthorized access")
+                                                        
+                                                        func doSomething() error {
+  // Wrap sentinel error
+	return fmt.Errorf("operation failed: %w", ErrUnauthorized)
+                                                        }
+                                                        
+                                                        func main() {
+  err := doSomething()
+                                                        
+                                                        	if errors.Is(err, ErrUnauthorized) {
+ 	fmt.Println("Access denied: user is unauthorized.")
+                                                        	} else {
+  fmt.Println("Other error:", err)
+                                                        	}
+                                                        }
+
+🔹 2. errors.As(err, &targetType)
+✅ Purpose:
+Check if the error (or wrapped error) is of a custom type and extract it.
+
+                                                        package main
+                                                        
+                                                        import (
+                                                        	"errors"
+                                                        	"fmt"
+                                                        )
+                                                        
+                                                        // Custom error type
+  type MyError struct {
+ 	Code    int
+ 	Message string
+  }
+  
+                                                        // Implement error interface
+                                                        func (e *MyError) Error() string {
+                                                        	return fmt.Sprintf("code %d: %s", e.Code, e.Message)
+                                                        }
+                                                        
+                                                        func doSomething() error {
+                                                        	originalErr := &MyError{Code: 403, Message: "forbidden"}
+                                                        	// Wrap custom error
+                                                        	return fmt.Errorf("API call failed: %w", originalErr)
+                                                        }
+                                                        
+                                                        func main() {
+                                                        	err := doSomething()
+                                                        
+                                                        	var myErr *MyError
+                                                        	if errors.As(err, &myErr) {
+                                                        		fmt.Println("Custom error caught!")
+                                                        		fmt.Println("Code:", myErr.Code)
+                                                        		fmt.Println("Message:", myErr.Message)
+                                                        	} else {
+                                                        		fmt.Println("Other error:", err)
+                                                        	}
+                                                        }
+
+
+
+
