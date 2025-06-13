@@ -1,0 +1,46 @@
+📝 How Do You Delete a Key-Value Pair in a Go Map?
+
+✅ Short Answer:
+In Go, you delete a key-value pair from a map using the built-in delete() function.
+
+delete(mapName, key)
+
+                                  
+                                  package main
+                                  
+                                  import "fmt"
+                                  
+                                  func main() {
+                                      userAges := map[string]int{
+                                          "Alice": 30,
+                                          "Bob":   25,
+                                          "Carol": 27,
+                                      }
+                                  
+                                      fmt.Println("Before deletion:", userAges)
+                                  
+                                      // Delete key "Bob"
+                                      delete(userAges, "Bob")
+                                  
+                                      fmt.Println("After deletion:", userAges)
+                                  }
+Before deletion: map[Alice:30 Bob:25 Carol:27]
+After deletion: map[Alice:30 Carol:27]
+
+
+
+Notes:
+If the key doesn't exist, delete() does nothing (it does not panic).
+Deleting a key is safe and efficient.
+You can check if a key exists before deleting if needed:
+                                    
+                                    if _, exists := userAges["Bob"]; exists {
+                                        delete(userAges, "Bob")
+                                    }
+
+
+
+Deleting keys is useful for:
+                            Cleaning up expired data
+                            Removing sensitive values
+                            Implementing cache invalidation
