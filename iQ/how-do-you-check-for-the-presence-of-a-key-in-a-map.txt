@@ -1,0 +1,59 @@
+How Do You Check for the Presence of a Key in a Map in Go?
+
+In Go, when you access a value from a map, you can also check if 
+the key exists using the "comma ok" idiom.
+
+
+
+1. Syntax
+
+value, exists := map[key]
+
+ `value` gets the value for the given key (or the zero value if not 
+present).
+ `exists` is a boolean indicating whether the key exists.
+
+
+
+2. Example
+
+m := map[string]int{
+    "apple":  10,
+    "banana": 5,
+}
+
+v, ok := m["banana"]
+if ok {
+    fmt.Println("Banana exists with value:", v)
+} else {
+    fmt.Println("Banana not found")
+}
+
+Output:
+Banana exists with value: 5
+
+
+
+3. NonExistent Key
+
+v, ok := m["mango"]
+fmt.Println(v, ok) // 0 false
+
+ `v` is `0` (the zero value for int).
+ `ok` is `false` indicating that the key was not found.
+
+
+
+4. Use in Conditional Statements
+
+if _, found := m["apple"]; found {
+    fmt.Println("Apple is present")
+}
+
+ Use `_` to ignore the value when only existence matters.
+
+
+
+Conclusion
+
+Use the `value, ok := map[key]` pattern to safely check if a key exists in a Go map. This helps avoid confusion between zero values and missing keys.
