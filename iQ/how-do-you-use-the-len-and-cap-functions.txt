@@ -1,22 +1,22 @@
 
 How Do You Use the len() and cap() Functions in Go
 
-Go provides two built-in functions to work with slices, arrays, maps, channels, and strings:
-- `len()`: returns the number of elements.
-- `cap()`: returns the capacity (only for slices, arrays, channels).
+Go provides two builtin functions to work with slices, arrays, maps, channels, and strings:
+ len(): returns the number of elements.
+ cap(): returns the capacity (only for slices, arrays, channels).
 
----
 
-1. **len() Function**
 
-- Returns the actual number of elements in:
-  - Slice or array: number of elements
-  - String: number of bytes (not characters)
-  - Map: number of key-value pairs
-  - Channel: number of elements queued (for buffered channels)
+1. len() Function
 
-**Examples:**
-```go
+ Returns the actual number of elements in:
+   Slice or array: number of elements
+   String: number of bytes (not characters)
+   Map: number of keyvalue pairs
+   Channel: number of elements queued (for buffered channels)
+
+Examples:
+
 s := []int{1, 2, 3}
 fmt.Println(len(s)) // 3
 
@@ -25,19 +25,16 @@ fmt.Println(len(str)) // 5
 
 m := map[string]int{"a": 1, "b": 2}
 fmt.Println(len(m)) // 2
-```
 
----
+2. cap() Function
 
-2. **cap() Function**
+ Returns the total capacity of:
+   Slice: number of elements it can hold without resizing
+   Array: same as length (fixed)
+   Channel: total buffer size
 
-- Returns the **total capacity** of:
-  - Slice: number of elements it can hold without resizing
-  - Array: same as length (fixed)
-  - Channel: total buffer size
+Examples:
 
-**Examples:**
-```go
 s := make([]int, 2, 5)
 fmt.Println(len(s)) // 2
 fmt.Println(cap(s)) // 5
@@ -48,23 +45,20 @@ fmt.Println(cap(arr)) // 4
 
 ch := make(chan int, 10)
 fmt.Println(cap(ch)) // 10
-```
 
----
+3. Slice Growth Example
 
-3. **Slice Growth Example**
-```go
 s := []int{1, 2}
 s = append(s, 3, 4, 5)
 fmt.Println(len(s)) // 5
 fmt.Println(cap(s)) // could be 6, 8, or more depending on growth strategy
-```
 
----
 
-**Conclusion**
 
-- Use `len()` to find how many elements are currently stored.
-- Use `cap()` to check how much memory is allocated in advance (for slices and channels).
 
-Knowing `len()` and `cap()` helps write memory-efficient and performance-optimized code.
+Conclusion
+
+ Use len() to find how many elements are currently stored.
+ Use cap() to check how much memory is allocated in advance (for slices and channels).
+
+Knowing len() and cap() helps write memoryefficient and performanceoptimized code.
