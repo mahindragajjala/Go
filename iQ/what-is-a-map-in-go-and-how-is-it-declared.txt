@@ -1,107 +1,107 @@
 
 What Is a Map in Go and How Is It Declared?
 
-In Go, a **map** is a built-in data type used to store key-value pairs. It is similar to dictionaries or hash tables in other languages.
+In Go, a map is a builtin data type used to store keyvalue pairs. It is similar to dictionaries or hash tables in other languages.
 
----
 
-1. **Basic Declaration**
 
-```go
+1. Basic Declaration
+
+
 var m map[string]int
-```
-- Declares a map from `string` to `int`.
-- It’s `nil` initially — must be initialized using `make()` before use.
 
-```go
+ Declares a map from string to int.
+ It’s nil initially — must be initialized using make() before use.
+
+
 m = make(map[string]int)
-```
 
----
 
-2. **Short Declaration and Initialization**
 
-```go
+
+2. Short Declaration and Initialization
+
+
 m := map[string]int{
     "apple":  5,
     "banana": 10,
 }
-```
 
----
 
-3. **Adding Elements**
 
-```go
+
+3. Adding Elements
+
+
 m["orange"] = 7
-```
 
----
 
-4. **Accessing Elements**
 
-```go
+
+4. Accessing Elements
+
+
 value := m["apple"]
 fmt.Println(value) // 5
-```
 
----
 
-5. **Checking if a Key Exists**
 
-```go
+
+5. Checking if a Key Exists
+
+
 value, exists := m["banana"]
 if exists {
     fmt.Println("Banana found:", value)
 } else {
     fmt.Println("Banana not found")
 }
-```
 
----
 
-6. **Deleting an Element**
 
-```go
+
+6. Deleting an Element
+
+
 delete(m, "apple")
-```
 
----
 
-7. **Iterating Over a Map**
 
-```go
+
+7. Iterating Over a Map
+
+
 for key, value := range m {
     fmt.Println(key, value)
 }
-```
 
----
 
-8. **Length of a Map**
 
-```go
-fmt.Println(len(m)) // Number of key-value pairs
-```
 
----
+8. Length of a Map
 
-9. **Nil Map and Runtime Error**
 
-```go
+fmt.Println(len(m)) // Number of keyvalue pairs
+
+
+
+
+9. Nil Map and Runtime Error
+
+
 var m map[string]int
 m["key"] = 1 // ❌ panic: assignment to entry in nil map
-```
 
-Use `make()` to avoid this:
 
-```go
+Use make() to avoid this:
+
+
 m := make(map[string]int)
-```
 
----
 
-**Conclusion**
 
-- Use maps in Go to store and manage key-value data efficiently.
-- Always initialize maps with `make()` or with a map literal before using them.
+
+Conclusion
+
+ Use maps in Go to store and manage keyvalue data efficiently.
+ Always initialize maps with make() or with a map literal before using them.
