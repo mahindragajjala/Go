@@ -1,0 +1,57 @@
+
+What Are Arrays in Go and How Do You Declare Them
+
+In Go, an array is a fixed-length sequence of elements of the same type. Arrays are value types, meaning assigning one array to another copies all its elements.
+
+1. Array Basics
+- Arrays have a defined length that cannot be changed.
+- All elements are stored in contiguous memory locations.
+- The index starts from 0.
+
+2. Syntax for Declaring Arrays
+var arrayName [size]Type
+
+Example:
+var numbers [5]int
+This declares an array named 'numbers' that holds 5 integers.
+
+3. Initializing Arrays
+a. Manual Initialization:
+numbers[0] = 10
+numbers[1] = 20
+
+b. Using Composite Literals:
+numbers := [5]int{10, 20, 30, 40, 50}
+
+c. Letting Go infer the length:
+numbers := [...]int{10, 20, 30}
+
+4. Accessing Array Elements
+fmt.Println(numbers[0]) // prints 10
+
+5. Iterating Over Arrays
+Using 'for' loop:
+for i := 0; i < len(numbers); i++ {
+    fmt.Println(numbers[i])
+}
+
+Using 'range' loop:
+for index, value := range numbers {
+    fmt.Println(index, value)
+}
+
+6. Arrays Are Value Types
+Assigning one array to another copies all elements:
+
+a := [3]int{1, 2, 3}
+b := a
+b[0] = 99
+
+fmt.Println(a) // [1 2 3]
+fmt.Println(b) // [99 2 3]
+
+7. Multidimensional Arrays
+var matrix [2][3]int = [2][3]int{{1, 2, 3}, {4, 5, 6}}
+Accessing: matrix[1][2] // 6
+
+Note: Arrays are rarely used directly in Go. Slices (dynamic arrays) are more common.
