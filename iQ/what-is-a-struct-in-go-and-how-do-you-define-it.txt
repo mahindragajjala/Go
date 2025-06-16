@@ -1,0 +1,32 @@
+what-is-a-struct-in-go-and-how-do-you-define-it.txt
+
+A struct in Go is a composite data type (also called a user-defined type) that 
+groups together zero or more fields (variables) of different types under 
+one name.
+
+Structs are used to represent objects or records.
+
+type Person struct {
+    Name string
+    Age  int
+}
+This defines a struct type Person with two fields: Name (string) and Age (int).
+
+DIFFERENT WAYS TO DECLARE THE STRUCTURE
+Zero Value Initialization:
+                          var p2 Person
+                          p2.Name = "Bob"
+                          p2.Age = 25
+Pointer to Struct:
+                  p3 := &Person{Name: "Carol", Age: 28}
+                  fmt.Println(p3.Name)
+
+DIFFERENT TYPES PRESENT IN THE STRUCTURE - TYPES STORES IN A STRUCTURE
+                        Basic Data Types
+                        Composite Types
+                        Pointer Types
+                        Time Types
+                        Interface Types
+                        Custom Types / Aliases
+                        Tags for Serialization
+
