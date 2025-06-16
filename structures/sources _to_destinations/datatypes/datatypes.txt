@@ -1,0 +1,161 @@
+Basic Data Types
+Composite Types
+Pointer Types
+Time Types
+Interface Types
+Custom Types / Aliases
+Tags for Serialization
+
+DIFFERENT TYPES IN THE STRUCTURES
+In Go (Golang), when defining a struct to send or receive data (e.g., via API, JSON, 
+database, etc.), you can use a variety of data types inside a struct.
+
+Here’s a comprehensive list of different types of data you can include inside a struct in Go:
+
+
+
+ 🧩 1. Basic Data Types
+
+| Type                    | Example Use Case                  |
+| `string`                | Names, messages                   |
+| `int`, `int64`, `int32` | Age, count, salary                |
+| `float32`, `float64`    | Price, rating, average            |
+| `bool`                  | Flags, toggles (e.g., `isActive`) |
+| `byte`, `rune`          | Characters or binary data         |
+
+
+type Product struct {
+    Name     string
+    Price    float64
+    InStock  bool
+}
+
+
+
+
+ 🧩 2. Composite Types
+
+ ➤ Arrays
+
+Fixed-length list of values:
+
+
+Tags [3]string
+
+
+ ➤ Slices
+
+Variable-length list (more common than arrays):
+
+
+Reviews []string
+
+
+ ➤ Maps
+
+Key-value storage (e.g., dynamic fields or metadata):
+
+
+Metadata map[string]string
+
+
+ ➤ Structs inside Structs (Nested Structs)
+
+
+type Address struct {
+    City   string
+    State  string
+}
+
+type User struct {
+    Name    string
+    Address Address
+}
+
+
+
+
+ 🧩 3. Pointer Types
+
+Used to avoid copying large structs and for mutation:
+
+
+type User struct {
+    Name *string
+    Age  *int
+}
+
+
+
+
+ 🧩 4. Time Types
+
+From `time` package, for timestamps:
+
+
+import "time"
+
+type Post struct {
+    CreatedAt time.Time
+}
+
+
+
+
+ 🧩 5. Interface Types
+
+Use when the type could vary or is unknown:
+
+
+Data interface{}
+
+
+Useful for generic JSON payloads.
+
+
+
+ 🧩 6. Custom Types / Aliases
+
+You can define your own types:
+
+
+type Status string
+
+type Task struct {
+    Title  string
+    Status Status
+}
+
+
+
+
+ 🧩 7. Tags for Serialization
+
+Used for JSON, XML, database mapping, etc.:
+
+
+type User struct {
+    ID    int    `json:"id"`
+    Email string `json:"email"`
+}
+
+
+
+
+ ✅ Real-World Example:
+
+
+type Employee struct {
+    ID        int
+    Name      string
+    Salary    float64
+    Skills    []string
+    Profile   map[string]string
+    JoinedAt  time.Time
+    Manager   *string
+}
+
+
+
+
+Would you like me to convert this into a `.txt` file named something like `datatype-in-structs-in-go.txt`?
