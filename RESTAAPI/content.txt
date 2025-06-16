@@ -1,1 +1,97 @@
+WHAT IS RESTAPI IN PROGRAMMING ?
+REST API stands for "Representational State Transfer Application Programming Interface". 
 
+It is a "web service architecture" style that allows clients (like mobile apps, frontend apps, or other services) to communicate with servers over HTTP/HTTPS.
+
+🔹 In simple terms: A REST API allows different software systems to talk to each other over the internet using standard HTTP methods like GET, POST, PUT, DELETE.
+
+
+
+
+
+
+WHAT IS A RESTFUL API 
+A RESTful API is an implementation of REST principles. 
+It follows rules (REST constraints) to make the web communication:
+Stateless
+Cacheable
+Uniform
+Client-Server based
+Uses URIs to identify resources
+Uses HTTP methods for operations
+                      
+                      💡 What is REST API?
+REST API (Representational State Transfer API) is a style of web architecture that allows systems to communicate over HTTP using standard methods like:
+GET → Fetch data
+POST → Create data
+PUT → Update data
+DELETE → Delete data
+It follows principles of REST but not necessarily all of them strictly.
+                      
+                      💡 What is RESTful API?
+A RESTful API is a strict implementation of REST principles.
+It means the API:
+
+✅ Is stateless
+✅ Uses standard HTTP methods
+✅ Exposes resources via URIs (/users/1)
+✅ Returns standard HTTP status codes
+✅ Supports caching
+✅ Has client-server separation
+✅ Often returns JSON or XML
+
+
+EXAMPLES OF THE RESTAPI AND RESTFUL API :
+                          ✅ REST API Example (Not RESTful)
+An API that is just sending data over HTTP but not fully following REST rules:
+                GET /getEmployeeDetails?id=1
+                Uses verbs (getEmployeeDetails) in the URL
+                May store session info (not stateless)
+                Doesn't fully follow REST constraints
+
+                          ✅ RESTful API Example
+An API that follows REST architectural principles strictly:
+                GET /employees/1
+                /employees is a resource
+                1 is the ID of the employee
+                Uses GET method properly
+                Server is stateless – no session stored
+
+                          Simple Analogy
+REST API:
+“A person who loosely follows traffic rules but still reaches the destination.”
+
+RESTful API:
+“A person who strictly follows every traffic rule while driving.”
+Both are going somewhere using roads (HTTP), but RESTful is disciplined and standard-compliant.
+
+
+                    📋 List of Topics in REST API
+                            🌱 Basics
+What is REST and RESTful API?
+HTTP Methods: GET, POST, PUT, DELETE, PATCH
+Status Codes (200 OK, 404 Not Found, 500 Server Error)
+Resource vs Endpoint
+URI design (e.g., /users, /products/1)
+Request & Response (Headers, Body, Query Params, Path Params)
+
+                        🧪 Intermediate
+Authentication (API keys, JWT, OAuth)
+Error handling in REST API
+CRUD operations using REST
+Using tools like Postman or Insomnia
+CORS (Cross-Origin Resource Sharing)
+Versioning APIs (/v1/users)
+
+                          🚀 Advanced
+Pagination, Filtering, Sorting in APIs
+Rate Limiting & Throttling
+REST vs GraphQL vs gRPC
+API Gateway
+Building secure REST APIs
+OpenAPI/Swagger documentation
+Middleware and Logging
+Deploying REST APIs to servers (AWS, Heroku, etc.)
+
+
+READ IT AS SOON AS - https://chatgpt.com/c/684fedfc-b640-800b-8e2b-a303d6364cd5
