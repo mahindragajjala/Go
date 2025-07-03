@@ -1,0 +1,158 @@
+Sure! Let's go through `mockgen` in Go **step-by-step** using a **real example**, covering:
+
+---
+
+### ✅ What is `mockgen`?
+
+`mockgen` is a tool provided by the [GoMock](https://github.com/golang/mock) package, used to **generate mock interfaces**. These mocks help test components in **isolation**, especially when working with external services or databases.
+
+---
+
+## ⚙️ Step-by-Step Setup
+
+---
+
+### 1. ✅ Install `mockgen` and dependencies:
+
+```bash
+go install go.uber.org/mock/mockgen@latest
+```
+
+Make sure `$GOPATH/bin` is in your `$PATH` so you can use `mockgen` globally.
+
+Also, install the required GoMock module in your project:
+
+```bash
+go get go.uber.org/mock/gomock
+```
+
+---
+
+### 2. 🧪 Example Use Case: User Service
+
+We'll test a service that depends on a database.
+
+---
+
+### 2.1 Interface: `UserRepository`
+
+```go
+// user/repository.go
+package user
+
+type User struct {
+	ID    string
+	Email string
+}
+
+type UserRepository interface {
+	FindByEmail(email string) (*User, error)
+}
+```
+
+---
+
+### 2.2 Service that uses it:
+
+```go
+// user/service.go
+package user
+
+type UserService struct {
+	repo UserRepository
+}
+
+func NewUserService(repo UserRepository) *UserService {
+	return &UserService{repo: repo}
+}
+
+func (s *UserService) IsEmailRegistered(email string) bool {
+	user, err := s.repo.FindByEmail(email)
+	return err == nil && user != nil
+}
+```
+
+---
+
+## 🛠️ 3. Generate Mocks using `mockgen`
+
+```bash
+mockgen -source=user/repository.go -destination=mocks/mock_repository.go -package=mocks
+```
+
+This will generate a `mock_repository.go` file in `mocks` package.
+
+---
+
+## ✅ 4. Write Unit Test using the Mock
+
+```go
+// user/service_test.go
+package user_test
+
+import (
+	"testing"
+
+	"user"
+	"user/mocks"
+
+	"github.com/golang/mock/gomock"
+	"github.com/stretchr/testify/assert"
+)
+
+func TestIsEmailRegistered(t *testing.T) {
+	ctrl := gomock.NewController(t)
+	defer ctrl.Finish()
+
+	mockRepo := mocks.NewMockUserRepository(ctrl)
+	service := user.NewUserService(mockRepo)
+
+	t.Run("email exists", func(t *testing.T) {
+		mockRepo.EXPECT().
+			FindByEmail("test@example.com").
+			Return(&user.User{ID: "1", Email: "test@example.com"}, nil)
+
+		result := service.IsEmailRegistered("test@example.com")
+		assert.True(t, result)
+	})
+
+	t.Run("email does not exist", func(t *testing.T) {
+		mockRepo.EXPECT().
+			FindByEmail("missing@example.com").
+			Return(nil, nil)
+
+		result := service.IsEmailRegistered("missing@example.com")
+		assert.False(t, result)
+	})
+}
+```
+
+---
+
+## 📂 Folder Structure
+
+```
+your_project/
+├── user/
+│   ├── repository.go
+│   ├── service.go
+│   └── service_test.go
+├── mocks/
+│   └── mock_repository.go
+```
+
+---
+
+## 🔁 Summary
+
+| Step             | Description                                  |
+| ---------------- | -------------------------------------------- |
+| Install          | `go install go.uber.org/mock/mockgen@latest` |
+| Define Interface | e.g., `UserRepository`                       |
+| Generate Mocks   | `mockgen -source=...`                        |
+| Write Tests      | Use `gomock.NewController` and expectations  |
+| Run Tests        | `go test ./...`                              |
+
+---
+
+Want me to build and run this mock + test setup in a real Go project repo or add database/mock API support too?
